@@ -23,7 +23,7 @@ const userSchema= new mongoose.Schema({
         select: false
 
     },
-    profile:{
+    avatar:{
         public_id:{
             type:String,
             // required:true,
@@ -79,7 +79,6 @@ userSchema.methods.getResetPasswordToken = function () {
 
   return resetToken;
 };
-
 
 
 
