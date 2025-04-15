@@ -119,6 +119,94 @@ const forgotpassword = async (req, res) => {
     
 }
 
+// const validresetpassword =async (req, res) => {
+//     let {token}=req.params;
+
+//     let resetPasswordToken=crypto.createHash("sha256").update(token).digest("hex");
+
+//     const user = await User.findOne({
+//         resetPasswordToken,
+//         resetPasswordExpire: { $gt: Date.now() },
+//     })
+
+//     if(!user){
+//         return res.status(404).send("the token is wrong  or expired !!");
+//     }
+
+//     const { password, confirmPassword } = req.body
+
+//     if(password!=confirmPassword){
+//         return res.send("passes does not match");
+//     }
+
+//    user.password=newpassword;
+//    await user.save();
+
+//    await User.updateOne({
+//     _id:user._id
+//    },
+//    {
+//     $unset:{
+//         resetPasswordToken:"",
+//         resetPasswordExpire:""
+//     }
+//    })
+
+//    return res.status(200).send("user pass changed succesfully")
+
+
+
+// }
+
+const resetPassword = asyncHandler(async (req, res, next) => {
+
+    const { token } = req.params
+    const { password, confirmPassword } = req.body
+
+    const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex")
+
+    const user = await User.findOne({
+        resetPasswordToken,
+        resetPasswordExpire: { $gt: Date.now() },
+    })
+
+
+    if(!user){
+        return res.status(404).send("the token is wrong  or expired !!");
+    }
+
+    if (password !== confirmPassword) {
+        return  res.send("passes does not match");
+    }
+
+    user.password = password
+    await user.save()
+    await User.updateOne(
+        {
+            _id: user._id
+        },
+        {
+            $unset: {
+                resetPasswordToken: "",
+                resetPasswordExpire: ""
+            }
+        }
+    );
+
+
+    sendToken(user, 200, res, "Password reset successfully");
+    // return res.status(200).send("user pass changed succesfully")
+    
+})
+
+
+
+
+
+
+
+
+
 
 export { registerUser, loginUser ,logOutUser,forgotpassword};
 
