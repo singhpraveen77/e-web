@@ -49,7 +49,7 @@ userSchema.pre("save", async function (next) {
 
 userSchema.methods.getJWTtoken = function () {
     return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_SECRET,
+        expiresIn: "7d" // Token expires in 7 days
     });
 };
 
@@ -58,10 +58,8 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 userSchema.methods.getResetPasswordToken = function () {
-    // Generating Token
     const resetToken = crypto.randomBytes(20).toString("hex");
 
-    // Hashing and adding resetPasswordToken to userSchema
     this.resetPasswordToken = crypto
         .createHash("sha256")
         .update(resetToken)

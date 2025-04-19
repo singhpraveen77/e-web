@@ -1,4 +1,11 @@
+import { error } from "console";
 import User from "../models/usermodels.js"
+import { sendEmail } from "../utils/sendEmail.js";
+import crypto from "crypto"
+import validator from "validator"
+import { uploadOnCloudinary, deleteFromCloudinary } from "../utils/cloudinary.js";
+
+
 
 
 
@@ -158,7 +165,7 @@ const forgotpassword = async (req, res) => {
 
 // }
 
-const resetPassword = asyncHandler(async (req, res, next) => {
+const resetPassword = async (req, res) => {
 
     const { token } = req.params
     const { password, confirmPassword } = req.body
@@ -197,16 +204,255 @@ const resetPassword = asyncHandler(async (req, res, next) => {
     sendToken(user, 200, res, "Password reset successfully");
     // return res.status(200).send("user pass changed succesfully")
     
-})
+}
+
+const getUserdetail = async (req,res) =>{
+    let user=await User.findById(req.user?._id);
+    if(!user){
+        return res.status(404).send("no such user exist  ");
+    }
+    else {
+        return res.status(200).json(user);
+    }
+
+}
+
+// const updatepassword =async (req,res)=>{
+//     let user=await User.findById(req.user._id).select("+password");
+
+//     if(!user){
+//         return res.status(404).send("no such user exist  ");
+//     }
+
+//     let  {oldpassword,newpassword,confirmPassword}=req.body;
+
+//     let checkoldpass=await user.isPasswordCorrect(oldpassword);
+
+//     if(!checkoldpass){
+//         return res.status(401).send("oldpassword is worng")
+//     }
+
+//     if(newpassword!==confirmPassword){
+//         return res.status(402).send("change passes does not match")
+//     }
+    
+//     if(oldpassword===newpassword){
+//         return res.status(402).send("password is same ")
+//     }
+
+//     user.password=newpassword;
+//     await user.save();
+//     return res.status(200).send("user password changed successfully !!")
+
+//     }
+
+const updatePassword = async (req, res, next) => {
+
+    const user = await User.findById(req.user._id).select("+password");
+
+    const isPasswordMatched = await user.isPasswordCorrect(req.body.oldPassword)
+
+    if (!isPasswordMatched) {
+        return res.status(400).json("Old Password is incorrect")
+    }
+
+    if (req.body.newPassword != req.body.confirmPassword) {
+        return res(400).json("Password does not match");
+    }
+
+    user.password = req.body.newPassword;
+    await user.save()
+
+    res.status(200).json(new ApiResponse(200, user, "password changed successfully"))
+
+}
+
+const updateProfile =async (req,res)=>{
+    let {name,email}=req.body;
+
+    if(name==null || email==null){
+        return res.status(400).send("NAME AND EMAIL ARE REQUIRED ");
+    }
+
+    name=name.trim();
+    email=email.trim();
+
+    if(validator.isEmail(email)==false){
+        return res.status(400).send("enter valid email")
+    }
+
+    let avatar;
+
+    if(!req.file?.path){
+        const avatarLocalPath= req.file.path;
+
+        avatar=await uploadOnCloudinary(avatarLocalPath);
+
+        if(!avatar){
+            return res.status(400).send("unable to upload file ");
+        }
+
+    }
+
+    let updatedata={
+        name,
+        email
+    }
+
+    if(avatar){
+        updatedata.avatar=avatar;
+    }
+
+    const updatedUser=await User.findByIdAndUpdate(
+        req.user._id,
+        {$set:updatedata},
+        {
+            new:true,
+            runValidators:true
+        }
+
+    )
+
+    if(!updatedUser){
+        return res.status(404).json("user not found");
+    }
+
+    res.status(200).json("user updated successfully");
+
+}
 
 
+const getAllUsers=async(req,res)=>{
+    let user=await User.find();
+
+    return res.status(200).json(
+        {
+            success:true,
+            message:"user fetched successfully",
+            data:user
+        }
+    );
+}
+
+const getAnyUser = async (req,res)=>{
+    try{
+        let userId=req.params._id;
+
+        if(!userId){
+            return res.status(400).json({
+                success:false,
+                message:"VALID USERID required",
+
+            })
+        }
+        
+        let user=await User.findById(userId);
+        
+        if(!user){
+            return res.status(404).json({
+                success:false,
+                message:"VALID USERID required",
+    
+            })
+            
+        }
+        
+        return res.status(200).json({
+            success:true,
+            message:"USER FOUND SUCCESSFULLY",
+            data:user
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"something went wrong",
+            error:error.message
+    
+        })
+
+    }
+}
 
 
+const updateUserRole= async (req,res)=>{
+    let {name,email,role}=req.body;
+
+    if(!name || !email || !role){
+        return res.status(400).json({
+            success:false,
+            message:"PLEASE enter the valid credentials"
+        })
+    }
+
+     name=name.trim();
+     email=email.trim();
+
+     if(!validator.isEmail(email)){
+        return res.status(400).json({
+            success:false,
+            message:"PLEASE enter the valid credentials"
+        })
+     }
+
+    let user= await User.findByIdAndUpdate(
+        req.params?._id,
+        
+        {
+            $set:
+            {name,email,role}
+        },
+        {
+            new:true,
+            runValidators:true,
+            useFindAndModify:false
+            //mistake by rudra bhai..
+
+        }
+    )
+
+    if(user===null){
+        return res.status(404).json({
+            success:false,
+            message:"user not found"
+        })
+    }
+    return res.status(200).json({
+        success:true,
+        message:"user role UPDATED successfully",
+        data:user
+    })
 
 
+}
 
 
+const deleteUser= async(req,res)=>{
+    let user=await User.findById(req.params?._id);
+
+    if(!user){
+        return res.status(404).json({
+            success:false,
+            message:"user not found",
+
+        })
+
+    }
+
+    if(user?.image){
+       await deleteFromCloudinary(user?.image?.public_id);
+    }
+
+    await user.deleteOne();
+
+    res.status(200).json({
+        message:"user deleted successfully",
+        success:true,
+
+    })
+
+}
 
 
-export { registerUser, loginUser ,logOutUser,forgotpassword};
+export { registerUser, loginUser ,logOutUser,forgotpassword, resetPassword,getUserdetail,updatePassword,updateProfile,getAllUsers,getAnyUser,updateUserRole,deleteUser};
 
