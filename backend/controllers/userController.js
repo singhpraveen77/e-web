@@ -18,26 +18,27 @@ const registerUser = async (req, res) => {
         return res.status(400).send("User already exists");
     }
 
-    // const avatarLocalPath = req.file?.path;
+    const avatarLocalPath = req.file?.path;    
+    console.log("fhuhfe" , avatarLocalPath);
+    
+    if (!avatarLocalPath) {
+        return res.status(400).send("Please upload an avatar image");
+    }
 
-    // if (!avatarLocalPath) {
-    //     return res.status(400).send("Please upload an avatar image");
-    // }
+    const avatar = await uploadOnCloudinary(avatarLocalPath, "avatars")
 
-    // const avatar = await uploadOnCloudinary(avatarLocalPath, "avatars")
-
-    // if (!avatar) {
-    //     return res.status(500).send("Failed to upload avatar image");
-    // }
+    if (!avatar) {
+        return res.status(500).send("Failed to upload avatar image");
+    }
     
     const user = await User.create({
         name,
         email,
         password,
-        // avatar: {
-        //     public_id: avatar.public_id,
-        //     url: avatar.url
-        // },
+        avatar: {
+            public_id: avatar.public_id,
+            url: avatar.url
+        },
     })
 
     const token = user.getJWTtoken();
