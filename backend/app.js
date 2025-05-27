@@ -1,5 +1,5 @@
 import express from 'express';
-
+import cloudinary from 'cloudinary'
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -12,6 +12,13 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true,
 }));
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
