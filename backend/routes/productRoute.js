@@ -4,6 +4,6 @@ import { getAllProducts, getProductDetails } from "../controllers/productControl
 const router =express.Router();
 
 router.get("/all",getAllProducts);
-router.get("/:id",getProductDetails);
+router.get("/v2/:id",getProductDetails);
 
 export default router
