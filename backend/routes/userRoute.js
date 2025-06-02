@@ -7,8 +7,9 @@ import {verifyJWT} from '../middlewares/authmiddleware.js';
 const Router = express.Router()
 
 Router.route("/register").post(upload.single('avatar'), registerUser)
+
 Router.route("/login").post(loginUser)
-Router.route("/logout").get(logOutUser)
+Router.route("/logout").get(verifyJWT,logOutUser)
 Router.route("/password/forgot").post(forgotpassword)
 Router.route("/password/reset/:token").put(resetPassword)
 Router.route("/me").get(verifyJWT, getUserdetail)

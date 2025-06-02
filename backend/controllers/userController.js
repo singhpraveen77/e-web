@@ -9,6 +9,7 @@ import {sendToken} from "../utlis/jwtTokens.js"
 
 
 const registerUser = async (req, res) => {
+    console.log("register hit !!", req.body);
     const { name, email, password } = req.body;
     const existingUser = await User.findOne({ email
         
@@ -19,7 +20,6 @@ const registerUser = async (req, res) => {
     }
 
     const avatarLocalPath = req.file?.path;    
-    console.log("fhuhfe" , avatarLocalPath);
     
     if (!avatarLocalPath) {
         return res.status(400).send("Please upload an avatar image");
@@ -48,8 +48,9 @@ const registerUser = async (req, res) => {
 }
 
 const  loginUser=async (req,res)=>{
+    console.log("login hit !!",req.body);
     const { email, password } = req.body;
-
+    
     if (!email || !password) {
         return res.status(400).send("Please provide email and password");
     }
@@ -68,9 +69,11 @@ const  loginUser=async (req,res)=>{
 
     let token = user.getJWTtoken();
     res.cookie("token",token);
+    console.log(token);
     res.status(200).json({message: "login success"});
   
 }
+
 
 const logOutUser = async (req, res) => {
     res.cookie("token", null, {
@@ -125,42 +128,6 @@ const forgotpassword = async (req, res) => {
     
 }
 
-// const validresetpassword =async (req, res) => {
-//     let {token}=req.params;
-
-//     let resetPasswordToken=crypto.createHash("sha256").update(token).digest("hex");
-
-//     const user = await User.findOne({
-//         resetPasswordToken,
-//         resetPasswordExpire: { $gt: Date.now() },
-//     })
-
-//     if(!user){
-//         return res.status(404).send("the token is wrong  or expired !!");
-//     }
-
-//     const { password, confirmPassword } = req.body
-
-//     if(password!=confirmPassword){
-//         return res.send("passes does not match");
-//     }
-
-//    user.password=newpassword;
-//    await user.save();
-
-//    await User.updateOne({
-//     _id:user._id
-//    },
-//    {
-//     $unset:{
-//         resetPasswordToken:"",
-//         resetPasswordExpire:""
-//     }
-//    })
-
-//    return res.status(200).send("user pass changed succesfully")
-// }
-
 const resetPassword = async (req, res) => {
 
     const { token } = req.params
@@ -200,51 +167,34 @@ const resetPassword = async (req, res) => {
 
 
     sendToken(user, 200, res, "Password reset successfully");
-    // return res.status(200).send("user pass changed succesfully")
     
 }
 
 const getUserdetail = async (req,res) =>{
-    // let user=await User.findById(req.user?._id);
-    let user= await User.findOne({ email:req.body.email })
+   
+    console.log("//me route hit !! ");
+    const user = await User.findById(req.user?.id);
 
     if(!user){
-        return res.status(404).send("no such user exist  ");
+        return res.status(400).json(
+            {
+                success:false,
+                message:"user not set correctly check /me route cookie",
+                
+            }
+        );
+
     }
-    else {
-        return res.status(200).json(user);
-    }
+    return res.status(200).json(
+        {
+            success:true,
+            message:"user fetched successfully",
+            data:user
+        }
+    );
 
 }
 
-// const updatepassword =async (req,res)=>{
-//     let user=await User.findById(req.user._id).select("+password");
-
-//     if(!user){
-//         return res.status(404).send("no such user exist  ");
-//     }
-
-//     let  {oldpassword,newpassword,confirmPassword}=req.body;
-
-//     let checkoldpass=await user.isPasswordCorrect(oldpassword);
-
-//     if(!checkoldpass){
-//         return res.status(401).send("oldpassword is worng")
-//     }
-
-//     if(newpassword!==confirmPassword){
-//         return res.status(402).send("change passes does not match")
-//     }
-    
-//     if(oldpassword===newpassword){
-//         return res.status(402).send("password is same ")
-//     }
-
-//     user.password=newpassword;
-//     await user.save();
-//     return res.status(200).send("user password changed successfully !!")
-
-//     }
 
 const updatePassword = async (req, res) => {
 
