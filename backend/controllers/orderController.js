@@ -5,7 +5,7 @@ const newOrder=async(req,res)=>{
 
     const {
         shippingInfo,
-        // orderStatus,
+        
         orderItems,
         paymentInfo,
         
@@ -13,7 +13,7 @@ const newOrder=async(req,res)=>{
         taxPrice,
         shippingPrice,
         totalPrice,
-        // deliveredAt
+        
     }=req.body;
 
     const order= await Order.create({
@@ -66,7 +66,9 @@ const getSingleOrder=async (req,res)=>{
         })
 }
 const myOrders=async (req,res)=>{
-
+    
+    console.log(req.user);
+    
     if(!req.user || !req.user._id){
         return  res.status(400).json({
             success:false,
@@ -74,7 +76,7 @@ const myOrders=async (req,res)=>{
         })
     }
 
-    let orders=await Order.findById(req.user._id);
+    let orders=await Order.find({user:req.user._id});
 
     if(!orders){
         return res.status(400).json({
@@ -114,7 +116,8 @@ const getAllOrders=async(req,res)=>{
 }
 
 const updateOrder=async (req,res)=>{
-    const order=await Order.findById(req.params._id);
+    try{
+        const order=await Order.findById(req.params._id);
     
     if(!order){
         return res.status(400).json({
@@ -125,7 +128,7 @@ const updateOrder=async (req,res)=>{
 
     }
 
-    order.orderItems.forEach(async(item) => {
+    for(const item of order.orderItems) {
         if((order.orderStatus === "PENDING" || order.orderStatus === "PROCESSING" || order.orderStatus === "CANCELLED") && (req.body.status === "SHIPPED" || req.body.status === "DELIVERED")) {
             await updateStock(item.productId, item.quantity, "decrease");
         }
@@ -133,7 +136,15 @@ const updateOrder=async (req,res)=>{
         else if((order.orderStatus === "SHIPPED" || order.orderStatus === "DELIVERED" ) && (req.body.status === "CANCELLED" || req.body.status === "PROCESSING" || req.body.status === "PENDING")) {
             await updateStock(item.productId, item.quantity, "increase");
         }
-    })
+        else{
+            
+            return res.status(200).json({
+                success:true,
+                message:"status checking condition false !!",
+        
+            })
+        }
+    }
 
         order.orderStatus = req.body.status;
 
@@ -148,34 +159,45 @@ const updateOrder=async (req,res)=>{
                message:"status updated successfully  !!",
     
            })
+    }
+    catch(err){
+        return res.status(400).json({
+               success:false,
+               message: err.message,
+    
+           })
+
+    }
 }
 
 async function updateStock(id,quantity,status){
             let product= await Product.findById(id);
 
+            console.log("entered",id);
+            
             if(!product){
                 
-            return res.status(400).json({
-               success:false,
-               message:"product not found !!",
-    
-           })
-
-           
-        }
-        if(status==="decrease"){
-            if(product.stock<quantity) {
-                return res.status(400).json({
-               success:false,
-               message:"insufficient product stock !!",
-    
-            })
+                throw new Error("product not found !!");
+                
+                
             }
-        }
-        if(status==="increase"){
-           product.stock+=quantity;
+            console.log("product :",product);
+            if(status==="decrease"){
+                if(product.stock<quantity) {
+                    console.log("quantity less :",product.stock);
+                    throw new Error("insufficient product stock !!");
+                    
+                }
+                console.log("quantity sufficient :",product.stock);
+            product.stock-=quantity;
             
         }
+        if(status==="increase"){
+            product.stock+=quantity;
+            
+        }
+        
+        console.log("updated stock :",product.stock);
         product.save({validateBeforeSave:false})
     }
 
@@ -190,7 +212,7 @@ const deleteOrder = async(req,res)=>{
            })
     }
 
-    order.deleteOne();
+    await order.deleteOne();
 
     return res.status(200).json({
                success:true,
