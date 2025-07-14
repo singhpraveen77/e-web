@@ -8,8 +8,7 @@ const createProduct= async(req ,res)=>{
     
     const {name,description ,price,category,stock}=req.body;
     req.body.user= req.user._id;
-    console.log(req.user)
-    // req.body.user=req.user._id;
+    // console.log(req.user)
 
     if (!name || !description || !price || !category || !stock) {
         return res.status(400).json({
@@ -18,38 +17,38 @@ const createProduct= async(req ,res)=>{
         });
       }
 
-    // if(!req.files || req.files.length ===0){
-    //     return res.status(400).json({
-    //         success:false,
-    //         message:"images not found",
+    if(!req.files || req.files.length ===0){
+        return res.status(400).json({
+            success:false,
+            message:"images not found",
 
-    //     })
-    // }
+        })
+    }
 
-    // const imagesLink=[];
+    const imagesLink=[];
 
-    // for( const file of req.files){
-    //         const uploadResponse=await uploadOnCloudinary(file.path,"products");
-    //         if(!uploadResponse){
-    //             return res.status(400).json({
-    //                 success:false,
-    //                 message:"error in uploading the images !!",
+    for( const file of req.files){
+            const uploadResponse=await uploadOnCloudinary(file.path,"products");
+            if(!uploadResponse){
+                return res.status(400).json({
+                    success:false,
+                    message:"error in uploading the images !!",
         
-    //             })
-    //         }
+                })
+            }
 
-    //         imagesLink.push({
-    //             public_id:uploadResponse.public_id,
-    //             url:uploadResponse.url
-    //         })
+            imagesLink.push({
+                public_id:uploadResponse.public_id,
+                url:uploadResponse.url
+            })
 
-    // }
+    }
 
     const newProduct =await Product.create({
         name,
         description,
         price,
-        // images:imagesLink,
+        images:imagesLink,
 
         category,
         stock,
@@ -169,8 +168,11 @@ const updateProduct =async(req,res)=>{
     else {
 
         const imageLink=[];
+        
+        
 
-        for(const file in req.files){
+        for(const file of req.files){
+        
             const uploadResponse= await uploadOnCloudinary(file.path,"products");
 
             if(uploadResponse){
