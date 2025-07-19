@@ -3,11 +3,15 @@ import jwt from "jsonwebtoken";
 import User from "../models/usermodels.js";
 
 const verifyJWT= async (req,res,next)=>{
+    console.log("token verify jwt !!")
 
     try{
         let {token} =req.cookies; 
+
+        console.log("token",token)
         
         if(!token){
+            console.log("token not found !!")
             return res.status(400).json({
                 success:false,
                 message:"please login first",
@@ -25,28 +29,27 @@ const verifyJWT= async (req,res,next)=>{
             })
         }
 
-        req.user=await User.findById(decodeddata._id);
-        if(!req.user){
-            return res.status(400).json({
-                success:false,
-                message:"user not found with provided token",
 
-            })
+         const user = await User.findById(decodeddata._id).select('-password');        if(!req.user){
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
         }
-        console.log("veritfied by middleware succesfully !!")
-        // console.log(req.user)
-        next();
 
-
-        
+        req.user = user;
+        console.log("✅ Verified by middleware successfully!");
+        next();    
     }
-    catch(e){
+}
+catch(e){
         console.log("somthing went worng in the middleware auth")
         return res.status(400).json({
             success:false,
             message:e.message,
             
-
+    
         })
     }
 };
