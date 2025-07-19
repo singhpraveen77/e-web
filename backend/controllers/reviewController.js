@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Product from "../models/productmodel.js"
 
 const createProductReview = async(req,res)=>{
@@ -60,6 +61,7 @@ const createProductReview = async(req,res)=>{
 }
 
 const getAllReviews= async(req,res)=>{
+    
     const product=await Product.findById(req.query._id);
 
     if(!product){
@@ -80,14 +82,26 @@ const getAllReviews= async(req,res)=>{
 const deleteReview=async(req,res)=>{
     let {productId,reviewId}=req.query;
 
-    if(!productId  || !reviewId){
+    if(!mongoose.Types.ObjectId.isValid(productId) || !mongoose.Types.ObjectId.isValid(reviewId)){
         return res.status(400).json({
             success:false,
-            message:"Productid and reviewId are required !!",
+            message:"Valid Productid and reviewId are required !!",
 
         })
-    
     }
+
+    // if(!productId  || !reviewId){
+    //     return res.status(400).json({
+    //         success:false,
+    //         message:"Productid and reviewId are required !!",
+
+    //     })
+    
+    // }
+    
+    console.log(
+        "working till "
+    );
     
     let product=await Product.findById(productId);
     
@@ -102,7 +116,7 @@ const deleteReview=async(req,res)=>{
     const updatedReviews= product.reviews.filter((review)=>(review._id.toString()!==reviewId.toString()))
 
     const totalRating= updatedReviews.reduce((sum,rev)=>sum+rev.rating,0);
-    const rating =updatedReviews.length >0 ? totalRating / updatedReviews.length :0;
+    const rating = updatedReviews.length >0 ? totalRating / updatedReviews.length :0;
 
     product.reviews =updatedReviews;
     product.rating=rating;
