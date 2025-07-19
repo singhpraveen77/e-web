@@ -41,8 +41,8 @@ const registerUser = async (req, res) => {
         },
     })
 
-    const token = user.getJWTtoken();
-    res.cookie("token", token, )
+    // const token = user.getJWTtoken();
+    // res.cookie("token", token, )
     res.status(201).send({ message: "User registered successfully"});
 
 }
