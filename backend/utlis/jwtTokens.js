@@ -1,5 +1,5 @@
 import  jwt  from "jsonwebtoken";
-import ApiResponse from './ApiResponse.js'
+import {ApiResponse} from './ApiResponse.js'
 
 const sendToken=(user,statusCode,res,message)=>{
     let token=user.getJWTtoken();
@@ -15,5 +15,5 @@ const sendToken=(user,statusCode,res,message)=>{
     )
 }
 
-export {sendToken} 
+export  {sendToken} 
 

@@ -13,8 +13,8 @@ const sendEmail = async (Option)=>{
     })
 
     const mailOptions={
-        from:process.env.SMPT_SERVICE,
-        // from:process.env.SMPT.MAIL,
+        // from:process.env.SMPT_SERVICE,
+        from:process.env.SMPT_MAIL,
         to:Option.email,
         subject:Option.subject,
         text:Option.message
@@ -24,4 +24,4 @@ const sendEmail = async (Option)=>{
 
 }
 
-export default sendEmail;
+export  {sendEmail};
