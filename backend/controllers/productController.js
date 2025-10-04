@@ -84,6 +84,7 @@ const getAllProducts = async (req, res) => {
     res
         .status(200)
         .json(new ApiResponse(200, { products, productCount, filteredProductsCount, resultPerPage }, "All product fetched successfully"))
+
 }
 //yeh wala pagination ka system smjh nhi aaya !!
 
@@ -125,6 +126,76 @@ const getAllAdminProducts=async (req,res)=>{
 
     })
 }
+
+const viewAllProducts=async (req,res)=>{
+    let products=await Product.find();
+
+    if(!products){
+        return res.status(400).json({
+            success:false,
+            message:"Products not found",
+
+        })
+    }
+
+    return res.status(200).json({
+        success:true,
+        message:"Product founded successfully !!",
+        data:products
+
+    })
+}
+
+
+const batchUpdateProducts = async (req, res) => {
+    console.log("reached the route !!");
+    
+  try {
+    const { updatedStocks = {}, deleted = [] } = req.body;
+
+    const updatePromises = [];
+    const deletePromises = [];
+
+    // ✅ Handle stock updates
+    for (const [id, newStock] of Object.entries(updatedStocks)) {
+      updatePromises.push(
+        Product.findByIdAndUpdate(
+          id,
+          { stock: newStock },
+          { new: true, runValidators: true }
+        )
+      );
+    }
+
+    // ✅ Handle deletions (with Cloudinary cleanup)
+    for (const id of deleted) {
+      const product = await Product.findById(id);
+      if (!product) continue;
+
+      // delete from Cloudinary
+      for (const image of product.images) {
+        await deleteFromCloudinary(image.public_id);
+      }
+
+      deletePromises.push(Product.findByIdAndDelete(id));
+    }
+
+    // ✅ Execute all operations
+    await Promise.all([...updatePromises, ...deletePromises]);
+
+    res.status(200).json({
+      success: true,
+      message: "Batch update successful ✅",
+    });
+  } catch (error) {
+    console.error("Batch update error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error performing batch update",
+      error: error.message,
+    });
+  }
+};
 
 
 const updateProduct =async(req,res)=>{
@@ -263,6 +334,8 @@ export {
     getAllAdminProducts,
     getAllProducts,
     deleteProduct,
-    getProductDetails
+    getProductDetails,
+    viewAllProducts,
+    batchUpdateProducts
     
 }
