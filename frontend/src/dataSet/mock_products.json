@@ -1,0 +1,702 @@
+[
+  {
+    "name": "Boat Rockerz 450",
+    "description": "High quality headphone - Boat Rockerz 450.",
+    "price": 34359,
+    "category": "headphone",
+    "stock": 39
+  },
+  {
+    "name": "Samsung Galaxy Watch",
+    "description": "High quality watch - Samsung Galaxy Watch.",
+    "price": 68653,
+    "category": "watch",
+    "stock": 41
+  },
+  {
+    "name": "MacBook Air",
+    "description": "High quality laptop - MacBook Air.",
+    "price": 64346,
+    "category": "laptop",
+    "stock": 23
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 66925,
+    "category": "camera",
+    "stock": 12
+  },
+  {
+    "name": "Lenovo ThinkPad",
+    "description": "High quality laptop - Lenovo ThinkPad.",
+    "price": 65557,
+    "category": "laptop",
+    "stock": 8
+  },
+  {
+    "name": "Skullcandy Crusher",
+    "description": "High quality headphone - Skullcandy Crusher.",
+    "price": 70828,
+    "category": "headphone",
+    "stock": 3
+  },
+  {
+    "name": "Asus ROG",
+    "description": "High quality laptop - Asus ROG.",
+    "price": 26276,
+    "category": "laptop",
+    "stock": 14
+  },
+  {
+    "name": "Lenovo ThinkPad",
+    "description": "High quality laptop - Lenovo ThinkPad.",
+    "price": 57461,
+    "category": "laptop",
+    "stock": 42
+  },
+  {
+    "name": "Bose QC 35",
+    "description": "High quality headphone - Bose QC 35.",
+    "price": 79712,
+    "category": "headphone",
+    "stock": 21
+  },
+  {
+    "name": "JBL Tune 500",
+    "description": "High quality headphone - JBL Tune 500.",
+    "price": 12790,
+    "category": "headphone",
+    "stock": 45
+  },
+  {
+    "name": "Microsoft Surface Go",
+    "description": "High quality tablet - Microsoft Surface Go.",
+    "price": 49457,
+    "category": "tablet",
+    "stock": 25
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 27860,
+    "category": "laptop",
+    "stock": 23
+  },
+  {
+    "name": "Gaming Mouse",
+    "description": "High quality accessories - Gaming Mouse.",
+    "price": 60958,
+    "category": "accessories",
+    "stock": 38
+  },
+  {
+    "name": "VR Headset",
+    "description": "High quality other - VR Headset.",
+    "price": 50569,
+    "category": "other",
+    "stock": 14
+  },
+  {
+    "name": "Noise ColorFit",
+    "description": "High quality watch - Noise ColorFit.",
+    "price": 70132,
+    "category": "watch",
+    "stock": 7
+  },
+  {
+    "name": "Wireless Charger",
+    "description": "High quality accessories - Wireless Charger.",
+    "price": 8366,
+    "category": "accessories",
+    "stock": 16
+  },
+  {
+    "name": "Sony WH-1000XM4",
+    "description": "High quality headphone - Sony WH-1000XM4.",
+    "price": 39769,
+    "category": "headphone",
+    "stock": 31
+  },
+  {
+    "name": "HP Pavilion",
+    "description": "High quality laptop - HP Pavilion.",
+    "price": 15968,
+    "category": "laptop",
+    "stock": 29
+  },
+  {
+    "name": "Lenovo Tab M10",
+    "description": "High quality tablet - Lenovo Tab M10.",
+    "price": 38917,
+    "category": "tablet",
+    "stock": 47
+  },
+  {
+    "name": "Sony Alpha A7",
+    "description": "High quality camera - Sony Alpha A7.",
+    "price": 27860,
+    "category": "camera",
+    "stock": 39
+  },
+  {
+    "name": "USB-C Hub",
+    "description": "High quality accessories - USB-C Hub.",
+    "price": 15946,
+    "category": "accessories",
+    "stock": 23
+  },
+  {
+    "name": "Realme Pad",
+    "description": "High quality tablet - Realme Pad.",
+    "price": 69491,
+    "category": "tablet",
+    "stock": 14
+  },
+  {
+    "name": "Pixel 7",
+    "description": "High quality mobile - Pixel 7.",
+    "price": 64675,
+    "category": "mobile",
+    "stock": 25
+  },
+  {
+    "name": "Samsung Galaxy S23",
+    "description": "High quality mobile - Samsung Galaxy S23.",
+    "price": 57226,
+    "category": "mobile",
+    "stock": 3
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 5554,
+    "category": "laptop",
+    "stock": 11
+  },
+  {
+    "name": "Skullcandy Crusher",
+    "description": "High quality headphone - Skullcandy Crusher.",
+    "price": 65575,
+    "category": "headphone",
+    "stock": 7
+  },
+  {
+    "name": "Bluetooth Speaker",
+    "description": "High quality other - Bluetooth Speaker.",
+    "price": 79113,
+    "category": "other",
+    "stock": 41
+  },
+  {
+    "name": "Apple Watch",
+    "description": "High quality watch - Apple Watch.",
+    "price": 70895,
+    "category": "watch",
+    "stock": 21
+  },
+  {
+    "name": "JBL Tune 500",
+    "description": "High quality headphone - JBL Tune 500.",
+    "price": 6694,
+    "category": "headphone",
+    "stock": 15
+  },
+  {
+    "name": "OnePlus Nord",
+    "description": "High quality mobile - OnePlus Nord.",
+    "price": 44434,
+    "category": "mobile",
+    "stock": 8
+  },
+  {
+    "name": "iPad Air",
+    "description": "High quality tablet - iPad Air.",
+    "price": 43283,
+    "category": "tablet",
+    "stock": 47
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 49605,
+    "category": "camera",
+    "stock": 22
+  },
+  {
+    "name": "Laptop Stand",
+    "description": "High quality accessories - Laptop Stand.",
+    "price": 34821,
+    "category": "accessories",
+    "stock": 9
+  },
+  {
+    "name": "Fossil Gen 5",
+    "description": "High quality watch - Fossil Gen 5.",
+    "price": 20578,
+    "category": "watch",
+    "stock": 35
+  },
+  {
+    "name": "Canon EOS 1500D",
+    "description": "High quality camera - Canon EOS 1500D.",
+    "price": 9580,
+    "category": "camera",
+    "stock": 21
+  },
+  {
+    "name": "MacBook Air",
+    "description": "High quality laptop - MacBook Air.",
+    "price": 61419,
+    "category": "laptop",
+    "stock": 1
+  },
+  {
+    "name": "Wireless Charger",
+    "description": "High quality accessories - Wireless Charger.",
+    "price": 54621,
+    "category": "accessories",
+    "stock": 3
+  },
+  {
+    "name": "USB-C Hub",
+    "description": "High quality accessories - USB-C Hub.",
+    "price": 16584,
+    "category": "accessories",
+    "stock": 26
+  },
+  {
+    "name": "Sony WH-1000XM4",
+    "description": "High quality headphone - Sony WH-1000XM4.",
+    "price": 67125,
+    "category": "headphone",
+    "stock": 37
+  },
+  {
+    "name": "Fujifilm X-T200",
+    "description": "High quality camera - Fujifilm X-T200.",
+    "price": 23738,
+    "category": "camera",
+    "stock": 46
+  },
+  {
+    "name": "Fossil Gen 5",
+    "description": "High quality watch - Fossil Gen 5.",
+    "price": 68434,
+    "category": "watch",
+    "stock": 20
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 67412,
+    "category": "camera",
+    "stock": 34
+  },
+  {
+    "name": "Noise ColorFit",
+    "description": "High quality watch - Noise ColorFit.",
+    "price": 56875,
+    "category": "watch",
+    "stock": 38
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 11833,
+    "category": "camera",
+    "stock": 10
+  },
+  {
+    "name": "iPad Air",
+    "description": "High quality tablet - iPad Air.",
+    "price": 28347,
+    "category": "tablet",
+    "stock": 41
+  },
+  {
+    "name": "iPad Air",
+    "description": "High quality tablet - iPad Air.",
+    "price": 78363,
+    "category": "tablet",
+    "stock": 14
+  },
+  {
+    "name": "Fujifilm X-T200",
+    "description": "High quality camera - Fujifilm X-T200.",
+    "price": 48173,
+    "category": "camera",
+    "stock": 29
+  },
+  {
+    "name": "Amazfit GTR",
+    "description": "High quality watch - Amazfit GTR.",
+    "price": 36867,
+    "category": "watch",
+    "stock": 10
+  },
+  {
+    "name": "VR Headset",
+    "description": "High quality other - VR Headset.",
+    "price": 79598,
+    "category": "other",
+    "stock": 5
+  },
+  {
+    "name": "Laptop Stand",
+    "description": "High quality accessories - Laptop Stand.",
+    "price": 26754,
+    "category": "accessories",
+    "stock": 17
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 19572,
+    "category": "laptop",
+    "stock": 11
+  },
+  {
+    "name": "JBL Tune 500",
+    "description": "High quality headphone - JBL Tune 500.",
+    "price": 62071,
+    "category": "headphone",
+    "stock": 38
+  },
+  {
+    "name": "Phone Case",
+    "description": "High quality accessories - Phone Case.",
+    "price": 2318,
+    "category": "accessories",
+    "stock": 33
+  },
+  {
+    "name": "Bose QC 35",
+    "description": "High quality headphone - Bose QC 35.",
+    "price": 25566,
+    "category": "headphone",
+    "stock": 39
+  },
+  {
+    "name": "Phone Case",
+    "description": "High quality accessories - Phone Case.",
+    "price": 51487,
+    "category": "accessories",
+    "stock": 32
+  },
+  {
+    "name": "Pixel 7",
+    "description": "High quality mobile - Pixel 7.",
+    "price": 54563,
+    "category": "mobile",
+    "stock": 3
+  },
+  {
+    "name": "Sony Alpha A7",
+    "description": "High quality camera - Sony Alpha A7.",
+    "price": 69541,
+    "category": "camera",
+    "stock": 37
+  },
+  {
+    "name": "iPad Air",
+    "description": "High quality tablet - iPad Air.",
+    "price": 45887,
+    "category": "tablet",
+    "stock": 47
+  },
+  {
+    "name": "iPad Air",
+    "description": "High quality tablet - iPad Air.",
+    "price": 70243,
+    "category": "tablet",
+    "stock": 37
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 74617,
+    "category": "camera",
+    "stock": 50
+  },
+  {
+    "name": "Boat Rockerz 450",
+    "description": "High quality headphone - Boat Rockerz 450.",
+    "price": 19826,
+    "category": "headphone",
+    "stock": 34
+  },
+  {
+    "name": "Fitness Band",
+    "description": "High quality other - Fitness Band.",
+    "price": 17633,
+    "category": "other",
+    "stock": 9
+  },
+  {
+    "name": "Boat Rockerz 450",
+    "description": "High quality headphone - Boat Rockerz 450.",
+    "price": 16888,
+    "category": "headphone",
+    "stock": 45
+  },
+  {
+    "name": "Noise ColorFit",
+    "description": "High quality watch - Noise ColorFit.",
+    "price": 29907,
+    "category": "watch",
+    "stock": 28
+  },
+  {
+    "name": "VR Headset",
+    "description": "High quality other - VR Headset.",
+    "price": 71503,
+    "category": "other",
+    "stock": 39
+  },
+  {
+    "name": "Power Bank",
+    "description": "High quality other - Power Bank.",
+    "price": 15501,
+    "category": "other",
+    "stock": 9
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 37913,
+    "category": "laptop",
+    "stock": 22
+  },
+  {
+    "name": "Fujifilm X-T200",
+    "description": "High quality camera - Fujifilm X-T200.",
+    "price": 26099,
+    "category": "camera",
+    "stock": 5
+  },
+  {
+    "name": "USB-C Hub",
+    "description": "High quality accessories - USB-C Hub.",
+    "price": 78699,
+    "category": "accessories",
+    "stock": 22
+  },
+  {
+    "name": "Pixel 7",
+    "description": "High quality mobile - Pixel 7.",
+    "price": 17047,
+    "category": "mobile",
+    "stock": 11
+  },
+  {
+    "name": "Gaming Mouse",
+    "description": "High quality accessories - Gaming Mouse.",
+    "price": 37005,
+    "category": "accessories",
+    "stock": 3
+  },
+  {
+    "name": "iPhone 14",
+    "description": "High quality mobile - iPhone 14.",
+    "price": 16132,
+    "category": "mobile",
+    "stock": 37
+  },
+  {
+    "name": "Fitness Band",
+    "description": "High quality other - Fitness Band.",
+    "price": 64932,
+    "category": "other",
+    "stock": 36
+  },
+  {
+    "name": "Skullcandy Crusher",
+    "description": "High quality headphone - Skullcandy Crusher.",
+    "price": 79738,
+    "category": "headphone",
+    "stock": 48
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 74098,
+    "category": "laptop",
+    "stock": 27
+  },
+  {
+    "name": "Power Bank",
+    "description": "High quality other - Power Bank.",
+    "price": 54560,
+    "category": "other",
+    "stock": 18
+  },
+  {
+    "name": "OnePlus Nord",
+    "description": "High quality mobile - OnePlus Nord.",
+    "price": 33638,
+    "category": "mobile",
+    "stock": 29
+  },
+  {
+    "name": "Pixel 7",
+    "description": "High quality mobile - Pixel 7.",
+    "price": 72914,
+    "category": "mobile",
+    "stock": 37
+  },
+  {
+    "name": "Dell Inspiron",
+    "description": "High quality laptop - Dell Inspiron.",
+    "price": 5490,
+    "category": "laptop",
+    "stock": 33
+  },
+  {
+    "name": "Fitness Band",
+    "description": "High quality other - Fitness Band.",
+    "price": 48679,
+    "category": "other",
+    "stock": 11
+  },
+  {
+    "name": "Pixel 7",
+    "description": "High quality mobile - Pixel 7.",
+    "price": 18235,
+    "category": "mobile",
+    "stock": 36
+  },
+  {
+    "name": "MacBook Air",
+    "description": "High quality laptop - MacBook Air.",
+    "price": 50944,
+    "category": "laptop",
+    "stock": 7
+  },
+  {
+    "name": "Samsung Galaxy Tab",
+    "description": "High quality tablet - Samsung Galaxy Tab.",
+    "price": 44572,
+    "category": "tablet",
+    "stock": 47
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 51870,
+    "category": "camera",
+    "stock": 44
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 60408,
+    "category": "camera",
+    "stock": 48
+  },
+  {
+    "name": "GoPro Hero 10",
+    "description": "High quality camera - GoPro Hero 10.",
+    "price": 48056,
+    "category": "camera",
+    "stock": 5
+  },
+  {
+    "name": "Fujifilm X-T200",
+    "description": "High quality camera - Fujifilm X-T200.",
+    "price": 30216,
+    "category": "camera",
+    "stock": 50
+  },
+  {
+    "name": "Laptop Stand",
+    "description": "High quality accessories - Laptop Stand.",
+    "price": 56322,
+    "category": "accessories",
+    "stock": 15
+  },
+  {
+    "name": "Sony WH-1000XM4",
+    "description": "High quality headphone - Sony WH-1000XM4.",
+    "price": 35376,
+    "category": "headphone",
+    "stock": 9
+  },
+  {
+    "name": "Amazfit GTR",
+    "description": "High quality watch - Amazfit GTR.",
+    "price": 22303,
+    "category": "watch",
+    "stock": 30
+  },
+  {
+    "name": "Sony Alpha A7",
+    "description": "High quality camera - Sony Alpha A7.",
+    "price": 67302,
+    "category": "camera",
+    "stock": 35
+  },
+  {
+    "name": "Power Bank",
+    "description": "High quality other - Power Bank.",
+    "price": 3988,
+    "category": "other",
+    "stock": 9
+  },
+  {
+    "name": "iPhone 14",
+    "description": "High quality mobile - iPhone 14.",
+    "price": 67035,
+    "category": "mobile",
+    "stock": 3
+  },
+  {
+    "name": "Samsung Galaxy Tab",
+    "description": "High quality tablet - Samsung Galaxy Tab.",
+    "price": 28475,
+    "category": "tablet",
+    "stock": 46
+  },
+  {
+    "name": "Nikon D5600",
+    "description": "High quality camera - Nikon D5600.",
+    "price": 34969,
+    "category": "camera",
+    "stock": 28
+  },
+  {
+    "name": "Realme Pad",
+    "description": "High quality tablet - Realme Pad.",
+    "price": 33225,
+    "category": "tablet",
+    "stock": 7
+  },
+  {
+    "name": "HP Pavilion",
+    "description": "High quality laptop - HP Pavilion.",
+    "price": 18188,
+    "category": "laptop",
+    "stock": 4
+  },
+  {
+    "name": "Laptop Stand",
+    "description": "High quality accessories - Laptop Stand.",
+    "price": 7531,
+    "category": "accessories",
+    "stock": 42
+  },
+  {
+    "name": "Canon EOS 1500D",
+    "description": "High quality camera - Canon EOS 1500D.",
+    "price": 6889,
+    "category": "camera",
+    "stock": 48
+  },
+  {
+    "name": "MacBook Air",
+    "description": "High quality laptop - MacBook Air.",
+    "price": 7878,
+    "category": "laptop",
+    "stock": 29
+  }
+]
