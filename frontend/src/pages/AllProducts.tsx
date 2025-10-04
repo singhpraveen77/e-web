@@ -18,13 +18,19 @@ const AllProducts = () => {
   const [maxPrice, setMaxPrice] = useState(0);
   const [category, setCategory] = useState("All");
   const [rating, setRating] = useState(0);
+  const [localSearch, setLocalSearch] = useState(""); // local search state
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.cart.products);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get("search")?.toLowerCase() || "";
+
+  // Sync searchQuery from URL into localSearch state
+  useEffect(() => {
+    setLocalSearch(searchQuery);
+  }, [searchQuery]);
 
   // Fetch Products
   useEffect(() => {
@@ -57,19 +63,21 @@ const AllProducts = () => {
       const matchesRating = rating === 0 || item.rating >= rating;
 
       const matchesSearch =
-        !searchQuery ||
-        (item.name && item.name.toLowerCase().includes(searchQuery)) ||
-        (item.category && item.category.toLowerCase().includes(searchQuery));
+        !localSearch ||
+        (item.name && item.name.toLowerCase().includes(localSearch)) ||
+        (item.category && item.category.toLowerCase().includes(localSearch));
 
       return matchesCategory && matchesPrice && matchesRating && matchesSearch;
     });
-  }, [products, category, price, rating, searchQuery]);
+  }, [products, category, price, rating, localSearch]);
 
   // Reset Filters
   const resetFilters = () => {
     setCategory("All");
     setRating(0);
     setPrice(maxPrice);
+    setLocalSearch(""); // reset search
+    setSearchParams({}); // clear search from URL
   };
 
   if (loading) return <p className="text-center mt-10">Loading...</p>;

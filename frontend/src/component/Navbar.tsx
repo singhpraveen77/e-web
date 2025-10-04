@@ -21,7 +21,10 @@ export default function Navbar() {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedSearch = search.trim();
-    if (!trimmedSearch) return;
+    if (!trimmedSearch){
+      setSearch("")
+       return;
+      }
 
     // Encode search query for URL
     navigate(`/products?search=${encodeURIComponent(trimmedSearch.toLowerCase())}`);
