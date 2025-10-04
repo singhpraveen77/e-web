@@ -37,7 +37,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ["admin", "user"],
         default: "user"
-    }
+    },
+    resetPasswordToken:String,
+    resetPasswordExpire:Date
 }, { timestamps: true });
 
 userSchema.pre("save", async function (next) {
@@ -58,7 +60,8 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 userSchema.methods.getResetPasswordToken = function () {
-    const resetToken = crypto.randomBytes(20).toString("hex");
+    try{
+        const resetToken = crypto.randomBytes(20).toString("hex");
 
     this.resetPasswordToken = crypto
         .createHash("sha256")
@@ -68,7 +71,12 @@ userSchema.methods.getResetPasswordToken = function () {
     this.resetPasswordExpire = Date.now() + (15 * 60 * 1000);
 
     return resetToken;
+    }
+    catch(error){
+        console.log("")
+    }
 };
+
 
 const User = mongoose.model('User', userSchema);
 export default User;

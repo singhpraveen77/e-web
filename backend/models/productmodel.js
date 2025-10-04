@@ -24,11 +24,11 @@ import mongoose from 'mongoose';
         {
             public_id:{
                 type:String,
-                required:true,
+                // required:true,
             },
             url:{
                 type:String,
-                required:true,
+                // required:true,
             }
         }
     ],
@@ -37,26 +37,6 @@ import mongoose from 'mongoose';
         required:[true,"please enter category !!"],
         
     },
-
-    // category:[
-    //     {
-    //         type:String,
-    //         required:true,
-    //         enum:[
-    //             "laptop",
-    //             "mobile",
-    //             "watch",
-    //             "camera",
-    //             "headphone",
-    //             "tablet",
-    //             "accessories",
-    //             "other"
-    //         ]
-
-            
-    //     },
-    // ],
-
     stock:{
         type:Number,
         required:[true,"please enter stock !!"],
@@ -111,4 +91,4 @@ import mongoose from 'mongoose';
  })
 
  const Product = mongoose.model("Product",productSchema);
-module.exports = Product;
+export default Product;
