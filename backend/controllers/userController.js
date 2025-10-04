@@ -9,11 +9,10 @@ import {sendToken} from "../utlis/jwtTokens.js"
 
 
 const registerUser = async (req, res) => {
-    console.log("register hit !!", req.body);
-    const { name, email, password } = req.body;
-    const existingUser = await User.findOne({ email
-        
-    })
+    console.log("register hit !!");
+    try {
+        const { name, email, password } = req.body;
+    const existingUser = await User.findOne({ email})
 
     if (existingUser) {
         return res.status(400).send("User already exists");
@@ -41,10 +40,20 @@ const registerUser = async (req, res) => {
         },
     })
 
-    // const token = user.getJWTtoken();
-    // res.cookie("token", token, )
-    res.status(201).send({ message: "User registered successfully"});
-
+    const token = user.getJWTtoken();
+    res.cookie("token", token, )
+    res.status(201).json({
+    success: true,
+    message: "User registered successfully",
+    data: user
+    
+    });
+    console.log("data sent from backend :",user);
+    } catch (error) {
+        console.log("error in backend !!",error);
+        
+    }
+    
 }
 
 const  loginUser=async (req,res)=>{
@@ -66,11 +75,21 @@ const  loginUser=async (req,res)=>{
     if (!isPasswordValid) {
         return res.status(401).send("Invalid email or password");
     }
-
+    
     let token = user.getJWTtoken();
     res.cookie("token",token);
     console.log(token);
-    res.status(200).json({message: "login success"});
+    res.status(200).json(
+        {
+            message: "login success",
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            },
+        }
+    );
   
 }
 
@@ -407,5 +426,61 @@ const deleteUser= async(req,res)=>{
 }
 
 
-export { registerUser, loginUser ,logOutUser,forgotpassword, resetPassword,getUserdetail,updatePassword,updateProfile,getAllUsers,getAnyUser,updateUserRole,deleteUser};
+const batchUpdateUsers = async (req, res) => {
+  try {
+    const { updatedRoles = {}, deleted = [] } = req.body;
+
+    // 🔹 Collect results
+    const updateResults = [];
+    const deleteResults = [];
+
+    // 🔹 1️⃣ Update roles in bulk
+    for (const [id, role] of Object.entries(updatedRoles)) {
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { role },
+        { new: true, runValidators: true, useFindAndModify: false }
+      );
+
+      if (updatedUser) updateResults.push(updatedUser);
+    }
+
+    // 🔹 2️⃣ Delete users in bulk
+    for (const id of deleted) {
+      const user = await User.findById(id);
+      if (!user) continue;
+
+      // delete profile image if present
+      if (user.image && user.image.public_id) {
+        await deleteFromCloudinary(user.image.public_id);
+      }
+
+      await user.deleteOne();
+      deleteResults.push(id);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Batch update completed successfully ✅",
+      summary: {
+        updatedCount: updateResults.length,
+        deletedCount: deleteResults.length,
+      },
+      updatedUsers: updateResults,
+      deletedUsers: deleteResults,
+    });
+  } catch (err) {
+    console.error("Error in batch user update:", err);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error during batch update ❌",
+      error: err.message,
+    });
+  }
+};
+
+
+
+export {
+    batchUpdateUsers, registerUser, loginUser ,logOutUser,forgotpassword, resetPassword,getUserdetail,updatePassword,updateProfile,getAllUsers,getAnyUser,updateUserRole,deleteUser};
 

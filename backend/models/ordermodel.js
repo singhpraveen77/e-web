@@ -58,13 +58,13 @@ const orderSchema=new mongoose.Schema({
     orderStatus:{
         type:String,
         enum:[
-            "Pending",
-            "Processing",
-            "Shipped",
-            "Delivered",
-            "Cancelled"
+            "PENDING",
+            "PROCESSING",
+            "SHIPPED",
+            "DELIVERED",
+            "CANCELLED"
         ],
-        default:"Pending",
+        default:"PENDING",
     },
     orderItems:[orderitemSchema],
     user:{
@@ -117,4 +117,5 @@ const orderSchema=new mongoose.Schema({
     timestamps:true,
 });
 
-exports=mongoose.model("Order",orderSchema);
+const Order=mongoose.model("Order",orderSchema);
+export default Order
