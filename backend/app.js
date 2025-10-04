@@ -22,7 +22,7 @@ cloudinary.config({
 });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_ATLAS)
     .then(() => {
         console.log('Connected to MongoDB');
     })
@@ -31,6 +31,7 @@ mongoose.connect(process.env.MONGO_URI)
         process.exit(1);
     });
 
+    
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,7 +49,7 @@ import adminRoute from "./routes/adminRoute.js";
 import { verifyJWT,authrizeroles } from './middlewares/authmiddleware.js';
 
 //routes
-app.use("/app/v1/user",userRoute );
+app.use("/app/v1/user",userRoute);
 app.use("/app/v1/product",productRoute );
 app.use("/app/v1/review",reviewRoute );
 app.use("/app/v1/order",orderRoute );
@@ -56,7 +57,6 @@ app.use("/app/v1/order",orderRoute );
 app.use(verifyJWT, authrizeroles("admin"));
 
 app.use("/app/v1/admin",adminRoute );
-
 
 
 
