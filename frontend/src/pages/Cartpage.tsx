@@ -1,15 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import type{ RootState,AppDispatch} from "../redux/store";
 import { removeItem, updateQuantity } from "../redux/slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate=useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.products);
 
   const grossTotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  const handleSubmit=(e:any)=>{
+    e.preventDefault();
+    navigate("/checkout-address");
+
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -105,7 +113,9 @@ const CartPage = () => {
             <span>Gross Total:</span>
             <span>₹{grossTotal.toLocaleString()}</span>
           </div>
-          <button className="w-full bg-blue-600 text-white py-3 rounded-xl shadow hover:bg-blue-700 transition">
+          <button
+          onClick={handleSubmit}
+           className="w-full bg-blue-600 text-white py-3 rounded-xl shadow hover:bg-blue-700 transition">
             Proceed to Checkout
           </button>
         </div>
