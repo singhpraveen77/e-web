@@ -1,4 +1,3 @@
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,6 +14,11 @@ import ProductsPage from "./pages/admin/ProductsPageAdmin";
 import ProductDetails from "./pages/ProductDetails";
 import CartPage from "./pages/Cartpage";
 import AllProducts from "./pages/AllProducts";
+import CheckoutAddress from "./pages/CheckoutAddress";
+import OrderSummary from "./pages/OrderSummary";
+import PaymentPage from "./pages/PaymentPage";
+import OrderSuccess from "./pages/OrderSuccess";
+import MyOrders from "./pages/MyOrders";
 
 
 function App() {
@@ -55,9 +59,9 @@ function App() {
         },
         { 
           path: "/admin/users",
-           element: <UsersPage />
+          element: <UsersPage />
         },
-           // separate page
+        // separate page
         { 
           path: "/admin/products",
           element: <ProductsPage />
@@ -69,6 +73,26 @@ function App() {
         {
           path:"/product/:id",
           element:<ProductDetails />
+        },
+        {
+          path:"/checkout-address",
+          element:<CheckoutAddress/>
+        },
+        {
+          path:"/checkout/summary",
+          element:<OrderSummary/>
+        },
+        {
+          path:"/checkout/payment",
+          element:<PaymentPage/>
+        },
+        {
+          path:"/order-success",
+          element:<OrderSuccess/>
+        },
+        {
+          path:"/my-orders",
+          element:<MyOrders/>
         },
       ]
     }
