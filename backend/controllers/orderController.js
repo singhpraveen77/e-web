@@ -4,16 +4,13 @@ import Product from "../models/productmodel.js"
 const newOrder=async(req,res)=>{
 
     const {
-        shippingInfo,
-        
+        shippingInfo,    
         orderItems,
-        paymentInfo,
-        
+        paymentInfo,       
         itemPrice,
         taxPrice,
         shippingPrice,
-        totalPrice,
-        
+        totalPrice,        
     }=req.body;
 
     const order= await Order.create({
