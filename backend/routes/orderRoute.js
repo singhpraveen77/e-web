@@ -5,7 +5,7 @@ import { getSingleOrder, myOrders, newOrder } from "../controllers/orderControll
 const router =express.Router();
 
 router.route("/new").post(verifyJWT,newOrder);
-router.route("/myorder").get(verifyJWT,myOrders);
+router.route("/myorders").get(verifyJWT,myOrders);
 router.route("/:id").get(verifyJWT,getSingleOrder);
 
 export default router;
