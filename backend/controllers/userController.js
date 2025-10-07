@@ -191,7 +191,7 @@ const resetPassword = async (req, res) => {
 
 const getUserdetail = async (req,res) =>{
    
-    console.log("//me route hit !! ");
+    console.log("/me route hit !! ");
     const user = await User.findById(req.user?.id);
 
     if(!user){
