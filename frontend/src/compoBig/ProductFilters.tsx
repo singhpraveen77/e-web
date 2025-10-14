@@ -42,11 +42,11 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   ].filter(Boolean).length;
 
   return (
-    <div className="w-full md:w-80 space-y-6">
+    <div className="w-full  md:w-80 ">
       <Card variant="elevated">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 my-3">
               <Filter className="text-blue-600 dark:text-blue-400" size={20} />
               <CardTitle className="text-base">Filters</CardTitle>
             </div>
@@ -55,12 +55,23 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 {activeFiltersCount}
               </Badge>
             )}
+            {/* Reset Button */}
+          
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={resetFilters}
+              leftIcon={<RotateCcw size={14} />}
+              className=" hover:bg-orange-800"
+            >
+              Reset
+            </Button>
           </div>
         </CardHeader>
         
-        <CardContent className="space-y-6">
+        <CardContent className="w-full ">
           {/* Price Range Filter */}
-          <div className="space-y-3">
+          <div className="">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium text-[rgb(var(--fg))]">Price Range</h3>
               <span className="text-xs text-[rgb(var(--muted))]">₹{price?.toLocaleString()}</span>
@@ -133,18 +144,8 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             </div>
           </div>
 
-          {/* Reset Button */}
-          {activeFiltersCount > 0 && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={resetFilters}
-              leftIcon={<RotateCcw size={14} />}
-              className="w-full"
-            >
-              Reset Filters
-            </Button>
-          )}
+          
+         
         </CardContent>
       </Card>
 

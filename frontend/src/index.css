@@ -48,10 +48,20 @@
     @apply bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-xl shadow-[0_1px_2px_0_rgba(var(--shadow))];
   }
 
-  /* Layout container helper */
-  .app-container {
-    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
+/* Layout container helper */
+.app-container {
+  @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Sticky product filter container */
+.sticky-filter {
+  /* Max height to prevent overlapping footer - viewport minus navbar (64px) minus padding */
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--border)) transparent;
+}
 }
 
 /* Scrollbar hide utility remains */

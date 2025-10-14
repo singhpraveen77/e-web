@@ -38,7 +38,7 @@ const AllProducts = () => {
       try {
         setLoading(true);
         const res = await ViewProducts();
-        setProducts(res);
+        setProducts(Array.isArray(res) ? res : []);        
         const max = Math.max(...res.map((p: ProductType) => p.price || 0));
         setMaxPrice(max);
         setPrice(max);
@@ -87,18 +87,23 @@ const AllProducts = () => {
     <div className="app-container py-10">
       <h1 className="text-3xl font-bold text-center mb-8 text-[rgb(var(--fg))]">All Products</h1>
 
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8 relative">
         {/* Sidebar Filters */}
-        <ProductFilters
-          maxPrice={maxPrice}
-          price={price}
-          setPrice={setPrice}
-          category={category}
-          setCategory={setCategory}
-          rating={rating}
-          setRating={setRating}
-          resetFilters={resetFilters}
-        />
+        {/* <div className="md:sticky md:top-20 md:self-start sticky-filter"> */}
+        <div className="md:w-fit  md:sticky md:top-20 self-start">
+            <ProductFilters
+              maxPrice={maxPrice}
+              price={price}
+              setPrice={setPrice}
+              category={category}
+              setCategory={setCategory}
+              rating={rating}
+              setRating={setRating}
+              resetFilters={resetFilters}
+            />
+          </div>
+
+        {/* </div> */}
 
         {/* Product List */}
         <div className="flex-1">
