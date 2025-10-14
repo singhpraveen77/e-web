@@ -58,15 +58,17 @@ const ProductDetails = () => {
   const isInCart = cartItems.some((item) => item._id === product._id);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 mt-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white shadow-xl rounded-2xl p-6">
+    <div className="app-container py-6 mt-6 sm:mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 card p-6">
         {/* Product Image */}
         <div className="group relative">
-          <img
-            src={product.images?.[0]?.url || "https://via.placeholder.com/400"}
-            alt={product.name}
-            className="w-full h-[400px] object-cover rounded-2xl shadow-lg transform transition-transform duration-300 group-hover:scale-105"
-          />
+          <div className="relative aspect-square overflow-hidden rounded-2xl">
+            <img
+              src={product.images?.[0]?.url || "https://via.placeholder.com/400"}
+              alt={product.name}
+              className="h-full w-full object-cover transition-base group-hover:scale-[1.02]"
+            />
+          </div>
           {product.category && (
             <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
               {product.category}
@@ -77,46 +79,38 @@ const ProductDetails = () => {
         {/* Product Info */}
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-4xl font-extrabold mb-4">{product.name}</h1>
+            <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">{product.name}</h1>
 
             {/* Rating */}
             <div className="flex items-center gap-2 mb-3">
               {Array.from({ length: 5 }).map((_, idx) => (
                 <span
                   key={idx}
-                  className={`text-lg ${
-                    idx < (product.rating || 0)
-                      ? "text-yellow-400"
-                      : "text-gray-300"
-                  }`}
+                  className={`text-lg ${idx < (product.rating || 0) ? "text-yellow-400" : "text-[rgb(var(--border))]"}`}
                 >
                   ★
                 </span>
               ))}
-              <span className="text-gray-500 text-sm">
+              <span className="text-[rgb(var(--muted))] text-sm">
                 ({product.numOfReviews} reviews)
               </span>
             </div>
 
             {/* Price */}
-            <p className="text-3xl font-bold text-blue-600 mb-6">
+            <p className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4">
               ₹{product.price}
             </p>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-[rgb(var(--muted))] leading-relaxed mb-6">
               {product.description}
             </p>
 
             {/* Stock info */}
             <p
-              className={`mb-6 font-medium ${
-                product.stock > 0 ? "text-green-600" : "text-red-600"
-              }`}
+              className={`mb-6 font-medium ${product.stock > 0 ? "text-green-600" : "text-red-600"}`}
             >
-              {product.stock > 0
-                ? `In Stock (${product.stock})`
-                : "Out of Stock"}
+              {product.stock > 0 ? `In Stock (${product.stock})` : "Out of Stock"}
             </p>
           </div>
 
@@ -135,10 +129,10 @@ const ProductDetails = () => {
                 )
               }
               disabled={product.stock <= 0}
-              className={`w-full md:w-auto px-8 py-4 rounded-xl font-semibold shadow-lg transform transition duration-300 flex items-center justify-center gap-2 ${
+              className={`w-full md:w-auto px-6 py-3 rounded-xl font-semibold shadow-sm transition-base flex items-center justify-center gap-2 ${
                 product.stock > 0
-                  ? "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105"
-                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                  ? "bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+                  : "bg-[rgb(var(--border))] text-[rgb(var(--muted))] cursor-not-allowed"
               }`}
             >
               <ShoppingCart size={20} />
@@ -147,7 +141,7 @@ const ProductDetails = () => {
           ) : (
             <button
               disabled
-              className="w-full md:w-auto px-8 py-4 rounded-xl font-semibold shadow-lg bg-green-600 text-white flex items-center justify-center gap-2 cursor-default"
+              className="w-full md:w-auto px-6 py-3 rounded-xl font-semibold shadow-sm bg-green-600 text-white flex items-center justify-center gap-2 cursor-default"
             >
               <CheckCircle size={20} />
               Added

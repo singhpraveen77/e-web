@@ -6,7 +6,7 @@ import { ViewProducts } from "../api/products.api";
 import { addItem } from "../redux/slices/cartSlice";
 import { ShoppingCart, CheckCircle } from "lucide-react";
 import type { ProductType } from "../redux/slices/productSlice";
-import ProductFilters from "../component/ProductFilters";
+import ProductFilters from "../compoBig/ProductFilters";
 
 const AllProducts = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -84,8 +84,8 @@ const AllProducts = () => {
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold text-center mb-10">All Products</h1>
+    <div className="app-container py-10">
+      <h1 className="text-3xl font-bold text-center mb-8 text-[rgb(var(--fg))]">All Products</h1>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar Filters */}
@@ -103,28 +103,26 @@ const AllProducts = () => {
         {/* Product List */}
         <div className="flex-1">
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
               {filteredProducts.map((item) => {
                 const isInCart = cartItems.some((cart) => cart._id === item._id);
 
                 return (
                   <div
                     key={item._id}
-                    className="border rounded-xl p-4 shadow hover:shadow-lg transition bg-white flex flex-col cursor-pointer"
+                    className="card p-4 flex flex-col cursor-pointer hover:shadow-md transition-base"
                     onClick={() => navigate(`/product/${item._id}`)}
                   >
-                    <img
-                      src={item.images[0]?.url}
-                      alt={item.name}
-                      className="w-full h-48 object-cover rounded-lg mb-4"
-                    />
-                    <h2 className="font-semibold text-lg truncate">{item.name}</h2>
-                    <p className="text-indigo-600 text-xl font-bold mt-2">
-                      ₹{item.price}
-                    </p>
-                    <p className="text-gray-600 text-sm line-clamp-2 mt-1">
-                      {item.description}
-                    </p>
+                    <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-[rgb(var(--card))]">
+                      <img
+                        src={item.images[0]?.url}
+                        alt={item.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <h2 className="font-semibold text-lg line-clamp-1">{item.name}</h2>
+                    <p className="text-blue-600 dark:text-blue-400 text-xl font-bold mt-1">₹{item.price}</p>
+                    <p className="text-[rgb(var(--muted))] text-sm line-clamp-2 mt-1">{item.description}</p>
 
                     {!isInCart ? (
                       <button
@@ -140,7 +138,7 @@ const AllProducts = () => {
                             })
                           );
                         }}
-                        className="mt-auto flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition"
+                        className="mt-auto flex items-center justify-center gap-2 rounded-lg px-4 py-2 transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
                       >
                         <ShoppingCart size={18} />
                         Add to Cart
@@ -160,9 +158,7 @@ const AllProducts = () => {
               })}
             </div>
           ) : (
-            <p className="text-center text-gray-500 text-lg">
-              No products match your filters 🚫
-            </p>
+            <p className="text-center text-[rgb(var(--muted))] text-lg">No products match your filters 🚫</p>
           )}
         </div>
       </div>

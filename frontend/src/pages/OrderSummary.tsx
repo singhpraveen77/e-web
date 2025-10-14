@@ -46,30 +46,27 @@ const OrderSummary: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 flex justify-center">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-2xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">
-          Order Summary
-        </h2>
+    <div className="min-h-screen bg-[rgb(var(--bg))] py-10 px-4 sm:px-6 flex justify-center">
+      <div className="w-full max-w-4xl card p-8">
+        <h2 className="text-2xl font-bold mb-6 text-[rgb(var(--fg))]">Order Summary</h2>
 
         {/* Shipping Info */}
-        <div className="border-b pb-4 mb-6">
+        <div className="border-b border-[rgb(var(--border))] pb-4 mb-6">
           <h3 className="font-semibold text-lg mb-2">Shipping Information</h3>
           {address ? (
-            <div className="text-gray-700 space-y-1">
+            <div className="text-[rgb(var(--muted))] space-y-1">
               <p>
-                <span className="font-medium">Name:</span> {address.name}
+                <span className="font-medium text-[rgb(var(--fg))]">Name:</span> {address.name}
               </p>
               <p>
-                <span className="font-medium">Phone:</span> {address.phone}
+                <span className="font-medium text-[rgb(var(--fg))]">Phone:</span> {address.phone}
               </p>
               <p>
-                {address.address}, {address.city}, {address.state},{" "}
-                {address.pincode}, {address.country}
+                {address.address}, {address.city}, {address.state}, {address.pincode}, {address.country}
               </p>
             </div>
           ) : (
-            <p className="text-gray-500">No address found.</p>
+            <p className="text-[rgb(var(--muted))]">No address found.</p>
           )}
         </div>
 
@@ -79,21 +76,12 @@ const OrderSummary: React.FC = () => {
           {cart.length > 0 ? (
             <div className="space-y-3">
               {cart.map((item) => (
-                <div
-                  key={item._id}
-                  className="flex justify-between border p-3 rounded-lg"
-                >
+                <div key={item._id} className="flex justify-between border border-[rgb(var(--border))] p-3 rounded-lg">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded"
-                    />
+                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                     <div>
                       <p className="font-medium">{item.name}</p>
-                      <p className="text-sm text-gray-500">
-                        Qty: {item.quantity}
-                      </p>
+                      <p className="text-sm text-[rgb(var(--muted))]">Qty: {item.quantity}</p>
                     </div>
                   </div>
                   <p className="font-semibold">₹{item.price * item.quantity}</p>
@@ -101,14 +89,14 @@ const OrderSummary: React.FC = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">Your cart is empty.</p>
+            <p className="text-[rgb(var(--muted))]">Your cart is empty.</p>
           )}
         </div>
 
         {/* Price Summary */}
-        <div className="border-t pt-4">
+        <div className="border-t border-[rgb(var(--border))] pt-4">
           <h3 className="font-semibold text-lg mb-2">Price Details</h3>
-          <div className="space-y-2 text-gray-700">
+          <div className="space-y-2">
             <div className="flex justify-between">
               <span>Subtotal:</span>
               <span>₹{subtotal.toFixed(2)}</span>
@@ -121,7 +109,7 @@ const OrderSummary: React.FC = () => {
               <span>Shipping:</span>
               <span>{shipping === 0 ? "Free" : `₹${shipping}`}</span>
             </div>
-            <div className="flex justify-between font-bold text-indigo-600 text-lg">
+            <div className="flex justify-between font-bold text-blue-600 dark:text-blue-400 text-lg">
               <span>Total:</span>
               <span>₹{total.toFixed(2)}</span>
             </div>
@@ -129,16 +117,16 @@ const OrderSummary: React.FC = () => {
         </div>
 
         {/* Buttons */}
-        <div className="mt-8 flex justify-between">
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between">
           <button
             onClick={() => navigate("/checkout-address")}
-            className="px-6 py-2 border border-gray-400 rounded-lg hover:bg-gray-100 transition"
+            className="px-6 py-2 rounded-lg border border-[rgb(var(--border))] hover:bg-[rgb(var(--card))] transition-base"
           >
             Back to Address
           </button>
           <button
             onClick={handleProceed}
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+            className="px-6 py-2 rounded-lg transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
             Proceed to Payment
           </button>

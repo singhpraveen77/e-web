@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../axios/axiosInstance";
 import { AllProducts } from "../../api/products.api";
-import { pre } from "framer-motion/client";
+import { Package, Plus, Trash2, Undo, TrendingUp } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent, Button, Badge } from "../../components/ui";
 
 interface Product {
   _id: string;
@@ -94,98 +95,168 @@ const ProductsPage: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 mt-10">{error}</div>;
+  if (loading) return (
+    <div className="app-container py-8">
+      <div className="flex items-center justify-center min-h-64">
+        <div className="text-center">
+          <Package className="mx-auto mb-4 text-[rgb(var(--muted))]" size={48} />
+          <p className="text-lg text-[rgb(var(--muted))]">Loading products...</p>
+        </div>
+      </div>
+    </div>
+  );
+  
+  if (error) return (
+    <div className="app-container py-8">
+      <Card variant="outlined" className="max-w-md mx-auto">
+        <CardContent className="p-6 text-center">
+          <div className="text-red-600 dark:text-red-400 mb-2">
+            <Package size={32} className="mx-auto" />
+          </div>
+          <p className="text-red-600 dark:text-red-400">{error}</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
 
   return (
-    <div className="max-w-4xl mx-auto my-20">
-  <div className="flex justify-between items-center mb-6">
-    <h2 className="text-2xl font-bold">Products Management</h2>
-    <button
-      onClick={() => navigate("/admin/products/addProducts")}
-      className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-    >
-      + Add Product
-    </button>
-  </div>
+    <div className="app-container py-8">
+      <div className="max-w-6xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-green-600 dark:bg-green-500 rounded-lg">
+              <Package className="text-white" size={24} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-[rgb(var(--fg))]">Products Management</h1>
+              <p className="text-sm text-[rgb(var(--muted))]">Manage your product inventory and stock</p>
+            </div>
+          </div>
+          <Button
+            onClick={() => navigate("/admin/products/addProducts")}
+            variant="primary"
+            leftIcon={<Plus size={16} />}
+          >
+            Add Product
+          </Button>
+        </div>
 
-  <div className="border rounded">
-    {/* Table header */}
-    <table className="w-full table-fixed border-collapse">
-      <thead className="bg-gray-200 sticky top-0 z-10">
-        <tr>
-          <th className="p-2">Name</th>
-          <th className="p-2">Price</th>
-          <th className="p-2">Stock</th>
-          <th className="p-2">Category</th>
-          <th className="p-2">Actions</th>
-        </tr>
-      </thead>
-    </table>
+        {/* Products Table */}
+        <Card variant="elevated">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Product Inventory</CardTitle>
+              {Object.keys(changes).length > 0 && (
+                <Badge variant="secondary">
+                  {Object.keys(changes).length} pending changes
+                </Badge>
+              )}
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-[rgb(var(--border))]">
+                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Product Name</th>
+                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Price</th>
+                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Stock</th>
+                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Category</th>
+                    <th className="text-right p-3 text-sm font-medium text-[rgb(var(--muted))]">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => {
+                    const isDeleted = changes[product._id]?.deleted;
+                    const stockOverride = changes[product._id]?.newStock;
+                    const currentStock = stockOverride !== undefined ? stockOverride : product.stock;
 
-    {/* Scrollable table body */}
-    <div className="overflow-y-auto max-h-96">
-      <table className="w-full table-fixed border-collapse">
-        <tbody>
-          {products.map((product) => {
-            const isDeleted = changes[product._id]?.deleted;
-            const stockOverride = changes[product._id]?.newStock;
+                    return (
+                      <tr 
+                        key={product._id} 
+                        className={`border-b border-[rgb(var(--border))] hover:bg-[rgb(var(--card))] transition-colors ${
+                          isDeleted ? 'opacity-50 bg-red-50 dark:bg-red-900/20' : ''
+                        }`}
+                      >
+                        <td className="p-3">
+                          <div className="font-medium text-[rgb(var(--fg))]">{product.name}</div>
+                        </td>
+                        <td className="p-3">
+                          <span className="font-semibold text-green-600 dark:text-green-400">₹{product.price?.toLocaleString()}</span>
+                        </td>
+                        <td className="p-3">
+                          <div className="flex items-center gap-2">
+                            <span className={`font-medium ${
+                              currentStock < 10 ? 'text-red-600 dark:text-red-400' : 'text-[rgb(var(--fg))]'
+                            }`}>
+                              {currentStock}
+                            </span>
+                            {stockOverride !== undefined && (
+                              <Badge variant="primary" size="sm">Modified</Badge>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-3">
+                          <Badge variant="outline" size="sm">{product.category}</Badge>
+                        </td>
+                        <td className="p-3">
+                          <div className="flex justify-end gap-2">
+                            <Button
+                              onClick={() =>
+                                handleUpdateStock(
+                                  product._id,
+                                  stockOverride ?? product.stock
+                                )
+                              }
+                              variant="outline"
+                              size="sm"
+                              disabled={isDeleted}
+                              leftIcon={<TrendingUp size={14} />}
+                            >
+                              +1 Stock
+                            </Button>
+                            <Button
+                              onClick={() => handleDelete(product._id)}
+                              variant={isDeleted ? "success" : "danger"}
+                              size="sm"
+                              leftIcon={isDeleted ? <Undo size={14} /> : <Trash2 size={14} />}
+                            >
+                              {isDeleted ? "Undo" : "Delete"}
+                            </Button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              
+              {products.length === 0 && (
+                <div className="text-center py-12">
+                  <Package className="mx-auto mb-4 text-[rgb(var(--muted))]" size={48} />
+                  <p className="text-lg text-[rgb(var(--muted))]">No products available</p>
+                  <p className="text-sm text-[rgb(var(--muted))] mt-1">Add your first product to get started</p>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
 
-            return (
-              <tr key={product._id} className="border-t">
-                <td className="p-2">{product.name}</td>
-                <td className="p-2">${product.price}</td>
-                <td className="p-2">
-                  {stockOverride !== undefined ? stockOverride : product.stock}
-                </td>
-                <td className="p-2">{product.category}</td>
-                <td className="p-2 space-x-2">
-                  <button
-                    onClick={() =>
-                      handleUpdateStock(
-                        product._id,
-                        stockOverride ?? product.stock
-                      )
-                    }
-                    className="bg-blue-500 text-white px-3 py-1 rounded"
-                    disabled={isDeleted}
-                  >
-                    + Stock
-                  </button>
-                  <button
-                    onClick={() => handleDelete(product._id)}
-                    className={`px-3 py-1 rounded ${
-                      isDeleted ? "bg-green-500" : "bg-red-500"
-                    } text-white`}
-                  >
-                    {isDeleted ? "Undo Delete" : "Delete"}
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-          {products.length === 0 && (
-            <tr>
-              <td colSpan={5} className="p-4 text-center text-gray-500">
-                No products available
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+        {/* Action Buttons */}
+        {Object.keys(changes).length > 0 && (
+          <div className="flex justify-end">
+            <Button
+              onClick={handleSubmitChanges}
+              variant="primary"
+              disabled={saving}
+            >
+              {saving ? "Saving Changes..." : "Save All Changes"}
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-
-  <div className="mt-6 flex justify-end">
-    <button
-      onClick={handleSubmitChanges}
-      className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
-      disabled={Object.keys(changes).length === 0 || saving}
-    >
-      {saving ? "Saving..." : "Make Changes"}
-    </button>
-  </div>
-</div>
 
   );
 };

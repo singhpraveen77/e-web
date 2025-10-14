@@ -1,5 +1,60 @@
 @import "tailwindcss";
 
+/*
+  Design tokens using CSS variables. We apply them to :root and override in .dark.
+  Utilities can reference these via arbitrary values, e.g. bg-[var(--bg)] text-[var(--fg)].
+*/
+@layer base {
+  :root {
+    --bg: 255 255 255;           /* white */
+    --fg: 17 24 39;              /* gray-900 */
+    --muted: 107 114 128;        /* gray-500 */
+    --card: 249 250 251;         /* gray-50 */
+    --border: 229 231 235;       /* gray-200 */
+    --ring: 37 99 235;           /* blue-600 */
+    --shadow: 15 23 42 / 0.06;   /* slate-900 w/ alpha */
+  }
+
+  .dark {
+    --bg: 17 24 39;              /* gray-900 */
+    --fg: 243 244 246;           /* gray-100 */
+    --muted: 156 163 175;        /* gray-400 */
+    --card: 30 41 59;            /* slate-800 */
+    --border: 51 65 85;          /* slate-700 */
+    --ring: 96 165 250;          /* blue-400 */
+    --shadow: 0 0 0 / 0;         /* reduce shadow in dark */
+  }
+
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-[rgb(var(--bg))] text-[rgb(var(--fg))] antialiased;
+  }
+
+  /* Accessible focus outlines */
+  :is(a, button, input, select, textarea, [role="button"]) {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg))];
+  }
+
+  /* Smooth, subtle transitions */
+  .transition-base {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  /* Card helper class for consistent surfaces */
+  .card {
+    @apply bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-xl shadow-[0_1px_2px_0_rgba(var(--shadow))];
+  }
+
+  /* Layout container helper */
+  .app-container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Scrollbar hide utility remains */
 .scroller-hidden::-webkit-scrollbar {
   display: none;
 }
@@ -8,4 +63,9 @@
 .scroller-hidden {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* Images: prevent overflow and distortion */
+img {
+  @apply block max-w-full h-auto object-contain;
 }

@@ -43,14 +43,14 @@ export default function ProductsSection() {
   if (error) return <p>Error...</p>;
 
   return (
-    <section className="py-12 px-6 bg-white relative">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[rgb(var(--bg))] relative">
+      <div className="app-container">
         {/* Header + View More */}
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-bold">Products</h2>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[rgb(var(--fg))]">Products</h2>
           <button
             onClick={() => navigate("/products")}
-            className="text-indigo-600 hover:underline font-medium"
+            className="transition-base text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
           >
             View More →
           </button>
@@ -59,44 +59,47 @@ export default function ProductsSection() {
         {/* Scroll Buttons */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-full p-2 hover:shadow-sm"
+          aria-label="Scroll left"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-full p-2 hover:shadow-sm"
+          aria-label="Scroll right"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
 
         {/* Horizontal Scroll Section */}
         <div
           ref={scrollRef}
-          className="flex overflow-x-scroll space-x-6 scroller-hidden scroll-smooth"        >
+          className="flex overflow-x-auto space-x-4 sm:space-x-6 scroller-hidden scroll-smooth pb-1"
+        >
           {products && products.length !== 0 ? (
             products.map((product: any) => {
-              const isInCart = cartItems.some(
-                (item) => item._id === product._id
-              );
+              const isInCart = cartItems.some((item) => item._id === product._id);
 
               return (
                 <div
                   key={product._id}
-                  className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] bg-gray-50 shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition cursor-pointer"
+                  className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] card overflow-hidden hover:shadow-md transition-base cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
-                  <img
-                    src={product.images[0]?.url}
-                    alt={product.name}
-                    className="w-full h-56 object-cover"
-                  />
+                  <div className="relative aspect-[4/5] bg-[rgb(var(--card))]">
+                    <img
+                      src={product.images[0]?.url}
+                      alt={product.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <div
-                    className="p-4 flex flex-col items-center"
+                    className="p-4 flex flex-col items-center text-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <h3 className="text-lg font-semibold">{product.name}</h3>
-                    <p className="text-indigo-600 text-xl font-bold mt-2">
+                    <h3 className="text-base sm:text-lg font-semibold line-clamp-2">{product.name}</h3>
+                    <p className="text-blue-600 dark:text-blue-400 text-lg font-bold mt-1">
                       ₹{product.price}
                     </p>
 
@@ -113,7 +116,7 @@ export default function ProductsSection() {
                             })
                           )
                         }
-                        className="mt-4 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+                        className="mt-4 flex items-center gap-2 rounded-lg px-4 py-2 transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
                       >
                         <ShoppingCart size={18} />
                         Add to Cart
@@ -132,7 +135,7 @@ export default function ProductsSection() {
               );
             })
           ) : (
-            <div>No products found !!</div>
+            <div className="text-[rgb(var(--muted))]">No products found !!</div>
           )}
         </div>
       </div>

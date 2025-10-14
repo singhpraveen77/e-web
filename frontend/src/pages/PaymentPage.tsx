@@ -70,22 +70,22 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-center mb-8">Confirm Your Order</h2>
+    <div className="app-container p-8">
+      <h2 className="text-3xl font-bold text-center mb-8 text-[rgb(var(--fg))]">Confirm Your Order</h2>
 
       {/* Address Summary */}
-      <div className="bg-white shadow rounded-xl p-6 mb-6">
+      <div className="card p-6 mb-6">
         <h3 className="text-lg font-semibold mb-2">Shipping Address</h3>
-        <p>{address.name}</p>
-        <p>{address.address}</p>
-        <p>
+        <p className="text-[rgb(var(--fg))]">{address.name}</p>
+        <p className="text-[rgb(var(--fg))]">{address.address}</p>
+        <p className="text-[rgb(var(--fg))]">
           {address.city}, {address.state}, {address.pinCode}
         </p>
-        <p>Phone: {address.phone}</p>
+        <p className="text-[rgb(var(--fg))]">Phone: {address.phone}</p>
       </div>
 
       {/* Order Summary */}
-      <div className="bg-white shadow rounded-xl p-6 mb-6">
+      <div className="card p-6 mb-6">
         <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
         <div className="flex justify-between mb-2">
           <span>Subtotal</span>
@@ -99,8 +99,8 @@ const PaymentPage = () => {
           <span>Shipping</span>
           <span>₹{shipping}</span>
         </div>
-        <hr className="my-3" />
-        <div className="flex justify-between font-bold text-lg">
+        <hr className="my-3 border-[rgb(var(--border))]" />
+        <div className="flex justify-between font-bold text-lg text-blue-600 dark:text-blue-400">
           <span>Total</span>
           <span>₹{total}</span>
         </div>
@@ -110,12 +110,12 @@ const PaymentPage = () => {
       <button
         onClick={handleCOD}
         disabled={loading}
-        className="w-full bg-indigo-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition"
+        className="w-full rounded-lg text-lg font-medium py-3 transition-base bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-70 disabled:cursor-not-allowed dark:bg-blue-500 dark:hover:bg-blue-400"
       >
         {loading ? "Placing Order..." : "Place Order (Cash on Delivery)"}
       </button>
 
-      {message && <p className="text-center text-red-500 mt-4">{message}</p>}
+      {message && <p className="text-center text-red-600 mt-4">{message}</p>}
     </div>
   );
 };

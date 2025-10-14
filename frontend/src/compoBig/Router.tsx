@@ -9,7 +9,7 @@ import HomePage from "../pages/HomePage";
 import Login from "../pages/LoginPage";
 import Signup from "../pages/SignupPage";
 import Profile from "../pages/ProfilePage";
-import AddProduct from "../component/AddProducts";
+import AddProduct from "./AddProducts";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import UsersPage from "../pages/admin/UserPageAdmin";
 import ProductsPage from "../pages/admin/ProductsPageAdmin";
@@ -22,7 +22,7 @@ import PaymentPage from "../pages/PaymentPage";
 import OrderSuccess from "../pages/OrderSuccess";
 import MyOrders from "../pages/MyOrders";
 
-import ProtectedRoute from "../component/ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {

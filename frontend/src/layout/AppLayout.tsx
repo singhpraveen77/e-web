@@ -1,19 +1,17 @@
-
-import {Outlet} from "react-router-dom"
-import Navbar from "../component/Navbar"
-import Footer from "../component/Footer"
+import { Outlet } from "react-router-dom";
+import Navbar from "../compoBig/Navbar";
+import Footer from "../compoBig/Footer";
 
 const AppLayout = () => {
   return (
-    <div>
-    <Navbar/>
-    <main className="pt-16">   {/* push content below navbar */}
+    <div className="min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--fg))] flex flex-col">
+      <Navbar />
+      <main className="pt-16 flex-1">
         <Outlet />
-      </main>    
-      <Footer/>
+      </main>
+      <Footer />
     </div>
-    
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;

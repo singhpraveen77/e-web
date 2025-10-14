@@ -1,9 +1,9 @@
 
-import HeroCarousel from '../component/Carousel'
-import BestSellerFlex from '../component/BestSeller'
-import ShopByCategory from '../component/ShopbyCategory'
+import HeroCarousel from '../compoBig/Carousel'
+import BestSellerFlex from '../compoBig/BestSeller'
+import ShopByCategory from '../compoBig/ShopbyCategory'
 // import OnSale from '../component/Onsale'
-import ProductsSection from '../component/ProductsSection'
+import ProductsSection from '../compoBig/ProductsSection'
 
 const HomePage = () => {
   return (
