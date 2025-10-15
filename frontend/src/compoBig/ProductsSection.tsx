@@ -87,7 +87,7 @@ export default function ProductsSection() {
                   className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] card overflow-hidden hover:shadow-md transition-base cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
-                  <div className="relative aspect-[4/5] bg-[rgb(var(--card))]">
+                  <div className="relative  bg-[rgb(var(--card))]">
                     <img
                       src={product.images[0]?.url}
                       alt={product.name}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { myOrders } from "../api/orders.api";
+import { useTheme } from "../context/ThemeContext"; // ✅ import theme context
 
-// 🧩 1. Define types that match your backend Mongoose schema
+// 🧩 Types
 interface OrderItem {
   name: string;
   price: number;
@@ -48,32 +49,30 @@ export interface Order {
   shippingInfo: ShippingInfo;
 }
 
-// 🧠 2. Component definition
+// 🌙 Component
 const MyOrders: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const { resolvedTheme } = useTheme(); // ✅ get current theme
 
   useEffect(() => {
     const fetchOrders = async () => {
       const res = await myOrders();
-
       if (res.success && res.data) {
         setOrders(res.data);
       } else {
         setError(res.message || "Failed to fetch orders");
       }
-
       setLoading(false);
     };
-
     fetchOrders();
   }, []);
 
-  // 🌀 3. Loading and error states
+  // 🌀 Loading / Error States
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-[80vh] text-lg font-medium text-gray-600">
+      <div className="flex justify-center items-center h-[80vh] text-lg font-medium text-gray-600 dark:text-gray-300 transition-colors duration-300">
         Loading your orders...
       </div>
     );
@@ -81,7 +80,7 @@ const MyOrders: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-[80vh] text-red-600 text-lg font-semibold">
+      <div className="flex justify-center items-center h-[80vh] text-red-600 dark:text-red-400 text-lg font-semibold transition-colors duration-300">
         {error}
       </div>
     );
@@ -89,71 +88,89 @@ const MyOrders: React.FC = () => {
 
   if (orders.length === 0) {
     return (
-      <div className="flex justify-center items-center h-[80vh] text-gray-600 text-lg">
+      <div className="flex justify-center items-center h-[80vh] text-gray-600 dark:text-gray-400 text-lg transition-colors duration-300">
         You haven’t placed any orders yet.
       </div>
     );
   }
 
-  // 📦 4. Render order list
+  // 🧾 Orders list
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">My Orders</h1>
+    <div className="max-w-5xl mx-auto px-4 py-10 transition-colors duration-300">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">
+        My Orders
+      </h1>
 
       <div className="space-y-6">
         {orders.map((order) => (
           <div
             key={order._id}
-            className="border rounded-2xl p-5 shadow-sm hover:shadow-md transition bg-white"
+            className="
+              border border-gray-200 dark:border-gray-700
+              rounded-2xl p-5 
+              shadow-sm hover:shadow-lg
+              transition-all duration-300
+              bg-white dark:bg-gray-900/80
+              backdrop-blur-sm
+            "
           >
+            {/* Header */}
             <div className="flex justify-between items-center mb-3">
-              <h2 className="font-semibold text-gray-700">
-                Order ID: <span className="text-indigo-600">{order._id}</span>
+              <h2 className="font-semibold text-gray-700 dark:text-gray-200">
+                Order ID:{" "}
+                <span className="text-indigo-600 dark:text-indigo-400">
+                  {order._id}
+                </span>
               </h2>
+
               <span
                 className={`px-3 py-1 rounded-full text-sm font-medium ${
                   order.orderStatus === "DELIVERED"
-                    ? "bg-green-100 text-green-600"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                     : order.orderStatus === "CANCELLED"
-                    ? "bg-red-100 text-red-600"
-                    : "bg-yellow-100 text-yellow-600"
+                    ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                    : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
                 }`}
               >
                 {order.orderStatus}
               </span>
             </div>
 
-            <p className="text-sm text-gray-500 mb-2">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
               Placed on: {new Date(order.createdAt).toLocaleDateString()}
             </p>
 
-            <div className="border-t pt-3">
+            {/* Order Items */}
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
               {order.orderItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between py-2 border-b last:border-none"
+                  className="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-800 last:border-none"
                 >
                   <div className="flex items-center space-x-4">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-16 h-16 object-cover rounded-lg"
+                      className="w-16 h-16 object-cover rounded-xl border border-gray-100 dark:border-gray-700"
                     />
                     <div>
-                      <p className="font-medium text-gray-800">{item.name}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-medium text-gray-800 dark:text-gray-100">
+                        {item.name}
+                      </p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         ₹{item.price} × {item.quantity}
                       </p>
                     </div>
                   </div>
-                  <p className="font-semibold text-gray-800">
+                  <p className="font-semibold text-gray-800 dark:text-gray-100">
                     ₹{item.price * item.quantity}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="flex justify-between mt-4 text-sm text-gray-700">
+            {/* Summary */}
+            <div className="flex justify-between mt-4 text-sm text-gray-700 dark:text-gray-300">
               <p>
                 <strong>Total Price:</strong> ₹{order.totalPrice}
               </p>
@@ -162,7 +179,8 @@ const MyOrders: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-3 text-sm text-gray-500">
+            {/* Shipping Info */}
+            <div className="mt-3 text-sm text-gray-600 dark:text-gray-400">
               <p>
                 <strong>Address:</strong>{" "}
                 {`${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.country} - ${order.shippingInfo.pinCode}`}
@@ -179,5 +197,3 @@ const MyOrders: React.FC = () => {
 };
 
 export default MyOrders;
-
-

@@ -1,4 +1,11 @@
-import { ShoppingCart, CheckCircle, ChevronLeft, ChevronRight, Star, TrendingUp } from "lucide-react";
+import {
+  ShoppingCart,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  TrendingUp,
+} from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { RootState, AppDispatch } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,18 +21,14 @@ export default function BestSeller() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const getAllProducts = async () => {
-      try {
-        await dispatch(AllProducts());
-      } catch (error) {
-        console.log("Error fetching products:", error);
-      }
-    };
-    if (!products || products.length === 0) getAllProducts();
+    if (!products || products.length === 0) {
+      dispatch(AllProducts()).catch((err) =>
+        console.log("Error fetching products:", err)
+      );
+    }
   }, []);
 
   const scroll = (direction: "left" | "right") => {
@@ -39,81 +42,78 @@ export default function BestSeller() {
     }
   };
 
-  if (loading) {
+  if (loading)
     return (
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="app-container">
-          <div className="animate-pulse">
-            <div className="h-8 bg-[rgb(var(--border))] rounded w-48 mb-8"></div>
-            <div className="flex space-x-4">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="card p-4 min-w-[280px]">
-                  <div className="aspect-[4/5] bg-[rgb(var(--border))] rounded mb-4"></div>
-                  <div className="h-4 bg-[rgb(var(--border))] rounded mb-2"></div>
-                  <div className="h-6 bg-[rgb(var(--border))] rounded mb-4 w-24"></div>
-                  <div className="h-10 bg-[rgb(var(--border))] rounded"></div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="py-16 px-6 lg:px-10">
+        <div className="animate-pulse flex gap-6 overflow-hidden">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="min-w-[280px] h-[380px] bg-[rgb(var(--card))] rounded-2xl border border-[rgb(var(--border))]"
+            ></div>
+          ))}
         </div>
       </section>
     );
-  }
 
-  if (error) {
+  if (error)
     return (
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="app-container text-center">
-          <p className="text-red-600 dark:text-red-400">Failed to load bestsellers</p>
-        </div>
+      <section className="py-16 text-center text-red-500">
+        Failed to load best sellers.
       </section>
     );
-  }
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[rgb(var(--bg))] relative">
-      <div className="app-container">
+    <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-10 bg-gradient-to-b from-[rgb(var(--bg))] to-[rgb(var(--card))] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 sm:mb-12">
-          <div className="mb-4 sm:mb-0">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-12">
+          <div>
             <div className="flex items-center gap-3 mb-2">
-              <TrendingUp className="text-orange-500" size={28} />
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[rgb(var(--fg))]">Best Sellers</h2>
+              <div className="p-2 rounded-full bg-orange-500/10 border border-orange-500/20">
+                <TrendingUp className="text-orange-500" size={24} />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[rgb(var(--fg))]">
+                Best Sellers
+              </h2>
             </div>
-            <p className="text-[rgb(var(--muted))] text-sm sm:text-base">Most popular products loved by our customers</p>
+            <p className="text-[rgb(var(--muted))] text-sm sm:text-base">
+              Our most-loved picks from the community
+            </p>
           </div>
           <button
             onClick={() => navigate("/products")}
-            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 font-medium transition-base group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgb(var(--border))] text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300 group"
           >
             View All Products
-            <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+            <ChevronRight
+              size={16}
+              className="transition-transform group-hover:translate-x-1"
+            />
           </button>
         </div>
 
         {/* Scroll Controls */}
         <button
           onClick={() => scroll("left")}
-          className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[rgb(var(--card))] border border-[rgb(var(--border))] hover:shadow-md transition-base text-[rgb(var(--fg))]"
-          aria-label="Scroll left"
+          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[rgb(var(--card))]/80 backdrop-blur-md border border-[rgb(var(--border))] hover:scale-110 hover:shadow-lg transition-all duration-300 text-[rgb(var(--fg))]"
         >
-          <ChevronLeft size={20} />
-        </button>
-        <button
-          onClick={() => scroll("right")}
-          className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[rgb(var(--card))] border border-[rgb(var(--border))] hover:shadow-md transition-base text-[rgb(var(--fg))]"
-          aria-label="Scroll right"
-        >
-          <ChevronRight size={20} />
+          <ChevronLeft size={22} />
         </button>
 
-        {/* Product Grid */}
+        <button
+          onClick={() => scroll("right")}
+          className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[rgb(var(--card))]/80 backdrop-blur-md border border-[rgb(var(--border))] hover:scale-110 hover:shadow-lg transition-all duration-300 text-[rgb(var(--fg))]"
+        >
+          <ChevronRight size={22} />
+        </button>
+
+        {/* Product Slider */}
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto space-x-4 sm:space-x-6 scroller-hidden scroll-smooth pb-2"
+          className="flex  overflow-x-auto gap-6 pb-2 scroll-smooth scroller-hidden"
         >
-          {products && products.length !== 0 ? (
+          {products && products.length ? (
             products.slice(0, 8).map((product: any) => {
               const isInCart = cartItems.some(
                 (item) => item._id === product._id
@@ -122,47 +122,49 @@ export default function BestSeller() {
               return (
                 <div
                   key={product._id}
-                  className="group min-w-[280px] sm:min-w-[320px] card overflow-hidden hover:shadow-lg transition-base cursor-pointer"
+                  className="group relative min-w-[280px] sm:min-w-[320px] bg-[rgb(var(--card))] border-[rgb(var(--border))] rounded-2xl overflow-hidden shadow-[0_4px_16px_-4px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] transition-all duration-300 cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
-                  {/* Product Image */}
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[rgb(var(--card))]">
+                  {/* Image */}
+                  <div className="relative  h-fit overflow-hidden">
                     <img
-                      src={product.images[0]?.url || 'https://via.placeholder.com/320x400'}
+                      src={
+                        product.images[0]?.url ||
+                        "https://via.placeholder.com/320x400"
+                      }
                       alt={product.name}
-                      className="h-full w-full object-cover transition-base group-hover:scale-105"
+                      className=" w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    {/* Bestseller Badge */}
+                    {/* Badge */}
                     <div className="absolute top-3 left-3">
-                      <div className="flex items-center gap-1 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                      <div className="flex items-center gap-1 bg-orange-500 text-white text-xs px-2.5 py-1 rounded-full font-medium shadow-md">
                         <Star size={12} className="fill-current" />
                         Bestseller
                       </div>
                     </div>
-                    {/* Quick Add Overlay */}
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-base flex items-center justify-center">
-                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
-                        <ShoppingCart size={20} className="text-gray-900" />
-                      </div>
-                    </div>
                   </div>
 
-                  {/* Product Info */}
+                  {/* Content */}
                   <div
-                    className="p-5 flex flex-col h-32"
+                    className="p-5 flex flex-col h-fit gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <h3 className="text-base font-semibold line-clamp-2 text-[rgb(var(--fg))] mb-2 flex-1">
                       {product.name}
                     </h3>
-                    
+
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
                         ₹{product.price?.toLocaleString()}
                       </p>
                       <div className="flex items-center gap-1">
-                        <Star size={14} className="fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm text-[rgb(var(--muted))]">4.8</span>
+                        <Star
+                          size={14}
+                          className="fill-yellow-400 text-yellow-400"
+                        />
+                        <span className="text-sm text-[rgb(var(--muted))]">
+                          4.8
+                        </span>
                       </div>
                     </div>
 
@@ -179,7 +181,7 @@ export default function BestSeller() {
                             })
                           )
                         }
-                        className="w-full flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+                        className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <ShoppingCart size={16} />
                         Add to Cart
@@ -187,7 +189,7 @@ export default function BestSeller() {
                     ) : (
                       <button
                         disabled
-                        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2.5 text-sm font-medium rounded-lg cursor-default"
+                        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2.5 text-sm font-medium rounded-xl shadow-inner cursor-default"
                       >
                         <CheckCircle size={16} />
                         In Cart
@@ -198,7 +200,9 @@ export default function BestSeller() {
               );
             })
           ) : (
-            <div className="w-full text-center py-12 text-[rgb(var(--muted))]">No bestsellers found</div>
+            <div className="w-full text-center py-12 text-[rgb(var(--muted))]">
+              No bestsellers found
+            </div>
           )}
         </div>
       </div>

@@ -63,7 +63,7 @@ const AdminDashboard: React.FC = () => {
       title: "Analytics",
       description: "View sales reports and business insights",
       icon: <BarChart3 size={32} />,
-      onClick: () => navigate("/admin/analytics"),
+      // onClick: () => navigate("/admin/analytics"),
       color: "bg-purple-600 dark:bg-purple-500 hover:bg-purple-500 dark:hover:bg-purple-400",
       stats: "View reports"
     },
@@ -71,7 +71,7 @@ const AdminDashboard: React.FC = () => {
       title: "Settings",
       description: "Configure system settings and preferences",
       icon: <Settings size={32} />,
-      onClick: () => navigate("/admin/settings"),
+      // onClick: () => navigate("/admin/settings"),
       color: "bg-gray-600 dark:bg-gray-500 hover:bg-gray-500 dark:hover:bg-gray-400",
       stats: "System config"
     }

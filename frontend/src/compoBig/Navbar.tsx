@@ -68,7 +68,7 @@ export default function Navbar() {
     <>
       {/* ✅ Navbar with scroll effect */}
       <nav
-          className={`fixed top-2 left-1/2 -translate-x-1/2 z-50 w-fit 
+          className={`fixed top-1 left-1/2 -translate-x-1/2 z-50 w-fit 
           rounded-3xl border border-[rgb(var(--border))] 
           bg-gray-800/70 backdrop-blur-3xl shadow-lg
           transition-transform duration-500 ease-in-out

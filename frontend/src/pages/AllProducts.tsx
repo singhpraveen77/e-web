@@ -84,13 +84,12 @@ const AllProducts = () => {
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (
-    <div className="app-container py-10">
-      <h1 className="text-3xl font-bold text-center mb-8 text-[rgb(var(--fg))]">All Products</h1>
+    <div className="app-container w-full relative py-10">
+      <h1 className="text-3xl  font-bold text-center mb-8 text-[rgb(var(--fg))]">All Products</h1>
 
-      <div className="flex flex-col md:flex-row gap-8 relative">
+      <div className="flex flex-col w-full  md:flex-row gap-8 ">
         {/* Sidebar Filters */}
-        {/* <div className="md:sticky md:top-20 md:self-start sticky-filter"> */}
-        <div className="md:w-fit  md:sticky md:top-20 self-start">
+        <div className=" relative md:w-fit  md:sticky md:top-10 left-8 self-start">
             <ProductFilters
               maxPrice={maxPrice}
               price={price}
@@ -103,10 +102,8 @@ const AllProducts = () => {
             />
           </div>
 
-        {/* </div> */}
-
         {/* Product List */}
-        <div className="flex-1">
+        <div className="flex-1 w-full ">
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
               {filteredProducts.map((item) => {
@@ -162,8 +159,9 @@ const AllProducts = () => {
                 );
               })}
             </div>
-          ) : (
-            <p className="text-center text-[rgb(var(--muted))] text-lg">No products match your filters 🚫</p>
+          ) : (<div className="w-full">
+              <p className="text-center text-[rgb(var(--muted))] text-lg">No products match your filters 🚫</p>
+            </div>
           )}
         </div>
       </div>

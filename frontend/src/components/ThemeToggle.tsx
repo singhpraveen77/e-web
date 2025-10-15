@@ -22,10 +22,10 @@ export default function ThemeToggle() {
       </button>
 
       {/* Optional: system selector (small discrete control) */}
-      <div className="relative">
+      <div className="relative flex  w-full">
         <select
           aria-label="Theme preference"
-          className="transition-base bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-md py-1 pl-2 pr-6 text-sm text-[rgb(var(--fg))] hover:bg-[rgb(var(--bg))]"
+          className="transition-base bg-[rgb(var(--card))]  border-[rgb(var(--border))] rounded-md py-1 pl-2 pr-6 text-sm text-[rgb(var(--fg))] hover:bg-[rgb(var(--bg))]"
           value={theme}
           onChange={(e) => setTheme(e.target.value as any)}
         >
@@ -33,7 +33,7 @@ export default function ThemeToggle() {
           <option value="light">Light</option>
           <option value="dark">Dark</option>
         </select>
-        <Laptop className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 opacity-60" />
+        <Laptop className=" absolute pointer-events-none right-5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 opacity-60" />
       </div>
     </div>
   );
