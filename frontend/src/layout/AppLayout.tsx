@@ -6,7 +6,7 @@ const AppLayout = () => {
   return (
     <div className="min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--fg))] flex flex-col items-center">
       <Navbar />
-      <main className="pt-16 w-full border flex justify-center items-center">
+      <main className="pt-16 w-full flex justify-center items-center">
         <Outlet />
       </main>
       <Footer />
