@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import { Button, Input } from "../components/ui";
 import { useNavigate } from "react-router-dom";
@@ -108,7 +108,7 @@ export default function Footer() {
                 type="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 disabled={subscribing}
                 className="w-full"
               />
