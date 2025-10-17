@@ -4,7 +4,7 @@ import { getNextProduct } from "../dataSet/RandomData";
 import { AllProducts } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../redux/store";
-import { useTheme } from "../context/ThemeContext";
+// import { useTheme } from "../context/ThemeContext";
 import { AddProductapi } from "../api/products.api";
 
 interface ProductForm {

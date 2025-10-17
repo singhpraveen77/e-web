@@ -54,7 +54,7 @@ const MyOrders: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { resolvedTheme } = useTheme(); // ✅ get current theme
+  // const { resolvedTheme } = useTheme(); // ✅ get current theme
 
   useEffect(() => {
     const fetchOrders = async () => {
