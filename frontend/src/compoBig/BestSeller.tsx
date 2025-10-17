@@ -64,7 +64,7 @@ export default function BestSeller() {
     );
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-10 bg-gradient-to-b from-[rgb(var(--bg))] to-[rgb(var(--card))] relative overflow-hidden">
+    <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-10 bg-transparent relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-12">

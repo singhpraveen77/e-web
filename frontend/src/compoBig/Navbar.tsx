@@ -18,7 +18,7 @@ export default function Navbar() {
 
   // 👇 state for scroll direction
   const [showNav, setShowNav] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // const [lastScrollY, setLastScrollY] = useState(0);
 
   // 👇 improved scroll listener with threshold & performance tweaks
   useEffect(() => {

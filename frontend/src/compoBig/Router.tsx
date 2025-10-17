@@ -23,6 +23,7 @@ import OrderSuccess from "../pages/OrderSuccess";
 import MyOrders from "../pages/MyOrders";
 
 import ProtectedRoute from "./ProtectedRoute";
+import ContactPage from "../pages/ContactPage";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetails /> },
 
       // Protected routes (must be logged in)
+      { path: "/contact", element: <ContactPage /> },
       {
         element: <ProtectedRoute />, // ⬅️ protect everything below
         children: [

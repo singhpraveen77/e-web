@@ -15,6 +15,9 @@ import {
   Camera,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, Input, Button, Badge } from "../components/ui";
+import { useDispatch } from "react-redux";
+import { Logout } from "../redux/slices/authSlice";
+import type { AppDispatch } from "../redux/store";
 
 interface UserType {
   name: string;
@@ -29,6 +32,7 @@ const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
 
   // Example user data - replace with actual data from Redux/API
   const [user, setUser] = useState<UserType>({
@@ -57,10 +61,7 @@ const ProfilePage: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+  
 
   const accountOptions = [
     {
@@ -75,35 +76,35 @@ const ProfilePage: React.FC = () => {
       icon: <MapPin size={20} />,
       title: "Addresses",
       description: "Manage shipping addresses",
-      onClick: () => navigate("/my-addresses"),
+      // onClick: () => navigate("/my-addresses"),
       color: "text-green-600 dark:text-green-400"
     },
     {
       icon: <Heart size={20} />,
       title: "Wishlist",
       description: "Your saved items",
-      onClick: () => navigate("/wishlist"),
+      // onClick: () => navigate("/wishlist"),
       color: "text-red-600 dark:text-red-400"
     },
     {
       icon: <CreditCard size={20} />,
       title: "Payment Methods",
       description: "Manage payment options",
-      onClick: () => navigate("/payment-methods"),
+      // onClick: () => navigate("/payment-methods"),
       color: "text-purple-600 dark:text-purple-400"
     },
     {
       icon: <Settings size={20} />,
       title: "Account Settings",
       description: "Privacy and preferences",
-      onClick: () => navigate("/account-settings"),
+      // onClick: () => navigate("/account-settings"),
       color: "text-gray-600 dark:text-gray-400"
     },
     {
       icon: <LogOut size={20} />,
       title: "Sign Out",
       description: "Logout from your account",
-      onClick: handleLogout,
+       onClick: () => dispatch(Logout()),
       color: "text-red-600 dark:text-red-400"
     }
   ];

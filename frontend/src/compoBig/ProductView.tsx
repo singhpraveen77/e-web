@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AllProducts} from "../api/products.api";
+// import { AllProducts} from "../api/products.api";
 
 // Define product type
 interface Product {

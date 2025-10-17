@@ -32,3 +32,20 @@ export const ViewProducts= async ()=>{
     }
 
 }
+
+interface ProductResponse {
+  success: boolean;
+  message: string;
+  data: any; // Replace with your product type
+}
+
+export const AddProductapi = async (data: FormData): Promise<ProductResponse> => {
+  try {
+    const res = await axiosInstance.post("/admin/product/new", data, {
+    });
+    return res.data;
+  } catch (error: any) {
+    console.error("Error in add product API frontend:", error);
+    throw error; // Re-throw to handle in component
+  }
+};

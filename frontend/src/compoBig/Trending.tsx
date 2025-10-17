@@ -56,7 +56,7 @@ export default function TrendingPage() {
   const trendingProducts = products?.slice(0, 8) || [];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[rgb(var(--card))]">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="app-container">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">

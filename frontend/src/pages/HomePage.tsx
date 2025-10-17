@@ -1,7 +1,7 @@
 
 import HeroCarousel from '../compoBig/Carousel'
 import BestSellerFlex from '../compoBig/BestSeller'
-import ShopByCategory from '../compoBig/ShopbyCategory'
+import ShopByCategory from '../compoBig/Trending'
 // import OnSale from '../component/Onsale'
 import ProductsSection from '../compoBig/ProductsSection'
 

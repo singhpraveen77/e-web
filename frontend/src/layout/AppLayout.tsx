@@ -4,7 +4,7 @@ import Footer from "../compoBig/Footer";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--fg))] flex flex-col items-center">
+    <div className="min-h-screen bg-gray-900 text-[rgb(var(--fg))] flex flex-col items-center">
       <Navbar />
       <main className="pt-16 w-full flex justify-center items-center">
         <Outlet />

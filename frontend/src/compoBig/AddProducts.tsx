@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { getNextProduct } from "../dataSet/RandomData";
 import { AllProducts } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../redux/store";
 import { useTheme } from "../context/ThemeContext";
+import { AddProductapi } from "../api/products.api";
 
 interface ProductForm {
   name: string;
@@ -39,7 +40,7 @@ const AddProduct: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const { resolvedTheme } = useTheme();
+  // const { resolvedTheme } = useTheme();
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -71,28 +72,31 @@ const AddProduct: React.FC = () => {
     setMessage("");
 
     try {
+      // Create FormData object
       const data = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key === "images") {
-          (value as File[]).forEach((file) => data.append("images", file));
-        } else {
-          data.append(key, String(value));
-        }
+      
+      // Append regular fields
+      data.append("name", formData.name);
+      data.append("description", formData.description);
+      data.append("price", String(formData.price));
+      data.append("category", formData.category);
+      data.append("stock", String(formData.stock));
+      
+      // Append multiple images
+      formData.images.forEach((file) => {
+        data.append("images", file);
       });
 
-      const res = await axios.post(
-        "http://localhost:5000/app/v1/admin/product/new",
-        data,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        }
-      );
+
+      const res = await AddProductapi(data);
 
       setMessage("✅ Product added successfully!");
-      console.log("Product Created:", res.data);
+      console.log("Product Created:", res);
+      
+      // Refresh products list
       dispatch(AllProducts());
 
+      // Reset form
       setFormData({
         name: "",
         description: "",
@@ -101,9 +105,15 @@ const AddProduct: React.FC = () => {
         stock: 1,
         images: [],
       });
-    } catch (error) {
+      
+      // Reset file input
+      const fileInput = document.getElementById('images') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+      
+    } catch (error: any) {
       console.error("❌ Error adding product:", error);
-      setMessage("❌ Failed to add product");
+      const errorMessage = error.response?.data?.message || "Failed to add product";
+      setMessage(`❌ ${errorMessage}`);
     } finally {
       setLoading(false);
     }
