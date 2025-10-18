@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+debug.log
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# Editor files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*.bak
+
+# Testing & Coverage
+coverage/
+jest-test-results.json
+
+# Cache files
+.eslintcache
+.prettiercache
+.cache/
+*.tsbuildinfo
+
+# Misc
+*.local
+.expo/
+storybook-static/
+dump/
+*.seed.js
