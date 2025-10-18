@@ -9,11 +9,25 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-    origin: process.env.CORS_ORIGIN || "*",
-    credentials: true,
-}));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'https://e-web-39px.onrender.com',
+  process.env.CORS_ORIGIN 
+].filter(Boolean);
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
