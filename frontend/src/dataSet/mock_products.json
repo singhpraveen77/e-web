@@ -1,702 +1,2402 @@
 [
   {
-    "name": "Boat Rockerz 450",
-    "description": "High quality headphone - Boat Rockerz 450.",
-    "price": 34359,
-    "category": "headphone",
-    "stock": 39
-  },
-  {
-    "name": "Samsung Galaxy Watch",
-    "description": "High quality watch - Samsung Galaxy Watch.",
-    "price": 68653,
-    "category": "watch",
-    "stock": 41
-  },
-  {
-    "name": "MacBook Air",
-    "description": "High quality laptop - MacBook Air.",
-    "price": 64346,
+    "name": "Dell XPS 15",
+    "description": "High performance laptop with Intel i7 processor and 16GB RAM.",
+    "price": 125000,
     "category": "laptop",
-    "stock": 23
+    "stock": 15,
+    "rating": 5
   },
   {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 66925,
-    "category": "camera",
-    "stock": 12
-  },
-  {
-    "name": "Lenovo ThinkPad",
-    "description": "High quality laptop - Lenovo ThinkPad.",
-    "price": 65557,
+    "name": "HP Pavilion Gaming",
+    "description": "Gaming laptop with NVIDIA GTX 1650 graphics card.",
+    "price": 75000,
     "category": "laptop",
-    "stock": 8
+    "stock": 20,
+    "rating": 4
   },
   {
-    "name": "Skullcandy Crusher",
-    "description": "High quality headphone - Skullcandy Crusher.",
-    "price": 70828,
-    "category": "headphone",
-    "stock": 3
-  },
-  {
-    "name": "Asus ROG",
-    "description": "High quality laptop - Asus ROG.",
-    "price": 26276,
+    "name": "MacBook Pro M2",
+    "description": "Apple MacBook Pro with M2 chip and 512GB SSD.",
+    "price": 189000,
     "category": "laptop",
-    "stock": 14
+    "stock": 8,
+    "rating": 5
   },
   {
-    "name": "Lenovo ThinkPad",
-    "description": "High quality laptop - Lenovo ThinkPad.",
-    "price": 57461,
+    "name": "Lenovo ThinkPad X1",
+    "description": "Business laptop with excellent keyboard and battery life.",
+    "price": 95000,
     "category": "laptop",
-    "stock": 42
+    "stock": 12,
+    "rating": 4
   },
   {
-    "name": "Bose QC 35",
-    "description": "High quality headphone - Bose QC 35.",
-    "price": 79712,
-    "category": "headphone",
-    "stock": 21
-  },
-  {
-    "name": "JBL Tune 500",
-    "description": "High quality headphone - JBL Tune 500.",
-    "price": 12790,
-    "category": "headphone",
-    "stock": 45
-  },
-  {
-    "name": "Microsoft Surface Go",
-    "description": "High quality tablet - Microsoft Surface Go.",
-    "price": 49457,
-    "category": "tablet",
-    "stock": 25
-  },
-  {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 27860,
+    "name": "ASUS VivoBook 15",
+    "description": "Affordable laptop for everyday computing needs.",
+    "price": 45000,
     "category": "laptop",
-    "stock": 23
+    "stock": 30,
+    "rating": 4
   },
   {
-    "name": "Gaming Mouse",
-    "description": "High quality accessories - Gaming Mouse.",
-    "price": 60958,
-    "category": "accessories",
-    "stock": 38
-  },
-  {
-    "name": "VR Headset",
-    "description": "High quality other - VR Headset.",
-    "price": 50569,
-    "category": "other",
-    "stock": 14
-  },
-  {
-    "name": "Noise ColorFit",
-    "description": "High quality watch - Noise ColorFit.",
-    "price": 70132,
-    "category": "watch",
-    "stock": 7
-  },
-  {
-    "name": "Wireless Charger",
-    "description": "High quality accessories - Wireless Charger.",
-    "price": 8366,
-    "category": "accessories",
-    "stock": 16
-  },
-  {
-    "name": "Sony WH-1000XM4",
-    "description": "High quality headphone - Sony WH-1000XM4.",
-    "price": 39769,
-    "category": "headphone",
-    "stock": 31
-  },
-  {
-    "name": "HP Pavilion",
-    "description": "High quality laptop - HP Pavilion.",
-    "price": 15968,
+    "name": "Acer Aspire 5",
+    "description": "Budget-friendly laptop with AMD Ryzen processor.",
+    "price": 42000,
     "category": "laptop",
-    "stock": 29
+    "stock": 25,
+    "rating": 3
   },
   {
-    "name": "Lenovo Tab M10",
-    "description": "High quality tablet - Lenovo Tab M10.",
-    "price": 38917,
-    "category": "tablet",
-    "stock": 47
+    "name": "MSI Creator Z16",
+    "description": "Content creation laptop with 4K display.",
+    "price": 165000,
+    "category": "laptop",
+    "stock": 7,
+    "rating": 5
   },
   {
-    "name": "Sony Alpha A7",
-    "description": "High quality camera - Sony Alpha A7.",
-    "price": 27860,
-    "category": "camera",
-    "stock": 39
+    "name": "MacBook Air M1",
+    "description": "Lightweight laptop with exceptional battery life.",
+    "price": 92000,
+    "category": "laptop",
+    "stock": 18,
+    "rating": 5
   },
   {
-    "name": "USB-C Hub",
-    "description": "High quality accessories - USB-C Hub.",
-    "price": 15946,
-    "category": "accessories",
-    "stock": 23
+    "name": "Dell Inspiron 14",
+    "description": "Compact laptop perfect for students and professionals.",
+    "price": 52000,
+    "category": "laptop",
+    "stock": 22,
+    "rating": 4
   },
   {
-    "name": "Realme Pad",
-    "description": "High quality tablet - Realme Pad.",
-    "price": 69491,
-    "category": "tablet",
-    "stock": 14
+    "name": "Razer Blade 15",
+    "description": "Premium gaming laptop with RGB keyboard.",
+    "price": 195000,
+    "category": "laptop",
+    "stock": 5,
+    "rating": 5
   },
   {
-    "name": "Pixel 7",
-    "description": "High quality mobile - Pixel 7.",
-    "price": 64675,
+    "name": "iPhone 15 Pro",
+    "description": "Latest iPhone with A17 Pro chip and titanium design.",
+    "price": 134900,
     "category": "mobile",
-    "stock": 25
+    "stock": 25,
+    "rating": 5
   },
   {
-    "name": "Samsung Galaxy S23",
-    "description": "High quality mobile - Samsung Galaxy S23.",
-    "price": 57226,
+    "name": "Samsung Galaxy S24 Ultra",
+    "description": "Flagship Android phone with S Pen and 200MP camera.",
+    "price": 129999,
     "category": "mobile",
-    "stock": 3
+    "stock": 20,
+    "rating": 5
   },
   {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 5554,
-    "category": "laptop",
-    "stock": 11
-  },
-  {
-    "name": "Skullcandy Crusher",
-    "description": "High quality headphone - Skullcandy Crusher.",
-    "price": 65575,
-    "category": "headphone",
-    "stock": 7
-  },
-  {
-    "name": "Bluetooth Speaker",
-    "description": "High quality other - Bluetooth Speaker.",
-    "price": 79113,
-    "category": "other",
-    "stock": 41
-  },
-  {
-    "name": "Apple Watch",
-    "description": "High quality watch - Apple Watch.",
-    "price": 70895,
-    "category": "watch",
-    "stock": 21
-  },
-  {
-    "name": "JBL Tune 500",
-    "description": "High quality headphone - JBL Tune 500.",
-    "price": 6694,
-    "category": "headphone",
-    "stock": 15
-  },
-  {
-    "name": "OnePlus Nord",
-    "description": "High quality mobile - OnePlus Nord.",
-    "price": 44434,
+    "name": "OnePlus 12",
+    "description": "Fast charging smartphone with Snapdragon 8 Gen 3.",
+    "price": 64999,
     "category": "mobile",
-    "stock": 8
+    "stock": 30,
+    "rating": 4
   },
   {
-    "name": "iPad Air",
-    "description": "High quality tablet - iPad Air.",
-    "price": 43283,
-    "category": "tablet",
-    "stock": 47
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 49605,
-    "category": "camera",
-    "stock": 22
-  },
-  {
-    "name": "Laptop Stand",
-    "description": "High quality accessories - Laptop Stand.",
-    "price": 34821,
-    "category": "accessories",
-    "stock": 9
-  },
-  {
-    "name": "Fossil Gen 5",
-    "description": "High quality watch - Fossil Gen 5.",
-    "price": 20578,
-    "category": "watch",
-    "stock": 35
-  },
-  {
-    "name": "Canon EOS 1500D",
-    "description": "High quality camera - Canon EOS 1500D.",
-    "price": 9580,
-    "category": "camera",
-    "stock": 21
-  },
-  {
-    "name": "MacBook Air",
-    "description": "High quality laptop - MacBook Air.",
-    "price": 61419,
-    "category": "laptop",
-    "stock": 1
-  },
-  {
-    "name": "Wireless Charger",
-    "description": "High quality accessories - Wireless Charger.",
-    "price": 54621,
-    "category": "accessories",
-    "stock": 3
-  },
-  {
-    "name": "USB-C Hub",
-    "description": "High quality accessories - USB-C Hub.",
-    "price": 16584,
-    "category": "accessories",
-    "stock": 26
-  },
-  {
-    "name": "Sony WH-1000XM4",
-    "description": "High quality headphone - Sony WH-1000XM4.",
-    "price": 67125,
-    "category": "headphone",
-    "stock": 37
-  },
-  {
-    "name": "Fujifilm X-T200",
-    "description": "High quality camera - Fujifilm X-T200.",
-    "price": 23738,
-    "category": "camera",
-    "stock": 46
-  },
-  {
-    "name": "Fossil Gen 5",
-    "description": "High quality watch - Fossil Gen 5.",
-    "price": 68434,
-    "category": "watch",
-    "stock": 20
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 67412,
-    "category": "camera",
-    "stock": 34
-  },
-  {
-    "name": "Noise ColorFit",
-    "description": "High quality watch - Noise ColorFit.",
-    "price": 56875,
-    "category": "watch",
-    "stock": 38
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 11833,
-    "category": "camera",
-    "stock": 10
-  },
-  {
-    "name": "iPad Air",
-    "description": "High quality tablet - iPad Air.",
-    "price": 28347,
-    "category": "tablet",
-    "stock": 41
-  },
-  {
-    "name": "iPad Air",
-    "description": "High quality tablet - iPad Air.",
-    "price": 78363,
-    "category": "tablet",
-    "stock": 14
-  },
-  {
-    "name": "Fujifilm X-T200",
-    "description": "High quality camera - Fujifilm X-T200.",
-    "price": 48173,
-    "category": "camera",
-    "stock": 29
-  },
-  {
-    "name": "Amazfit GTR",
-    "description": "High quality watch - Amazfit GTR.",
-    "price": 36867,
-    "category": "watch",
-    "stock": 10
-  },
-  {
-    "name": "VR Headset",
-    "description": "High quality other - VR Headset.",
-    "price": 79598,
-    "category": "other",
-    "stock": 5
-  },
-  {
-    "name": "Laptop Stand",
-    "description": "High quality accessories - Laptop Stand.",
-    "price": 26754,
-    "category": "accessories",
-    "stock": 17
-  },
-  {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 19572,
-    "category": "laptop",
-    "stock": 11
-  },
-  {
-    "name": "JBL Tune 500",
-    "description": "High quality headphone - JBL Tune 500.",
-    "price": 62071,
-    "category": "headphone",
-    "stock": 38
-  },
-  {
-    "name": "Phone Case",
-    "description": "High quality accessories - Phone Case.",
-    "price": 2318,
-    "category": "accessories",
-    "stock": 33
-  },
-  {
-    "name": "Bose QC 35",
-    "description": "High quality headphone - Bose QC 35.",
-    "price": 25566,
-    "category": "headphone",
-    "stock": 39
-  },
-  {
-    "name": "Phone Case",
-    "description": "High quality accessories - Phone Case.",
-    "price": 51487,
-    "category": "accessories",
-    "stock": 32
-  },
-  {
-    "name": "Pixel 7",
-    "description": "High quality mobile - Pixel 7.",
-    "price": 54563,
+    "name": "Google Pixel 8 Pro",
+    "description": "AI-powered smartphone with exceptional camera quality.",
+    "price": 106999,
     "category": "mobile",
-    "stock": 3
+    "stock": 15,
+    "rating": 5
   },
   {
-    "name": "Sony Alpha A7",
-    "description": "High quality camera - Sony Alpha A7.",
-    "price": 69541,
-    "category": "camera",
-    "stock": 37
+    "name": "Xiaomi 14 Pro",
+    "description": "High-end smartphone with Leica camera system.",
+    "price": 79999,
+    "category": "mobile",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Oppo Find X6 Pro",
+    "description": "Premium smartphone with Hasselblad camera technology.",
+    "price": 89999,
+    "category": "mobile",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Vivo X100 Pro",
+    "description": "Photography-focused smartphone with ZEISS optics.",
+    "price": 85999,
+    "category": "mobile",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "Realme GT 5 Pro",
+    "description": "Gaming smartphone with advanced cooling system.",
+    "price": 54999,
+    "category": "mobile",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Nothing Phone 2",
+    "description": "Unique smartphone with Glyph interface and clean OS.",
+    "price": 44999,
+    "category": "mobile",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Motorola Edge 40 Ultra",
+    "description": "Powerful smartphone with curved display and fast charging.",
+    "price": 59999,
+    "category": "mobile",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "iPad Pro 12.9",
+    "description": "Professional tablet with M2 chip and Liquid Retina display.",
+    "price": 112900,
+    "category": "tablet",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "Samsung Galaxy Tab S9 Ultra",
+    "description": "Large Android tablet with S Pen included.",
+    "price": 109999,
+    "category": "tablet",
+    "stock": 10,
+    "rating": 5
   },
   {
     "name": "iPad Air",
-    "description": "High quality tablet - iPad Air.",
-    "price": 45887,
+    "description": "Versatile tablet with Apple Pencil support.",
+    "price": 64900,
     "category": "tablet",
-    "stock": 47
+    "stock": 18,
+    "rating": 5
   },
   {
-    "name": "iPad Air",
-    "description": "High quality tablet - iPad Air.",
-    "price": 70243,
+    "name": "Microsoft Surface Pro 9",
+    "description": "2-in-1 tablet with detachable keyboard and Windows 11.",
+    "price": 98000,
     "category": "tablet",
-    "stock": 37
+    "stock": 15,
+    "rating": 4
   },
   {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 74617,
+    "name": "Lenovo Tab P12 Pro",
+    "description": "Premium Android tablet with OLED display.",
+    "price": 54999,
+    "category": "tablet",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Amazon Fire HD 10",
+    "description": "Budget-friendly tablet for media consumption.",
+    "price": 14999,
+    "category": "tablet",
+    "stock": 40,
+    "rating": 3
+  },
+  {
+    "name": "OnePlus Pad",
+    "description": "Fast Android tablet with 144Hz display.",
+    "price": 37999,
+    "category": "tablet",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Xiaomi Pad 6",
+    "description": "Mid-range tablet with great display and battery life.",
+    "price": 26999,
+    "category": "tablet",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Realme Pad 2",
+    "description": "Affordable tablet with long battery life.",
+    "price": 19999,
+    "category": "tablet",
+    "stock": 35,
+    "rating": 3
+  },
+  {
+    "name": "iPad Mini",
+    "description": "Compact tablet with powerful A15 Bionic chip.",
+    "price": 46900,
+    "category": "tablet",
+    "stock": 22,
+    "rating": 5
+  },
+  {
+    "name": "Sony Alpha A7 IV",
+    "description": "Professional mirrorless camera with 33MP full-frame sensor.",
+    "price": 239990,
     "category": "camera",
-    "stock": 50
+    "stock": 8,
+    "rating": 5
+  },
+  {
+    "name": "Canon EOS R6 Mark II",
+    "description": "High-performance mirrorless camera for photography and video.",
+    "price": 289990,
+    "category": "camera",
+    "stock": 6,
+    "rating": 5
+  },
+  {
+    "name": "Nikon Z8",
+    "description": "Professional camera with 8K video recording.",
+    "price": 319990,
+    "category": "camera",
+    "stock": 5,
+    "rating": 5
+  },
+  {
+    "name": "Fujifilm X-T5",
+    "description": "Retro-styled camera with exceptional image quality.",
+    "price": 154990,
+    "category": "camera",
+    "stock": 10,
+    "rating": 5
+  },
+  {
+    "name": "GoPro Hero 12 Black",
+    "description": "Action camera with 5.3K video and image stabilization.",
+    "price": 44999,
+    "category": "camera",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "DJI Osmo Action 4",
+    "description": "Rugged action camera with 4K 120fps video.",
+    "price": 38999,
+    "category": "camera",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Canon PowerShot G7 X Mark III",
+    "description": "Compact camera perfect for vlogging and travel.",
+    "price": 69990,
+    "category": "camera",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Sony ZV-E10",
+    "description": "Vlogging camera with excellent autofocus and audio.",
+    "price": 74990,
+    "category": "camera",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "Panasonic Lumix GH6",
+    "description": "Hybrid camera for professional video production.",
+    "price": 219990,
+    "category": "camera",
+    "stock": 7,
+    "rating": 5
+  },
+  {
+    "name": "Insta360 X3",
+    "description": "360-degree action camera with AI-powered editing.",
+    "price": 47999,
+    "category": "camera",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Sony WH-1000XM5",
+    "description": "Premium noise-canceling wireless headphones.",
+    "price": 34990,
+    "category": "headphone",
+    "stock": 30,
+    "rating": 5
+  },
+  {
+    "name": "Bose QuietComfort 45",
+    "description": "Comfortable ANC headphones with balanced sound.",
+    "price": 32900,
+    "category": "headphone",
+    "stock": 25,
+    "rating": 5
+  },
+  {
+    "name": "Apple AirPods Max",
+    "description": "High-end over-ear headphones with spatial audio.",
+    "price": 59900,
+    "category": "headphone",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Sennheiser Momentum 4",
+    "description": "Audiophile wireless headphones with 60-hour battery.",
+    "price": 34990,
+    "category": "headphone",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "JBL Tune 770NC",
+    "description": "Budget ANC headphones with powerful bass.",
+    "price": 7999,
+    "category": "headphone",
+    "stock": 45,
+    "rating": 4
   },
   {
     "name": "Boat Rockerz 450",
-    "description": "High quality headphone - Boat Rockerz 450.",
-    "price": 19826,
+    "description": "Affordable wireless headphones with extra bass.",
+    "price": 1799,
     "category": "headphone",
-    "stock": 34
+    "stock": 60,
+    "rating": 3
   },
   {
-    "name": "Fitness Band",
-    "description": "High quality other - Fitness Band.",
-    "price": 17633,
-    "category": "other",
-    "stock": 9
-  },
-  {
-    "name": "Boat Rockerz 450",
-    "description": "High quality headphone - Boat Rockerz 450.",
-    "price": 16888,
+    "name": "Audio-Technica ATH-M50xBT2",
+    "description": "Studio-quality Bluetooth headphones.",
+    "price": 19999,
     "category": "headphone",
-    "stock": 45
+    "stock": 22,
+    "rating": 5
   },
   {
-    "name": "Noise ColorFit",
-    "description": "High quality watch - Noise ColorFit.",
-    "price": 29907,
+    "name": "Beats Studio Pro",
+    "description": "Stylish headphones with spatial audio and ANC.",
+    "price": 34900,
+    "category": "headphone",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Jabra Elite 85h",
+    "description": "SmartSound headphones with AI-powered ANC.",
+    "price": 24999,
+    "category": "headphone",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "OneOdio Pro 50",
+    "description": "Wired studio headphones with detachable cable.",
+    "price": 3499,
+    "category": "headphone",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "description": "Advanced smartwatch with double tap gesture and always-on display.",
+    "price": 46900,
     "category": "watch",
-    "stock": 28
+    "stock": 28,
+    "rating": 5
   },
   {
-    "name": "VR Headset",
-    "description": "High quality other - VR Headset.",
-    "price": 71503,
-    "category": "other",
-    "stock": 39
-  },
-  {
-    "name": "Power Bank",
-    "description": "High quality other - Power Bank.",
-    "price": 15501,
-    "category": "other",
-    "stock": 9
-  },
-  {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 37913,
-    "category": "laptop",
-    "stock": 22
-  },
-  {
-    "name": "Fujifilm X-T200",
-    "description": "High quality camera - Fujifilm X-T200.",
-    "price": 26099,
-    "category": "camera",
-    "stock": 5
-  },
-  {
-    "name": "USB-C Hub",
-    "description": "High quality accessories - USB-C Hub.",
-    "price": 78699,
-    "category": "accessories",
-    "stock": 22
-  },
-  {
-    "name": "Pixel 7",
-    "description": "High quality mobile - Pixel 7.",
-    "price": 17047,
-    "category": "mobile",
-    "stock": 11
-  },
-  {
-    "name": "Gaming Mouse",
-    "description": "High quality accessories - Gaming Mouse.",
-    "price": 37005,
-    "category": "accessories",
-    "stock": 3
-  },
-  {
-    "name": "iPhone 14",
-    "description": "High quality mobile - iPhone 14.",
-    "price": 16132,
-    "category": "mobile",
-    "stock": 37
-  },
-  {
-    "name": "Fitness Band",
-    "description": "High quality other - Fitness Band.",
-    "price": 64932,
-    "category": "other",
-    "stock": 36
-  },
-  {
-    "name": "Skullcandy Crusher",
-    "description": "High quality headphone - Skullcandy Crusher.",
-    "price": 79738,
-    "category": "headphone",
-    "stock": 48
-  },
-  {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 74098,
-    "category": "laptop",
-    "stock": 27
-  },
-  {
-    "name": "Power Bank",
-    "description": "High quality other - Power Bank.",
-    "price": 54560,
-    "category": "other",
-    "stock": 18
-  },
-  {
-    "name": "OnePlus Nord",
-    "description": "High quality mobile - OnePlus Nord.",
-    "price": 33638,
-    "category": "mobile",
-    "stock": 29
-  },
-  {
-    "name": "Pixel 7",
-    "description": "High quality mobile - Pixel 7.",
-    "price": 72914,
-    "category": "mobile",
-    "stock": 37
-  },
-  {
-    "name": "Dell Inspiron",
-    "description": "High quality laptop - Dell Inspiron.",
-    "price": 5490,
-    "category": "laptop",
-    "stock": 33
-  },
-  {
-    "name": "Fitness Band",
-    "description": "High quality other - Fitness Band.",
-    "price": 48679,
-    "category": "other",
-    "stock": 11
-  },
-  {
-    "name": "Pixel 7",
-    "description": "High quality mobile - Pixel 7.",
-    "price": 18235,
-    "category": "mobile",
-    "stock": 36
-  },
-  {
-    "name": "MacBook Air",
-    "description": "High quality laptop - MacBook Air.",
-    "price": 50944,
-    "category": "laptop",
-    "stock": 7
-  },
-  {
-    "name": "Samsung Galaxy Tab",
-    "description": "High quality tablet - Samsung Galaxy Tab.",
-    "price": 44572,
-    "category": "tablet",
-    "stock": 47
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 51870,
-    "category": "camera",
-    "stock": 44
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 60408,
-    "category": "camera",
-    "stock": 48
-  },
-  {
-    "name": "GoPro Hero 10",
-    "description": "High quality camera - GoPro Hero 10.",
-    "price": 48056,
-    "category": "camera",
-    "stock": 5
-  },
-  {
-    "name": "Fujifilm X-T200",
-    "description": "High quality camera - Fujifilm X-T200.",
-    "price": 30216,
-    "category": "camera",
-    "stock": 50
-  },
-  {
-    "name": "Laptop Stand",
-    "description": "High quality accessories - Laptop Stand.",
-    "price": 56322,
-    "category": "accessories",
-    "stock": 15
-  },
-  {
-    "name": "Sony WH-1000XM4",
-    "description": "High quality headphone - Sony WH-1000XM4.",
-    "price": 35376,
-    "category": "headphone",
-    "stock": 9
-  },
-  {
-    "name": "Amazfit GTR",
-    "description": "High quality watch - Amazfit GTR.",
-    "price": 22303,
+    "name": "Samsung Galaxy Watch 6 Classic",
+    "description": "Premium smartwatch with rotating bezel and Wear OS.",
+    "price": 38999,
     "category": "watch",
-    "stock": 30
+    "stock": 22,
+    "rating": 5
   },
   {
-    "name": "Sony Alpha A7",
-    "description": "High quality camera - Sony Alpha A7.",
-    "price": 67302,
-    "category": "camera",
-    "stock": 35
+    "name": "Garmin Fenix 7",
+    "description": "Rugged GPS smartwatch for outdoor adventures.",
+    "price": 72990,
+    "category": "watch",
+    "stock": 15,
+    "rating": 5
   },
   {
-    "name": "Power Bank",
-    "description": "High quality other - Power Bank.",
-    "price": 3988,
-    "category": "other",
-    "stock": 9
+    "name": "Fitbit Sense 2",
+    "description": "Health-focused smartwatch with stress management tools.",
+    "price": 26999,
+    "category": "watch",
+    "stock": 25,
+    "rating": 4
   },
   {
-    "name": "iPhone 14",
-    "description": "High quality mobile - iPhone 14.",
-    "price": 67035,
-    "category": "mobile",
-    "stock": 3
+    "name": "Amazfit GTR 4",
+    "description": "Feature-packed smartwatch with 14-day battery life.",
+    "price": 14999,
+    "category": "watch",
+    "stock": 35,
+    "rating": 4
   },
   {
-    "name": "Samsung Galaxy Tab",
-    "description": "High quality tablet - Samsung Galaxy Tab.",
-    "price": 28475,
-    "category": "tablet",
-    "stock": 46
+    "name": "Fossil Gen 6",
+    "description": "Stylish Wear OS smartwatch with classic design.",
+    "price": 24995,
+    "category": "watch",
+    "stock": 18,
+    "rating": 4
   },
   {
-    "name": "Nikon D5600",
-    "description": "High quality camera - Nikon D5600.",
-    "price": 34969,
-    "category": "camera",
-    "stock": 28
+    "name": "Casio G-Shock Smart",
+    "description": "Tough smartwatch with solar charging.",
+    "price": 32999,
+    "category": "watch",
+    "stock": 20,
+    "rating": 4
   },
   {
-    "name": "Realme Pad",
-    "description": "High quality tablet - Realme Pad.",
-    "price": 33225,
-    "category": "tablet",
-    "stock": 7
+    "name": "Noise ColorFit Pro 5",
+    "description": "Budget smartwatch with AMOLED display.",
+    "price": 4999,
+    "category": "watch",
+    "stock": 50,
+    "rating": 3
   },
   {
-    "name": "HP Pavilion",
-    "description": "High quality laptop - HP Pavilion.",
-    "price": 18188,
-    "category": "laptop",
-    "stock": 4
+    "name": "TicWatch Pro 5",
+    "description": "Wear OS smartwatch with dual display technology.",
+    "price": 35999,
+    "category": "watch",
+    "stock": 16,
+    "rating": 4
   },
   {
-    "name": "Laptop Stand",
-    "description": "High quality accessories - Laptop Stand.",
-    "price": 7531,
+    "name": "Huawei Watch GT 4",
+    "description": "Elegant smartwatch with long battery life and fitness tracking.",
+    "price": 22999,
+    "category": "watch",
+    "stock": 24,
+    "rating": 4
+  },
+  {
+    "name": "Amazon Echo Dot 5th Gen",
+    "description": "Compact smart speaker with Alexa voice assistant.",
+    "price": 5499,
+    "category": "smart-devices",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Google Nest Hub Max",
+    "description": "Smart display with Google Assistant and video calling.",
+    "price": 22900,
+    "category": "smart-devices",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "Philips Hue Smart Bulb Starter Kit",
+    "description": "Color-changing smart LED bulbs with bridge.",
+    "price": 12999,
+    "category": "smart-devices",
+    "stock": 30,
+    "rating": 5
+  },
+  {
+    "name": "Ring Video Doorbell Pro 2",
+    "description": "Smart doorbell with 1536p HD video and two-way talk.",
+    "price": 24999,
+    "category": "smart-devices",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "TP-Link Tapo Smart Plug",
+    "description": "WiFi smart plug with energy monitoring.",
+    "price": 1299,
+    "category": "smart-devices",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Xiaomi Mi Robot Vacuum",
+    "description": "Smart robot vacuum with app control and mapping.",
+    "price": 24999,
+    "category": "smart-devices",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Aqara Smart Door Lock",
+    "description": "Fingerprint and keypad smart lock with auto-unlock.",
+    "price": 15999,
+    "category": "smart-devices",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Nest Learning Thermostat",
+    "description": "Smart thermostat that learns your schedule and saves energy.",
+    "price": 24900,
+    "category": "smart-devices",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "August Smart Lock Pro",
+    "description": "Retrofit smart lock with remote access.",
+    "price": 27999,
+    "category": "smart-devices",
+    "stock": 14,
+    "rating": 4
+  },
+  {
+    "name": "Wyze Cam v3",
+    "description": "Affordable smart security camera with night vision.",
+    "price": 3499,
+    "category": "smart-devices",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Sonos One SL",
+    "description": "Premium wireless speaker with room-filling sound.",
+    "price": 20900,
+    "category": "audio-equipment",
+    "stock": 18,
+    "rating": 5
+  },
+  {
+    "name": "Bose SoundLink Revolve+",
+    "description": "Portable Bluetooth speaker with 360-degree sound.",
+    "price": 29900,
+    "category": "audio-equipment",
+    "stock": 22,
+    "rating": 5
+  },
+  {
+    "name": "JBL Charge 5",
+    "description": "Waterproof speaker with power bank functionality.",
+    "price": 17999,
+    "category": "audio-equipment",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Marshall Emberton II",
+    "description": "Compact speaker with iconic Marshall design and sound.",
+    "price": 16999,
+    "category": "audio-equipment",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "Ultimate Ears Boom 3",
+    "description": "Durable portable speaker with PartyUp feature.",
+    "price": 14999,
+    "category": "audio-equipment",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Sony SRS-XB43",
+    "description": "Extra bass speaker with LED lighting effects.",
+    "price": 18990,
+    "category": "audio-equipment",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Bose QuietComfort Earbuds II",
+    "description": "Premium wireless earbuds with world-class ANC.",
+    "price": 26900,
+    "category": "audio-equipment",
+    "stock": 24,
+    "rating": 5
+  },
+  {
+    "name": "Anker Soundcore Liberty 4",
+    "description": "High-quality earbuds with adaptive ANC.",
+    "price": 12999,
+    "category": "audio-equipment",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Harman Kardon Onyx Studio 7",
+    "description": "Premium Bluetooth speaker with elegant design.",
+    "price": 24900,
+    "category": "audio-equipment",
+    "stock": 15,
+    "rating": 5
+  },
+  {
+    "name": "Audio-Technica AT2020USB+",
+    "description": "USB condenser microphone for podcasting and streaming.",
+    "price": 14999,
+    "category": "audio-equipment",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "Levi's 511 Slim Fit Jeans",
+    "description": "Classic slim-fit denim jeans for men.",
+    "price": 3499,
+    "category": "mens-clothing",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Ralph Lauren Polo Shirt",
+    "description": "Classic cotton polo shirt with signature logo.",
+    "price": 4999,
+    "category": "mens-clothing",
+    "stock": 40,
+    "rating": 5
+  },
+  {
+    "name": "Nike Dri-FIT T-Shirt",
+    "description": "Moisture-wicking athletic t-shirt for men.",
+    "price": 1999,
+    "category": "mens-clothing",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "Tommy Hilfiger Formal Shirt",
+    "description": "Cotton formal shirt perfect for office wear.",
+    "price": 3999,
+    "category": "mens-clothing",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Adidas Track Pants",
+    "description": "Comfortable joggers with iconic three stripes.",
+    "price": 2999,
+    "category": "mens-clothing",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "H&M Cotton Hoodie",
+    "description": "Soft cotton hoodie for casual everyday wear.",
+    "price": 1999,
+    "category": "mens-clothing",
+    "stock": 48,
+    "rating": 3
+  },
+  {
+    "name": "Zara Slim Fit Blazer",
+    "description": "Formal blazer with modern slim fit cut.",
+    "price": 7999,
+    "category": "mens-clothing",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Gap Chino Pants",
+    "description": "Versatile chinos for casual and semi-formal occasions.",
+    "price": 3499,
+    "category": "mens-clothing",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Columbia Fleece Jacket",
+    "description": "Warm fleece jacket for outdoor activities.",
+    "price": 5999,
+    "category": "mens-clothing",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Uniqlo Ultra Light Down Jacket",
+    "description": "Packable down jacket for winter warmth.",
+    "price": 4999,
+    "category": "mens-clothing",
+    "stock": 32,
+    "rating": 5
+  },
+  {
+    "name": "Zara Floral Print Dress",
+    "description": "Elegant midi dress with floral pattern.",
+    "price": 3999,
+    "category": "womens-clothing",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "H&M Skinny Jeans",
+    "description": "Comfortable stretch denim jeans for women.",
+    "price": 2499,
+    "category": "womens-clothing",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Forever 21 Crop Top",
+    "description": "Trendy crop top for casual outfits.",
+    "price": 999,
+    "category": "womens-clothing",
+    "stock": 60,
+    "rating": 3
+  },
+  {
+    "name": "Mango Blazer",
+    "description": "Professional blazer for office and formal events.",
+    "price": 5999,
+    "category": "womens-clothing",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Nike Sports Bra",
+    "description": "High-support sports bra for workouts.",
+    "price": 2499,
+    "category": "womens-clothing",
+    "stock": 40,
+    "rating": 5
+  },
+  {
+    "name": "Gap Wide Leg Trousers",
+    "description": "Comfortable palazzo pants for all-day wear.",
+    "price": 3499,
+    "category": "womens-clothing",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Vero Moda Maxi Dress",
+    "description": "Flowing maxi dress perfect for summer.",
+    "price": 4499,
+    "category": "womens-clothing",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Lululemon Align Leggings",
+    "description": "Buttery-soft yoga pants with high waist.",
+    "price": 7999,
+    "category": "womens-clothing",
+    "stock": 38,
+    "rating": 5
+  },
+  {
+    "name": "Only Denim Jacket",
+    "description": "Classic denim jacket for layering.",
+    "price": 2999,
+    "category": "womens-clothing",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Marks & Spencer Wool Coat",
+    "description": "Warm winter coat with elegant design.",
+    "price": 8999,
+    "category": "womens-clothing",
+    "stock": 18,
+    "rating": 5
+  },
+  {
+    "name": "Nike Air Max 270",
+    "description": "Comfortable running shoes with air cushioning.",
+    "price": 12995,
+    "category": "shoes",
+    "stock": 35,
+    "rating": 5
+  },
+  {
+    "name": "Adidas Ultraboost 22",
+    "description": "Premium running shoes with boost technology.",
+    "price": 15999,
+    "category": "shoes",
+    "stock": 28,
+    "rating": 5
+  },
+  {
+    "name": "Puma Suede Classic",
+    "description": "Iconic casual sneakers with suede upper.",
+    "price": 5999,
+    "category": "shoes",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Converse Chuck Taylor All Star",
+    "description": "Classic canvas sneakers in high-top style.",
+    "price": 4499,
+    "category": "shoes",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Clarks Desert Boots",
+    "description": "Comfortable leather boots for casual wear.",
+    "price": 8999,
+    "category": "shoes",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "Skechers Go Walk",
+    "description": "Lightweight walking shoes with memory foam.",
+    "price": 6999,
+    "category": "shoes",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Reebok Classic Leather",
+    "description": "Retro-style leather sneakers.",
+    "price": 5499,
+    "category": "shoes",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Vans Old Skool",
+    "description": "Skateboarding shoes with iconic side stripe.",
+    "price": 4999,
+    "category": "shoes",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Timberland 6-Inch Boots",
+    "description": "Durable waterproof boots for all weather.",
+    "price": 14999,
+    "category": "shoes",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "Crocs Classic Clogs",
+    "description": "Comfortable casual clogs for everyday wear.",
+    "price": 3495,
+    "category": "shoes",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Pandora Sparkling Strand Bracelet",
+    "description": "Sterling silver bracelet with cubic zirconia.",
+    "price": 8999,
+    "category": "jewelry",
+    "stock": 15,
+    "rating": 5
+  },
+  {
+    "name": "Swarovski Crystal Necklace",
+    "description": "Elegant necklace with sparkling crystals.",
+    "price": 12999,
+    "category": "jewelry",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "Michael Kors Rose Gold Watch",
+    "description": "Fashion watch with rose gold finish.",
+    "price": 18999,
+    "category": "jewelry",
+    "stock": 10,
+    "rating": 4
+  },
+  {
+    "name": "Tiffany & Co. Return to Tiffany Heart Tag",
+    "description": "Iconic heart tag pendant in sterling silver.",
+    "price": 24900,
+    "category": "jewelry",
+    "stock": 8,
+    "rating": 5
+  },
+  {
+    "name": "Tanishq Gold Earrings",
+    "description": "22K gold stud earrings with traditional design.",
+    "price": 28999,
+    "category": "jewelry",
+    "stock": 6,
+    "rating": 5
+  },
+  {
+    "name": "Giva Sterling Silver Ring",
+    "description": "Adjustable silver ring with minimalist design.",
+    "price": 2499,
+    "category": "jewelry",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Daniel Wellington Cuff Bracelet",
+    "description": "Minimalist metal cuff bracelet.",
+    "price": 7999,
+    "category": "jewelry",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Voylla Oxidized Silver Jhumka",
+    "description": "Traditional Indian earrings with oxidized finish.",
+    "price": 1999,
+    "category": "jewelry",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Malabar Gold Chain",
+    "description": "18K gold chain with delicate design.",
+    "price": 45999,
+    "category": "jewelry",
+    "stock": 5,
+    "rating": 5
+  },
+  {
+    "name": "Swarovski Tennis Bracelet",
+    "description": "Classic tennis bracelet with white crystals.",
+    "price": 19999,
+    "category": "jewelry",
+    "stock": 10,
+    "rating": 5
+  },
+  {
+    "name": "Ray-Ban Aviator Sunglasses",
+    "description": "Iconic aviator sunglasses with UV protection.",
+    "price": 8999,
     "category": "accessories",
-    "stock": 42
+    "stock": 30,
+    "rating": 5
   },
   {
-    "name": "Canon EOS 1500D",
-    "description": "High quality camera - Canon EOS 1500D.",
-    "price": 6889,
-    "category": "camera",
-    "stock": 48
+    "name": "Michael Kors Jet Set Tote",
+    "description": "Leather tote bag with signature logo.",
+    "price": 24999,
+    "category": "accessories",
+    "stock": 15,
+    "rating": 5
   },
   {
-    "name": "MacBook Air",
-    "description": "High quality laptop - MacBook Air.",
-    "price": 7878,
-    "category": "laptop",
-    "stock": 29
+    "name": "Tommy Hilfiger Leather Wallet",
+    "description": "Genuine leather wallet with multiple card slots.",
+    "price": 2999,
+    "category": "accessories",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Fossil Crossbody Bag",
+    "description": "Compact crossbody bag perfect for daily use.",
+    "price": 6999,
+    "category": "accessories",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "Oakley Sport Sunglasses",
+    "description": "Performance sunglasses for outdoor activities.",
+    "price": 12999,
+    "category": "accessories",
+    "stock": 18,
+    "rating": 5
+  },
+  {
+    "name": "Titan Leather Belt",
+    "description": "Reversible leather belt with stylish buckle.",
+    "price": 1799,
+    "category": "accessories",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Fastrack Backpack",
+    "description": "Durable laptop backpack with multiple compartments.",
+    "price": 2999,
+    "category": "accessories",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Lavie Handbag",
+    "description": "Stylish handbag with modern design.",
+    "price": 3999,
+    "category": "accessories",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Polaroid Sunglasses",
+    "description": "Polarized sunglasses for glare reduction.",
+    "price": 5999,
+    "category": "accessories",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Wildcraft Duffle Bag",
+    "description": "Large duffle bag for travel and gym.",
+    "price": 4499,
+    "category": "accessories",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Optimum Nutrition Gold Standard Whey",
+    "description": "Premium whey protein with 24g protein per serving.",
+    "price": 4999,
+    "category": "supplements",
+    "stock": 40,
+    "rating": 5
+  },
+  {
+    "name": "MyProtein Creatine Monohydrate",
+    "description": "Pure creatine powder for muscle strength.",
+    "price": 1799,
+    "category": "supplements",
+    "stock": 45,
+    "rating": 5
+  },
+  {
+    "name": "Nature Made Multivitamin",
+    "description": "Complete daily multivitamin for men and women.",
+    "price": 999,
+    "category": "supplements",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Omega-3 Fish Oil Capsules",
+    "description": "High-potency fish oil for heart health.",
+    "price": 1499,
+    "category": "supplements",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Garden of Life Raw Organic Protein",
+    "description": "Plant-based protein powder with 22g protein.",
+    "price": 3999,
+    "category": "supplements",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Vitamin D3 Supplements",
+    "description": "High-strength vitamin D for bone health.",
+    "price": 699,
+    "category": "supplements",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "MuscleBlaze Mass Gainer",
+    "description": "High-calorie mass gainer for muscle building.",
+    "price": 2999,
+    "category": "supplements",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Collagen Peptides Powder",
+    "description": "Hydrolyzed collagen for skin and joint health.",
+    "price": 2499,
+    "category": "supplements",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "ZMA Sleep Support",
+    "description": "Zinc, magnesium and B6 for recovery and sleep.",
+    "price": 1299,
+    "category": "supplements",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Probiotics 50 Billion CFU",
+    "description": "High-potency probiotic for gut health.",
+    "price": 1999,
+    "category": "supplements",
+    "stock": 42,
+    "rating": 5
+  },
+  {
+    "name": "Bowflex SelectTech Dumbbells",
+    "description": "Adjustable dumbbells with 15 weight settings.",
+    "price": 42999,
+    "category": "fitness-equipment",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "Treadmill with Incline",
+    "description": "Motorized treadmill with 15 incline levels.",
+    "price": 35999,
+    "category": "fitness-equipment",
+    "stock": 8,
+    "rating": 4
+  },
+  {
+    "name": "Yoga Mat 6mm Thick",
+    "description": "Non-slip exercise mat for yoga and pilates.",
+    "price": 1299,
+    "category": "fitness-equipment",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Resistance Bands Set",
+    "description": "Set of 5 resistance bands with handles.",
+    "price": 999,
+    "category": "fitness-equipment",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "Stationary Exercise Bike",
+    "description": "Indoor cycling bike with adjustable resistance.",
+    "price": 18999,
+    "category": "fitness-equipment",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Pull-Up Bar Doorway",
+    "description": "Easy-install pull-up bar for home workouts.",
+    "price": 1499,
+    "category": "fitness-equipment",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Foam Roller for Recovery",
+    "description": "High-density foam roller for muscle massage.",
+    "price": 1299,
+    "category": "fitness-equipment",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Kettlebell Set 8kg-16kg",
+    "description": "Cast iron kettlebells for strength training.",
+    "price": 4999,
+    "category": "fitness-equipment",
+    "stock": 22,
+    "rating": 5
+  },
+  {
+    "name": "Ab Roller Wheel",
+    "description": "Core exercise wheel with knee pad.",
+    "price": 799,
+    "category": "fitness-equipment",
+    "stock": 48,
+    "rating": 4
+  },
+  {
+    "name": "Weight Bench Adjustable",
+    "description": "Multi-position workout bench for home gym.",
+    "price": 8999,
+    "category": "fitness-equipment",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Essential Oil Diffuser",
+    "description": "Ultrasonic aromatherapy diffuser with LED lights.",
+    "price": 1999,
+    "category": "wellness-products",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Heating Pad for Pain Relief",
+    "description": "Electric heating pad with auto shut-off.",
+    "price": 1499,
+    "category": "wellness-products",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Meditation Cushion",
+    "description": "Comfortable zafu cushion for meditation practice.",
+    "price": 1799,
+    "category": "wellness-products",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Sleep Mask Silk",
+    "description": "100% silk sleep mask for better rest.",
+    "price": 899,
+    "category": "wellness-products",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Acupressure Mat Set",
+    "description": "Acupressure mat and pillow for tension relief.",
+    "price": 2499,
+    "category": "wellness-products",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "Himalayan Salt Lamp",
+    "description": "Natural salt lamp for air purification and ambiance.",
+    "price": 1599,
+    "category": "wellness-products",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Massage Gun Deep Tissue",
+    "description": "Percussion massage device with multiple heads.",
+    "price": 7999,
+    "category": "wellness-products",
+    "stock": 18,
+    "rating": 5
+  },
+  {
+    "name": "Neck and Shoulder Massager",
+    "description": "Shiatsu massage pillow with heat function.",
+    "price": 3999,
+    "category": "wellness-products",
+    "stock": 24,
+    "rating": 4
+  },
+  {
+    "name": "White Noise Machine",
+    "description": "Sound machine for better sleep and focus.",
+    "price": 2999,
+    "category": "wellness-products",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Posture Corrector",
+    "description": "Adjustable back brace for posture support.",
+    "price": 1299,
+    "category": "wellness-products",
+    "stock": 32,
+    "rating": 3
+  },
+  {
+    "name": "CeraVe Moisturizing Cream",
+    "description": "Daily face and body moisturizer with ceramides.",
+    "price": 1299,
+    "category": "skincare",
+    "stock": 45,
+    "rating": 5
+  },
+  {
+    "name": "Neutrogena Hydro Boost Gel",
+    "description": "Hyaluronic acid gel moisturizer for hydration.",
+    "price": 899,
+    "category": "skincare",
+    "stock": 50,
+    "rating": 5
+  },
+  {
+    "name": "The Ordinary Niacinamide Serum",
+    "description": "10% niacinamide serum for blemishes and pores.",
+    "price": 599,
+    "category": "skincare",
+    "stock": 60,
+    "rating": 5
+  },
+  {
+    "name": "La Roche-Posay Sunscreen SPF 50",
+    "description": "Broad-spectrum sunscreen for sensitive skin.",
+    "price": 1799,
+    "category": "skincare",
+    "stock": 38,
+    "rating": 5
+  },
+  {
+    "name": "Himalaya Neem Face Wash",
+    "description": "Natural face wash for acne-prone skin.",
+    "price": 199,
+    "category": "skincare",
+    "stock": 70,
+    "rating": 4
+  },
+  {
+    "name": "Plum Green Tea Face Mist",
+    "description": "Refreshing toner with green tea extract.",
+    "price": 399,
+    "category": "skincare",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "WOW Skin Science Vitamin C Serum",
+    "description": "Brightening serum with 20% vitamin C.",
+    "price": 899,
+    "category": "skincare",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Innisfree Green Tea Sleeping Mask",
+    "description": "Overnight hydrating mask with green tea.",
+    "price": 1099,
+    "category": "skincare",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Garnier Micellar Water",
+    "description": "Makeup remover and cleanser in one.",
+    "price": 349,
+    "category": "skincare",
+    "stock": 65,
+    "rating": 4
+  },
+  {
+    "name": "Biotique Bio Aloe Vera Gel",
+    "description": "Multi-purpose aloe vera gel for skin and hair.",
+    "price": 249,
+    "category": "skincare",
+    "stock": 58,
+    "rating": 4
+  },
+  {
+    "name": "Maybelline Fit Me Foundation",
+    "description": "Natural finish liquid foundation with SPF.",
+    "price": 549,
+    "category": "cosmetics",
+    "stock": 48,
+    "rating": 4
+  },
+  {
+    "name": "Lakme 9to5 Lipstick",
+    "description": "Long-lasting matte lipstick in various shades.",
+    "price": 399,
+    "category": "cosmetics",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "MAC Studio Fix Powder",
+    "description": "Full-coverage powder foundation.",
+    "price": 2900,
+    "category": "cosmetics",
+    "stock": 25,
+    "rating": 5
+  },
+  {
+    "name": "Urban Decay Eyeshadow Palette",
+    "description": "12-shade eyeshadow palette with versatile colors.",
+    "price": 3999,
+    "category": "cosmetics",
+    "stock": 20,
+    "rating": 5
+  },
+  {
+    "name": "Nykaa Matte Nail Polish",
+    "description": "Long-wear nail polish with matte finish.",
+    "price": 199,
+    "category": "cosmetics",
+    "stock": 70,
+    "rating": 4
+  },
+  {
+    "name": "Benefit Hoola Bronzer",
+    "description": "Matte bronzing powder for natural contour.",
+    "price": 2500,
+    "category": "cosmetics",
+    "stock": 22,
+    "rating": 5
+  },
+  {
+    "name": "Maybelline Sky High Mascara",
+    "description": "Volumizing and lengthening mascara.",
+    "price": 649,
+    "category": "cosmetics",
+    "stock": 52,
+    "rating": 5
+  },
+  {
+    "name": "Colorbar Perfect Match Primer",
+    "description": "Makeup primer for smooth application.",
+    "price": 799,
+    "category": "cosmetics",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "NYX Professional Makeup Setting Spray",
+    "description": "Long-lasting makeup setting spray.",
+    "price": 899,
+    "category": "cosmetics",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Sugar Cosmetics Kohl Kajal",
+    "description": "Waterproof smudge-proof kajal pencil.",
+    "price": 299,
+    "category": "cosmetics",
+    "stock": 65,
+    "rating": 4
+  },
+  {
+    "name": "Gillette Fusion5 Razor",
+    "description": "Men's razor with 5-blade technology.",
+    "price": 799,
+    "category": "grooming",
+    "stock": 45,
+    "rating": 5
+  },
+  {
+    "name": "Philips Norelco OneBlade",
+    "description": "Hybrid electric trimmer and shaver.",
+    "price": 2999,
+    "category": "grooming",
+    "stock": 28,
+    "rating": 5
+  },
+  {
+    "name": "Beardo Beard Oil",
+    "description": "Nourishing beard oil with natural ingredients.",
+    "price": 499,
+    "category": "grooming",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Bombay Shaving Company Shaving Foam",
+    "description": "Rich lather shaving foam for smooth shave.",
+    "price": 349,
+    "category": "grooming",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "Wahl Professional Hair Clipper",
+    "description": "Corded hair clipper with adjustable guards.",
+    "price": 2499,
+    "category": "grooming",
+    "stock": 22,
+    "rating": 5
+  },
+  {
+    "name": "The Man Company Charcoal Face Wash",
+    "description": "Deep cleansing face wash for men.",
+    "price": 399,
+    "category": "grooming",
+    "stock": 48,
+    "rating": 4
+  },
+  {
+    "name": "Park Avenue Deodorant Combo",
+    "description": "Long-lasting deodorant spray pack of 3.",
+    "price": 599,
+    "category": "grooming",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Syska Hair Trimmer",
+    "description": "Cordless trimmer with multiple attachments.",
+    "price": 1299,
+    "category": "grooming",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Nivea Men After Shave Balm",
+    "description": "Soothing balm for post-shave care.",
+    "price": 299,
+    "category": "grooming",
+    "stock": 52,
+    "rating": 4
+  },
+  {
+    "name": "Braun Series 9 Electric Shaver",
+    "description": "Premium electric shaver with cleaning station.",
+    "price": 34999,
+    "category": "grooming",
+    "stock": 8,
+    "rating": 5
+  },
+  {
+    "name": "IKEA POÄNG Armchair",
+    "description": "Comfortable bentwood armchair with cushion.",
+    "price": 8999,
+    "category": "furniture",
+    "stock": 15,
+    "rating": 5
+  },
+  {
+    "name": "Urban Ladder Dining Table Set",
+    "description": "6-seater wooden dining table with chairs.",
+    "price": 28999,
+    "category": "furniture",
+    "stock": 8,
+    "rating": 4
+  },
+  {
+    "name": "Pepperfry L-Shaped Sofa",
+    "description": "Comfortable sectional sofa in fabric upholstery.",
+    "price": 45999,
+    "category": "furniture",
+    "stock": 5,
+    "rating": 4
+  },
+  {
+    "name": "Godrej Wardrobe 3 Door",
+    "description": "Spacious wardrobe with mirror and shelves.",
+    "price": 19999,
+    "category": "furniture",
+    "stock": 10,
+    "rating": 4
+  },
+  {
+    "name": "Study Table with Storage",
+    "description": "Compact desk with drawers for home office.",
+    "price": 7999,
+    "category": "furniture",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Queen Size Bed with Storage",
+    "description": "Wooden bed frame with hydraulic storage.",
+    "price": 24999,
+    "category": "furniture",
+    "stock": 12,
+    "rating": 4
+  },
+  {
+    "name": "Bookshelf 5 Tier",
+    "description": "Open bookcase with multiple shelves.",
+    "price": 5999,
+    "category": "furniture",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Coffee Table Glass Top",
+    "description": "Modern coffee table with tempered glass.",
+    "price": 6999,
+    "category": "furniture",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Recliner Chair with Ottoman",
+    "description": "Ergonomic recliner with footrest.",
+    "price": 18999,
+    "category": "furniture",
+    "stock": 8,
+    "rating": 5
+  },
+  {
+    "name": "TV Unit Wall Mount",
+    "description": "Entertainment unit with storage cabinets.",
+    "price": 12999,
+    "category": "furniture",
+    "stock": 14,
+    "rating": 4
+  },
+  {
+    "name": "Hanging Plant Macrame",
+    "description": "Handmade macrame plant hanger for indoor plants.",
+    "price": 599,
+    "category": "home-decor",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Wall Art Canvas Set of 3",
+    "description": "Modern abstract canvas paintings for living room.",
+    "price": 2999,
+    "category": "home-decor",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Decorative Throw Pillows",
+    "description": "Set of 5 cushion covers with ethnic patterns.",
+    "price": 1499,
+    "category": "home-decor",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Floor Standing Mirror",
+    "description": "Full-length mirror with wooden frame.",
+    "price": 4999,
+    "category": "home-decor",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Ceramic Vase Set",
+    "description": "Set of 3 decorative vases in different sizes.",
+    "price": 1799,
+    "category": "home-decor",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "String Lights Fairy Lights",
+    "description": "LED string lights for bedroom decoration.",
+    "price": 499,
+    "category": "home-decor",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Artificial Indoor Plants",
+    "description": "Set of 3 realistic fake plants with pots.",
+    "price": 1299,
+    "category": "home-decor",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Wooden Wall Shelves Floating",
+    "description": "Set of 3 floating shelves for display.",
+    "price": 1999,
+    "category": "home-decor",
+    "stock": 24,
+    "rating": 4
+  },
+  {
+    "name": "Scented Candles Set",
+    "description": "Aromatherapy candles in glass jars, pack of 4.",
+    "price": 899,
+    "category": "home-decor",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Dream Catcher Wall Hanging",
+    "description": "Handcrafted dream catcher with feathers.",
+    "price": 699,
+    "category": "home-decor",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Prestige Induction Cooktop",
+    "description": "2000W induction cooker with touch controls.",
+    "price": 2999,
+    "category": "kitchen-appliances",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Philips Air Fryer HD9252",
+    "description": "Digital air fryer with rapid air technology.",
+    "price": 9999,
+    "category": "kitchen-appliances",
+    "stock": 18,
+    "rating": 5
+  },
+  {
+    "name": "Morphy Richards OTG Oven",
+    "description": "60L oven toaster griller with convection.",
+    "price": 8999,
+    "category": "kitchen-appliances",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Bajaj Mixer Grinder 750W",
+    "description": "Mixer grinder with 3 jars for Indian cooking.",
+    "price": 3499,
+    "category": "kitchen-appliances",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Kent RO Water Purifier",
+    "description": "RO+UV water purifier with 8L storage.",
+    "price": 14999,
+    "category": "kitchen-appliances",
+    "stock": 12,
+    "rating": 5
+  },
+  {
+    "name": "Pigeon Electric Kettle 1.5L",
+    "description": "Stainless steel electric kettle with auto shut-off.",
+    "price": 899,
+    "category": "kitchen-appliances",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Butterfly Wet Grinder",
+    "description": "Table-top wet grinder for South Indian cooking.",
+    "price": 6999,
+    "category": "kitchen-appliances",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Wonderchef Nutri Blend",
+    "description": "Personal blender for smoothies and shakes.",
+    "price": 2499,
+    "category": "kitchen-appliances",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Borosil Cookware Set",
+    "description": "Non-stick cookware set of 7 pieces.",
+    "price": 4999,
+    "category": "kitchen-appliances",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "LG Microwave Oven 28L",
+    "description": "Convection microwave with multiple cooking modes.",
+    "price": 12999,
+    "category": "kitchen-appliances",
+    "stock": 14,
+    "rating": 5
+  },
+  {
+    "name": "Bombay Dyeing Bedsheet King Size",
+    "description": "100% cotton double bedsheet with 2 pillow covers.",
+    "price": 1499,
+    "category": "home-textiles",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Spaces Bath Towel Set",
+    "description": "Super soft cotton towels, pack of 4.",
+    "price": 1999,
+    "category": "home-textiles",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "IKEA DVALA Duvet Cover",
+    "description": "Comfortable duvet cover in various colors.",
+    "price": 2499,
+    "category": "home-textiles",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Amazon Basics Curtains",
+    "description": "Blackout curtains for bedroom, set of 2 panels.",
+    "price": 1799,
+    "category": "home-textiles",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Story@Home Door Mat Set",
+    "description": "Anti-slip doormats for entrance, pack of 3.",
+    "price": 799,
+    "category": "home-textiles",
+    "stock": 45,
+    "rating": 3
+  },
+  {
+    "name": "Portico New York Comforter",
+    "description": "Microfiber comforter for all seasons.",
+    "price": 3499,
+    "category": "home-textiles",
+    "stock": 22,
+    "rating": 4
+  },
+  {
+    "name": "Solimo Table Cloth",
+    "description": "Waterproof table cover for dining table.",
+    "price": 599,
+    "category": "home-textiles",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Urban Hues Carpet",
+    "description": "Shaggy carpet for living room, 5x7 feet.",
+    "price": 4999,
+    "category": "home-textiles",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Wakefit Pillow Set",
+    "description": "Memory foam pillows, pack of 2.",
+    "price": 1999,
+    "category": "home-textiles",
+    "stock": 30,
+    "rating": 5
+  },
+  {
+    "name": "Raymond Home Blanket",
+    "description": "Soft fleece blanket for winter.",
+    "price": 1299,
+    "category": "home-textiles",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Tata Sampann Toor Dal",
+    "description": "Premium quality split pigeon peas, 1kg pack.",
+    "price": 149,
+    "category": "groceries",
+    "stock": 80,
+    "rating": 4
+  },
+  {
+    "name": "Fortune Soyabean Oil",
+    "description": "Refined soybean oil for cooking, 5L pack.",
+    "price": 699,
+    "category": "groceries",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "India Gate Basmati Rice",
+    "description": "Premium long grain basmati rice, 5kg.",
+    "price": 599,
+    "category": "groceries",
+    "stock": 55,
+    "rating": 5
+  },
+  {
+    "name": "Aashirvaad Whole Wheat Atta",
+    "description": "Chakki fresh wheat flour, 10kg pack.",
+    "price": 449,
+    "category": "groceries",
+    "stock": 70,
+    "rating": 5
+  },
+  {
+    "name": "Britannia Good Day Biscuits",
+    "description": "Butter cookies family pack, 600g.",
+    "price": 89,
+    "category": "groceries",
+    "stock": 90,
+    "rating": 4
+  },
+  {
+    "name": "Nestle Maggi Noodles",
+    "description": "Masala instant noodles, pack of 12.",
+    "price": 144,
+    "category": "groceries",
+    "stock": 100,
+    "rating": 4
+  },
+  {
+    "name": "Amul Butter",
+    "description": "Salted butter 500g pack.",
+    "price": 269,
+    "category": "groceries",
+    "stock": 75,
+    "rating": 5
+  },
+  {
+    "name": "Organic India Tulsi Green Tea",
+    "description": "Organic tulsi tea bags, pack of 25.",
+    "price": 199,
+    "category": "groceries",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Everest Garam Masala",
+    "description": "Blended spice powder, 100g pack.",
+    "price": 89,
+    "category": "groceries",
+    "stock": 85,
+    "rating": 4
+  },
+  {
+    "name": "Kissan Mixed Fruit Jam",
+    "description": "Mixed fruit jam for breakfast, 500g.",
+    "price": 179,
+    "category": "groceries",
+    "stock": 65,
+    "rating": 4
+  },
+  {
+    "name": "Lindt Excellence Dark Chocolate",
+    "description": "70% cocoa dark chocolate bar, 100g.",
+    "price": 449,
+    "category": "specialty-foods",
+    "stock": 35,
+    "rating": 5
+  },
+  {
+    "name": "Urban Platter Quinoa",
+    "description": "Organic white quinoa, 1kg pack.",
+    "price": 599,
+    "category": "specialty-foods",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Keya Italian Pasta",
+    "description": "Penne pasta with herbs, 400g.",
+    "price": 199,
+    "category": "specialty-foods",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Himalayan Pink Salt",
+    "description": "Unrefined rock salt, 1kg pack.",
+    "price": 299,
+    "category": "specialty-foods",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Maulik Organic Honey",
+    "description": "Raw organic honey, 500g.",
+    "price": 399,
+    "category": "specialty-foods",
+    "stock": 32,
+    "rating": 5
+  },
+  {
+    "name": "Nutraj Dry Fruits Mix",
+    "description": "Premium mixed nuts, 250g pack.",
+    "price": 399,
+    "category": "specialty-foods",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Borges Extra Virgin Olive Oil",
+    "description": "Cold pressed olive oil, 500ml.",
+    "price": 699,
+    "category": "specialty-foods",
+    "stock": 25,
+    "rating": 5
+  },
+  {
+    "name": "Raw Pressery Cold Pressed Juice",
+    "description": "Healthy pressed juice variety pack.",
+    "price": 499,
+    "category": "specialty-foods",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Ferrero Rocher Chocolates",
+    "description": "Premium chocolate gift box, 16 pieces.",
+    "price": 599,
+    "category": "specialty-foods",
+    "stock": 30,
+    "rating": 5
+  },
+  {
+    "name": "Healthy Alternatives Stevia",
+    "description": "Natural zero-calorie sweetener, 100g.",
+    "price": 249,
+    "category": "specialty-foods",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Coca-Cola Soft Drink",
+    "description": "Carbonated beverage, pack of 6 cans.",
+    "price": 240,
+    "category": "beverages",
+    "stock": 70,
+    "rating": 4
+  },
+  {
+    "name": "Tropicana Mixed Fruit Juice",
+    "description": "100% fruit juice, 1L pack.",
+    "price": 149,
+    "category": "beverages",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "Nescafe Classic Coffee",
+    "description": "Instant coffee powder, 200g jar.",
+    "price": 449,
+    "category": "beverages",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Red Bull Energy Drink",
+    "description": "Energy drink pack of 4 cans.",
+    "price": 460,
+    "category": "beverages",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Lipton Green Tea",
+    "description": "Green tea bags, pack of 100.",
+    "price": 299,
+    "category": "beverages",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Bisleri Mineral Water",
+    "description": "Packaged drinking water, pack of 12 bottles.",
+    "price": 180,
+    "category": "beverages",
+    "stock": 80,
+    "rating": 4
+  },
+  {
+    "name": "Paper Boat Aam Panna",
+    "description": "Traditional Indian summer drink, 6 pack.",
+    "price": 300,
+    "category": "beverages",
+    "stock": 38,
+    "rating": 4
+  },
+  {
+    "name": "Starbucks Frappuccino",
+    "description": "Ready-to-drink coffee beverage, 4 pack.",
+    "price": 499,
+    "category": "beverages",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Monster Energy Drink",
+    "description": "Energy drink pack of 4 cans.",
+    "price": 480,
+    "category": "beverages",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Real Fruit Power Orange",
+    "description": "Fruit juice with pulp, 1L.",
+    "price": 129,
+    "category": "beverages",
+    "stock": 58,
+    "rating": 4
+  },
+  {
+    "name": "Wilson Evolution Basketball",
+    "description": "Official size basketball with microfiber cover.",
+    "price": 5999,
+    "category": "sports-gear",
+    "stock": 25,
+    "rating": 5
+  },
+  {
+    "name": "Nike Strike Football",
+    "description": "Size 5 soccer ball with textured casing.",
+    "price": 1999,
+    "category": "sports-gear",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Yonex Badminton Racket",
+    "description": "Professional badminton racket with cover.",
+    "price": 2999,
+    "category": "sports-gear",
+    "stock": 28,
+    "rating": 5
+  },
+  {
+    "name": "Cosco Cricket Bat",
+    "description": "Kashmir willow cricket bat with cover.",
+    "price": 1499,
+    "category": "sports-gear",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Nivia Tennis Balls",
+    "description": "High-quality tennis balls, pack of 3.",
+    "price": 699,
+    "category": "sports-gear",
+    "stock": 40,
+    "rating": 4
+  },
+  {
+    "name": "Vixen Cycling Gloves",
+    "description": "Half-finger padded cycling gloves.",
+    "price": 499,
+    "category": "sports-gear",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Nivia Volleyball",
+    "description": "Official size and weight volleyball.",
+    "price": 799,
+    "category": "sports-gear",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Slazenger Hockey Stick",
+    "description": "Composite hockey stick for field play.",
+    "price": 2499,
+    "category": "sports-gear",
+    "stock": 18,
+    "rating": 4
+  },
+  {
+    "name": "Nivia Table Tennis Racket Set",
+    "description": "TT bat set with 3 balls and cover.",
+    "price": 899,
+    "category": "sports-gear",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "Adidas Swimming Goggles",
+    "description": "Anti-fog swimming goggles with UV protection.",
+    "price": 1299,
+    "category": "sports-gear",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Nike Pro Training Top",
+    "description": "Compression fit training shirt for men.",
+    "price": 2499,
+    "category": "athletic-wear",
+    "stock": 38,
+    "rating": 5
+  },
+  {
+    "name": "Adidas Tiro Track Pants",
+    "description": "Classic training pants with ankle zips.",
+    "price": 3499,
+    "category": "athletic-wear",
+    "stock": 32,
+    "rating": 5
+  },
+  {
+    "name": "Puma Running Shorts",
+    "description": "Lightweight shorts with moisture-wicking fabric.",
+    "price": 1499,
+    "category": "athletic-wear",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "Under Armour Compression Leggings",
+    "description": "Full-length compression tights for women.",
+    "price": 2999,
+    "category": "athletic-wear",
+    "stock": 28,
+    "rating": 5
+  },
+  {
+    "name": "Reebok Gym Tank Top",
+    "description": "Sleeveless workout top with mesh panels.",
+    "price": 1299,
+    "category": "athletic-wear",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Decathlon Running Jacket",
+    "description": "Water-resistant running jacket with reflective strips.",
+    "price": 2499,
+    "category": "athletic-wear",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Nike Dri-FIT Sports Bra",
+    "description": "Medium support sports bra for training.",
+    "price": 1999,
+    "category": "athletic-wear",
+    "stock": 35,
+    "rating": 5
+  },
+  {
+    "name": "Adidas Hoodie",
+    "description": "Full-zip training hoodie with kangaroo pocket.",
+    "price": 3999,
+    "category": "athletic-wear",
+    "stock": 30,
+    "rating": 4
+  },
+  {
+    "name": "Puma Training Sweatshirt",
+    "description": "Crew-neck sweatshirt for gym and casual wear.",
+    "price": 2799,
+    "category": "athletic-wear",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Reebok CrossFit Shorts",
+    "description": "Performance shorts for high-intensity training.",
+    "price": 1799,
+    "category": "athletic-wear",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "PowerMax Fitness Treadmill",
+    "description": "Motorized treadmill with 3HP motor and incline.",
+    "price": 42999,
+    "category": "exercise-equipment",
+    "stock": 8,
+    "rating": 4
+  },
+  {
+    "name": "Lifelong Elliptical Cross Trainer",
+    "description": "Magnetic elliptical machine for cardio.",
+    "price": 18999,
+    "category": "exercise-equipment",
+    "stock": 12,
+    "rating": 4
+  },
+  {
+    "name": "Cockatoo Adjustable Dumbbells",
+    "description": "5kg-30kg adjustable dumbbell set.",
+    "price": 8999,
+    "category": "exercise-equipment",
+    "stock": 20,
+    "rating": 4
+  },
+  {
+    "name": "Strauss Yoga Mat with Bag",
+    "description": "6mm anti-slip yoga mat with carrying strap.",
+    "price": 999,
+    "category": "exercise-equipment",
+    "stock": 55,
+    "rating": 4
+  },
+  {
+    "name": "Boldfit Gym Gloves",
+    "description": "Padded workout gloves with wrist support.",
+    "price": 499,
+    "category": "exercise-equipment",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Aurion Push Up Bars",
+    "description": "Steel push-up stands with foam grips.",
+    "price": 799,
+    "category": "exercise-equipment",
+    "stock": 48,
+    "rating": 4
+  },
+  {
+    "name": "KOBO Exercise Bike",
+    "description": "Stationary bike with digital monitor.",
+    "price": 12999,
+    "category": "exercise-equipment",
+    "stock": 15,
+    "rating": 4
+  },
+  {
+    "name": "Skipping Rope with Counter",
+    "description": "Digital jump rope with calorie counter.",
+    "price": 399,
+    "category": "exercise-equipment",
+    "stock": 65,
+    "rating": 4
+  },
+  {
+    "name": "Protoner Weight Plates Set",
+    "description": "PVC weight plates set of 20kg.",
+    "price": 2499,
+    "category": "exercise-equipment",
+    "stock": 25,
+    "rating": 4
+  },
+  {
+    "name": "Viva Fitness Multi Gym",
+    "description": "Home gym station with multiple workout options.",
+    "price": 34999,
+    "category": "exercise-equipment",
+    "stock": 6,
+    "rating": 4
+  },
+  {
+    "name": "Portable Bluetooth Speaker",
+    "description": "Waterproof wireless speaker with 10-hour battery.",
+    "price": 1999,
+    "category": "other",
+    "stock": 35,
+    "rating": 4
+  },
+  {
+    "name": "LED Desk Lamp",
+    "description": "Adjustable study lamp with USB charging port.",
+    "price": 1499,
+    "category": "other",
+    "stock": 28,
+    "rating": 4
+  },
+  {
+    "name": "Travel Laptop Backpack",
+    "description": "Anti-theft backpack with USB charging port.",
+    "price": 2499,
+    "category": "other",
+    "stock": 32,
+    "rating": 4
+  },
+  {
+    "name": "Bamboo Water Bottle",
+    "description": "Eco-friendly insulated water bottle 750ml.",
+    "price": 899,
+    "category": "other",
+    "stock": 45,
+    "rating": 4
+  },
+  {
+    "name": "Digital Alarm Clock",
+    "description": "LED alarm clock with temperature display.",
+    "price": 599,
+    "category": "other",
+    "stock": 40,
+    "rating": 3
+  },
+  {
+    "name": "Moleskine Classic Notebook",
+    "description": "Premium hardcover ruled notebook.",
+    "price": 1299,
+    "category": "other",
+    "stock": 35,
+    "rating": 5
+  },
+  {
+    "name": "Desk Organizer Set",
+    "description": "Multi-compartment desk organizer with phone holder.",
+    "price": 899,
+    "category": "other",
+    "stock": 42,
+    "rating": 4
+  },
+  {
+    "name": "USB Flash Drive 64GB",
+    "description": "High-speed USB 3.0 pen drive.",
+    "price": 799,
+    "category": "other",
+    "stock": 60,
+    "rating": 4
+  },
+  {
+    "name": "Reusable Shopping Bags",
+    "description": "Eco-friendly cloth shopping bags, set of 5.",
+    "price": 499,
+    "category": "other",
+    "stock": 50,
+    "rating": 4
+  },
+  {
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with silent clicks.",
+    "price": 699,
+    "category": "other",
+    "stock": 48,
+    "rating": 4
   }
 ]

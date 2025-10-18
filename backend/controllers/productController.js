@@ -6,7 +6,7 @@ import {deleteFromCloudinary, uploadOnCloudinary} from "../utlis/cloudinary.js"
 
 const createProduct= async(req ,res)=>{
     
-    const {name,description ,price,category,stock}=req.body;
+    const {name,description ,price,category,stock,rating}=req.body;
     req.body.user= req.user._id;
     // console.log(req.user)
 
@@ -49,7 +49,7 @@ const createProduct= async(req ,res)=>{
         description,
         price,
         images:imagesLink,
-
+        rating,
         category,
         stock,
         user: req.user._id 
