@@ -17,13 +17,14 @@ import {
 import { Card, CardHeader, CardTitle, CardContent, Input, Button, Badge } from "../components/ui";
 import { useDispatch } from "react-redux";
 import { Logout } from "../redux/slices/authSlice";
-import type { AppDispatch } from "../redux/store";
+import type { AppDispatch, RootState } from "../redux/store";
+import { useSelector } from "react-redux";
 
 interface UserType {
   name: string;
   email: string;
   phone: string;
-  avatar?: string;
+  avatar?: string ;  // Fixed: Changed to Avatar | null
   joinedDate?: string;
   totalOrders?: number;
 }
@@ -33,10 +34,11 @@ const ProfilePage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-
+  const userStore=useSelector((state:RootState)=>state.auth.user);
   // Example user data - replace with actual data from Redux/API
   const [user, setUser] = useState<UserType>({
     name: "Praveen Singh",
+    avatar:userStore?.avatar?.url || "",  // Fixed: Changed from avatar?:null to avatar: null
     email: "praveen@example.com",
     phone: "+91 9876543210",
     joinedDate: "January 2024",
@@ -60,8 +62,6 @@ const ProfilePage: React.FC = () => {
       setLoading(false);
     }
   };
-
-  
 
   const accountOptions = [
     {
@@ -115,25 +115,26 @@ const ProfilePage: React.FC = () => {
         {/* Profile Header */}
         <Card variant="elevated" padding="lg">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            {/* Avatar */}
+           {/* Avatar */}
             <div className="relative">
               {user.avatar ? (
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-24 h-24 rounded-full object-cover"
+                  className="w-24 h-24 rounded-full object-cover ring-4 ring-blue-600 dark:ring-blue-400"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white text-2xl font-semibold">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 flex items-center justify-center text-white text-2xl font-semibold ring-4 ring-blue-600 dark:ring-blue-400">
                   {user.name.charAt(0).toUpperCase()}
                 </div>
               )}
               {isEditing && (
-                <button className="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition-base">
-                  <Camera size={14} />
+                <button className="absolute -bottom-2 -right-2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition-all shadow-lg">
+                  <Camera size={16} />
                 </button>
               )}
             </div>
+
 
             {/* User Info */}
             <div className="flex-1">

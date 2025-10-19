@@ -4,12 +4,17 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../axios/axiosInstance';
 
 // --- Types ---
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
   role: "admin" | "user";
-  avatar: string | null;
+  avatar: Avatar | null;
+}
+
+export interface Avatar {
+  url:string ;
+  public_id: string ;
 }
 
 interface AuthState {

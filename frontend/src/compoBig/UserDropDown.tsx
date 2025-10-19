@@ -65,38 +65,37 @@ export default function UserDropdown() {
     <div className="relative" ref={dropdownRef}>
       {/* Trigger Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 p-2 rounded-lg transition-base hover:bg-[rgb(var(--card))] text-[rgb(var(--fg))]"
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      >
-        <div className="relative">
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-3 p-2 rounded-lg transition-base hover:bg-[rgb(var(--card))] text-[rgb(var(--fg))]"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+        >
+          {/* Avatar Section */}
           {user ? (
-            user.avatar ? (
+            user.avatar?.url ? (
               <img 
-                src={user.avatar} 
+                src={user.avatar.url} 
                 alt={user.name || 'User'}
-                className="w-6 h-6 rounded-full object-cover"
+                className="w-7 h-7 rounded-full object-cover ring-2 ring-blue-600 dark:ring-blue-400 hover:ring-4 transition-all duration-200 flex-shrink-0"
               />
             ) : (
-              <div className="w-6 h-6 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white text-xs font-medium">
+              <div className="w-9 h-9 flex-shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 flex items-center justify-center text-white text-sm font-semibold ring-2 ring-blue-600 dark:ring-blue-400 hover:ring-4 transition-all duration-200 shadow-lg">
                 {(user.name || user.email || 'U').charAt(0).toUpperCase()}
               </div>
             )
           ) : (
-            <User size={20} />
+            <div className="w-9 h-9 flex-shrink-0 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200">
+              <User size={20} className="text-gray-600 dark:text-gray-300" />
+            </div>
           )}
-          
-          {user && (
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-[rgb(var(--bg))] rounded-full" />
-          )}
-        </div>
-        
-        <ChevronDown 
-          size={12} 
-          className={`transition-transform ${isOpen ? 'rotate-180' : ''}`}
-        />
-      </button>
+
+          {/* Chevron Icon */}
+          <ChevronDown 
+            size={16} 
+            className={`transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+          />
+        </button>
+
 
       {/* Dropdown Menu */}
       {isOpen && (
@@ -110,7 +109,7 @@ export default function UserDropdown() {
               <div className="flex items-center gap-3">
                 {user.avatar ? (
                   <img 
-                    src={user.avatar} 
+                    src={user.avatar?.url} 
                     alt={user.name || 'User'}
                     className="w-8 h-8 rounded-full object-cover"
                   />
