@@ -40,58 +40,94 @@ const registerUser = async (req, res) => {
         },
     })
 
-    const token = user.getJWTtoken();
-    res.cookie("token", token, )
-    res.status(201).json({
-    success: true,
-    message: "User registered successfully",
-    data: user
-    
-    });
-    console.log("data sent from backend :",user);
+    let token = newUser.getJWTtoken();
+        
+        // Same cookie settings
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 5 * 24 * 60 * 60 * 1000,
+            path: '/'
+        });
+        
+        console.log("data sent from backend :",user);
+        return res.status(201).json({
+            success: true,
+            message: "Registration successful",
+            user: { /* user data */ },
+            token
+        });
     } catch (error) {
         console.log("error in backend !!",error);
         
     }
     
 }
-
-const  loginUser=async (req,res)=>{
-    console.log("login hit !!",req.body);
-    const { email, password } = req.body;
+const loginUser = async (req, res) => {
+    console.log("login hit !!", req.body);
     
-    if (!email || !password) {
-        return res.status(400).send("Please provide email and password");
-    }
+    try {
+        const { email, password } = req.body;
+        
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide email and password"
+            });
+        }
 
-    let user = await User.findOne({ email }).select("+password")
+        let user = await User.findOne({ email }).select("+password");
 
-    if (!user) {
-        return res.status(401).send("Invalid email or password");
-    }
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
 
-    const isPasswordValid = await user.isPasswordCorrect(password)
+        const isPasswordValid = await user.isPasswordCorrect(password);
 
-    if (!isPasswordValid) {
-        return res.status(401).send("Invalid email or password");
-    }
-    
-    let token = user.getJWTtoken();
-    res.cookie("token",token);
-    console.log(token);
-    res.status(200).json(
-        {
-            message: "login success",
+        if (!isPasswordValid) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
+        
+        let token = user.getJWTtoken();
+        
+        // 🔥 PRODUCTION-READY COOKIE SETTINGS
+        res.cookie("token", token, {
+            httpOnly: true,        // Prevents JavaScript access (security)
+            secure: true,          // HTTPS only (required for production)
+            sameSite: 'none',      // Allows cross-origin cookies
+            maxAge: 5 * 24 * 60 * 60 * 1000,  // 5 days in milliseconds
+            path: '/'              // Available on all routes
+        });
+        
+        console.log("✅ Token set in cookie:", token);
+        
+        return res.status(200).json({
+            success: true,
+            message: "Login successful",
             user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
                 role: user.role,
             },
-        }
-    );
-  
-}
+            token  // Also send token in response (optional)
+        });
+        
+    } catch (error) {
+        console.error("❌ Login error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Server error during login"
+        });
+    }
+};
 
 
 const logOutUser = async (req, res) => {
