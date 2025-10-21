@@ -56,30 +56,30 @@ export default function TrendingPage() {
   const trendingProducts = products?.slice(0, 8) || [];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
+    <section className="section-y px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="app-container">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(var(--fg))]">Trending Products</h2>
-          <p className="text-lg text-[rgb(var(--muted))] max-w-2xl mx-auto">
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[rgb(var(--fg))]">Trending Products</h2>
+          <p className="text-base sm:text-lg text-[rgb(var(--muted))] max-w-2xl mx-auto">
             Check out what's trending right now!
           </p>
         </div>
 
-        {/* Trending Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+        {/* Trending Products Grid (smaller, consistent cards) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {trendingProducts.map((product: any) => {
             const isInCart = cartItems.some((item) => item._id === product._id);
             return (
               <div
                 key={product._id}
-                className="group card overflow-hidden hover:shadow-lg transition-base cursor-pointer"
+                className="group product-card cursor-pointer"
                 onClick={() => navigate(`/product/${product._id}`)}
               >
                 {/* Product Image */}
-                <div className="relative aspect-square overflow-hidden bg-[rgb(var(--bg))]">
+                <div className="product-card-img">
                   <img
-                    src={product.images[0]?.url || 'https://via.placeholder.com/300x300'}
+                    src={product.images[0]?.url || 'https://via.placeholder.com/300x225'}
                     alt={product.name}
                     className="h-full w-full object-cover transition-base group-hover:scale-105"
                   />
@@ -87,13 +87,13 @@ export default function TrendingPage() {
 
                 {/* Product Info */}
                 <div
-                  className="p-4 flex flex-col"
+                  className="p-3 flex flex-col"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <h4 className="text-sm font-semibold line-clamp-2 text-[rgb(var(--fg))] mb-2 min-h-[40px]">
+                  <h4 className="text-sm font-semibold line-clamp-2 text-[rgb(var(--fg))] mb-1 min-h-[36px]">
                     {product.name}
                   </h4>
-                  <p className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-3">
+                  <p className="text-base font-bold text-blue-600 dark:text-blue-400 mb-2">
                     ₹{product.price?.toLocaleString()}
                   </p>
 
@@ -110,7 +110,7 @@ export default function TrendingPage() {
                           })
                         )
                       }
-                      className="w-full flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+                      className="w-full flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
                     >
                       <ShoppingCart size={14} />
                       Add to Cart
@@ -118,7 +118,7 @@ export default function TrendingPage() {
                   ) : (
                     <button
                       disabled
-                      className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-3 py-2 text-sm font-medium rounded-lg cursor-default"
+                      className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-3 py-2 text-xs sm:text-sm font-medium rounded-lg cursor-default"
                     >
                       <CheckCircle size={14} />
                       In Cart
@@ -131,12 +131,12 @@ export default function TrendingPage() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <button
             onClick={() => navigate("/products")}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[rgb(var(--fg))] text-[rgb(var(--bg))] rounded-full font-semibold hover:opacity-90 transition-base shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-[rgb(var(--fg))] text-[rgb(var(--bg))] rounded-full text-sm sm:text-base font-semibold hover:opacity-90 transition-base shadow-lg hover:shadow-xl"
           >
-            <Sparkles size={20} />
+            <Sparkles size={18} />
             View All Products
           </button>
         </div>

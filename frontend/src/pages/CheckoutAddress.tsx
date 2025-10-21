@@ -75,7 +75,7 @@ const CheckoutAddress: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-[rgb(var(--fg))] font-medium mb-1">City</label>
               <input
@@ -99,7 +99,7 @@ const CheckoutAddress: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-[rgb(var(--fg))] font-medium mb-1">Pincode</label>
               <input

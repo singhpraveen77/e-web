@@ -69,6 +69,13 @@ const MyOrders: React.FC = () => {
     fetchOrders();
   }, []);
 
+  // Frontend pagination (declare hooks before any returns)
+  const [page, setPage] = useState(1);
+  const perPage = 5;
+  const totalPages = Math.max(1, Math.ceil(orders.length / perPage));
+  const paginated = orders.slice((page - 1) * perPage, page * perPage);
+  const goTo = (p: number) => setPage(Math.min(totalPages, Math.max(1, p)));
+
   // 🌀 Loading / Error States
   if (loading) {
     return (
@@ -102,7 +109,7 @@ const MyOrders: React.FC = () => {
       </h1>
 
       <div className="space-y-6">
-        {orders.map((order) => (
+        {paginated.map((order) => (
           <div
             key={order._id}
             className="
@@ -191,6 +198,35 @@ const MyOrders: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="mt-8 flex items-center justify-center gap-2">
+        <button
+          onClick={() => goTo(page - 1)}
+          disabled={page === 1}
+          className="px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-700 disabled:opacity-50"
+        >
+          Prev
+        </button>
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i + 1)}
+            className={`px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-700 ${
+              page === i + 1 ? 'bg-blue-600 text-white' : ''
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => goTo(page + 1)}
+          disabled={page === totalPages}
+          className="px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-700 disabled:opacity-50"
+        >
+          Next
+        </button>
       </div>
     </div>
   );

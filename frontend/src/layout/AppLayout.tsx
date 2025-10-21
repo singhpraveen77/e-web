@@ -4,9 +4,10 @@ import Footer from "../compoBig/Footer";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-[rgb(var(--fg))] flex flex-col items-center">
+    <div className="min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--fg))] flex flex-col">
       <Navbar />
-      <main className="pt-16 w-full flex justify-center items-center">
+      {/* Reserve space for the floating navbar and provide consistent page paddings */}
+      <main className="flex-1 w-full pt-20 pb-12">
         <Outlet />
       </main>
       <Footer />

@@ -68,13 +68,13 @@ export default function Navbar() {
     <>
       {/* ✅ Navbar with scroll effect */}
       <nav
-          className={`fixed top-1 left-1/2 -translate-x-1/2 z-50 w-fit 
+          className={`fixed top-1 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-0.5rem)] md:w-auto
           rounded-3xl border border-[rgb(var(--border))] 
-          bg-gray-800/70 backdrop-blur-3xl shadow-lg
+          bg-[rgb(var(--card))]/70 backdrop-blur-3xl shadow-lg
           transition-transform duration-500 ease-in-out
           ${showNav ? "translate-y-0" : "-translate-y-[150%]"}`}
         >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
@@ -141,6 +141,16 @@ export default function Navbar() {
                 >
                   Contact
                 </button>
+                <button
+                  onClick={() => navigate("/about")}
+                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                    location.pathname === "/about"
+                      ? "text-blue-600 dark:text-blue-400 font-semibold"
+                      : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+                  }`}
+                >
+                  About Us
+                </button>
               </nav>
 
               <div className="flex items-center space-x-4">
@@ -169,6 +179,9 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-3">
               <ThemeToggle />
+
+              {/* User Dropdown always visible on navbar */}
+              <UserDropdown />
 
               {/* Mobile Cart */}
               <div className="relative">
@@ -228,7 +241,7 @@ export default function Navbar() {
 
               {/* Mobile Navigation */}
               <nav className="space-y-2">
-                {["/", "/products", "/contact"].map((path) => (
+                {["/", "/products", "/contact", "/about"].map((path) => (
                   <button
                     key={path}
                     onClick={() => {
@@ -245,14 +258,13 @@ export default function Navbar() {
                       ? "Home"
                       : path === "/products"
                       ? "Shop"
-                      : "Contact"}
+                      : path === "/contact"
+                      ? "Contact"
+                      : "About Us"}
                   </button>
                 ))}
               </nav>
 
-              <div className="pt-4 border-t border-[rgb(var(--border))]">
-                <UserDropdown />
-              </div>
             </div>
           </div>
         </div>

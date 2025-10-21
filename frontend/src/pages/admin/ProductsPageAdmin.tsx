@@ -155,15 +155,15 @@ const ProductsPage: React.FC = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
+            <div className="overflow-x-auto transition-all duration-200">
+              <table className="w-full min-w-[720px] text-xs sm:text-sm">
                 <thead>
                   <tr className="border-b border-[rgb(var(--border))]">
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Product Name</th>
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Price</th>
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Stock</th>
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Category</th>
-                    <th className="text-right p-3 text-sm font-medium text-[rgb(var(--muted))]">Actions</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Product Name</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Price</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Stock</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Category</th>
+                    <th className="text-right p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -179,13 +179,13 @@ const ProductsPage: React.FC = () => {
                           isDeleted ? 'opacity-50 bg-red-50 dark:bg-red-900/20' : ''
                         }`}
                       >
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="font-medium text-[rgb(var(--fg))]">{product.name}</div>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <span className="font-semibold text-green-600 dark:text-green-400">₹{product.price?.toLocaleString()}</span>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="flex items-center gap-2">
                             <span className={`font-medium ${
                               currentStock < 10 ? 'text-red-600 dark:text-red-400' : 'text-[rgb(var(--fg))]'
@@ -197,10 +197,10 @@ const ProductsPage: React.FC = () => {
                             )}
                           </div>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <Badge variant="outline" size="sm">{product.category}</Badge>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="flex justify-end gap-2">
                             <Button
                               onClick={() =>

@@ -84,10 +84,10 @@ export default function ProductsSection() {
               return (
                 <div
                   key={product._id}
-                  className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] card overflow-hidden hover:shadow-md transition-base cursor-pointer"
+                  className="min-w-[240px] sm:min-w-[280px] product-card cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
-                  <div className="relative  bg-[rgb(var(--card))]">
+                  <div className="product-card-img">
                     <img
                       src={product.images[0]?.url}
                       alt={product.name}
@@ -95,11 +95,11 @@ export default function ProductsSection() {
                     />
                   </div>
                   <div
-                    className="p-4 flex flex-col items-center text-center"
+                    className="p-3 sm:p-4 flex flex-col items-center text-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <h3 className="text-base sm:text-lg font-semibold line-clamp-2">{product.name}</h3>
-                    <p className="text-blue-600 dark:text-blue-400 text-lg font-bold mt-1">
+                    <h3 className="text-sm font-semibold line-clamp-2 min-h-[36px]">{product.name}</h3>
+                    <p className="text-blue-600 dark:text-blue-400 text-base font-bold mt-1">
                       ₹{product.price}
                     </p>
 
@@ -116,7 +116,7 @@ export default function ProductsSection() {
                             })
                           )
                         }
-                        className="mt-4 flex items-center gap-2 rounded-lg px-4 py-2 transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+                        className="mt-3 flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
                       >
                         <ShoppingCart size={18} />
                         Add to Cart
@@ -124,7 +124,7 @@ export default function ProductsSection() {
                     ) : (
                       <button
                         disabled
-                        className="mt-4 flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg cursor-default"
+                        className="mt-3 flex items-center gap-2 bg-green-600 text-white px-3 py-2 text-sm rounded-lg cursor-default"
                       >
                         <CheckCircle size={18} />
                         Added

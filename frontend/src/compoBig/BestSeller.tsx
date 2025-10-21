@@ -122,18 +122,18 @@ export default function BestSeller() {
               return (
                 <div
                   key={product._id}
-                  className="group relative min-w-[280px] sm:min-w-[320px] bg-[rgb(var(--card))] border-[rgb(var(--border))] rounded-2xl overflow-hidden shadow-[0_4px_16px_-4px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] transition-all duration-300 cursor-pointer"
+                  className="group relative min-w-[240px] sm:min-w-[280px] product-card cursor-pointer"
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
                   {/* Image */}
-                  <div className="relative  h-fit overflow-hidden">
+                  <div className="product-card-img">
                     <img
                       src={
                         product.images[0]?.url ||
                         "https://via.placeholder.com/320x400"
                       }
                       alt={product.name}
-                      className=" w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className=" h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* Badge */}
                     <div className="absolute top-3 left-3">
@@ -146,15 +146,15 @@ export default function BestSeller() {
 
                   {/* Content */}
                   <div
-                    className="p-5 flex flex-col h-fit gap-2"
+                    className="p-3 sm:p-4 flex flex-col h-fit gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <h3 className="text-base font-semibold line-clamp-2 text-[rgb(var(--fg))] mb-2 flex-1">
+                    <h3 className="text-sm font-semibold line-clamp-2 text-[rgb(var(--fg))] mb-2 flex-1 min-h-[36px]">
                       {product.name}
                     </h3>
 
-                    <div className="flex items-center justify-between mb-3">
-                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-base font-bold text-blue-600 dark:text-blue-400">
                         ₹{product.price?.toLocaleString()}
                       </p>
                       <div className="flex items-center gap-1">
@@ -181,7 +181,7 @@ export default function BestSeller() {
                             })
                           )
                         }
-                        className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 transition-all duration-300 shadow-md hover:shadow-lg"
+                        className="w-full flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <ShoppingCart size={16} />
                         Add to Cart
@@ -189,7 +189,7 @@ export default function BestSeller() {
                     ) : (
                       <button
                         disabled
-                        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2.5 text-sm font-medium rounded-xl shadow-inner cursor-default"
+                        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-3 py-2 text-sm font-medium rounded-lg shadow-inner cursor-default"
                       >
                         <CheckCircle size={16} />
                         In Cart

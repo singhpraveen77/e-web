@@ -168,14 +168,14 @@ const UsersPage: React.FC = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
+            <div className="overflow-x-auto transition-all duration-200">
+              <table className="w-full min-w-[720px] text-xs sm:text-sm">
                 <thead>
                   <tr className="border-b border-[rgb(var(--border))]">
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">User</th>
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Email</th>
-                    <th className="text-left p-3 text-sm font-medium text-[rgb(var(--muted))]">Role</th>
-                    <th className="text-right p-3 text-sm font-medium text-[rgb(var(--muted))]">Actions</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">User</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Email</th>
+                    <th className="text-left p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Role</th>
+                    <th className="text-right p-2 sm:p-3 font-medium text-[rgb(var(--muted))]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -190,7 +190,7 @@ const UsersPage: React.FC = () => {
                           isDeleted ? 'opacity-50 bg-red-50 dark:bg-red-900/20' : ''
                         }`}
                       >
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
                               <UserCheck size={16} className="text-blue-600 dark:text-blue-400" />
@@ -200,10 +200,10 @@ const UsersPage: React.FC = () => {
                             </div>
                           </div>
                         </td>
-                        <td className="p-3">
-                          <span className="text-sm text-[rgb(var(--muted))]">{user.email}</span>
+                        <td className="p-2 sm:p-3">
+                          <span className="text-xs sm:text-sm text-[rgb(var(--muted))]">{user.email}</span>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="flex items-center gap-2">
                             <Badge 
                               variant={user.role === 'admin' ? 'primary' : 'secondary'}
@@ -223,7 +223,7 @@ const UsersPage: React.FC = () => {
                             )}
                           </div>
                         </td>
-                        <td className="p-3">
+                        <td className="p-2 sm:p-3">
                           <div className="flex justify-end gap-2">
                             <Button
                               onClick={() => handleToggleRole(user._id, user.role)}

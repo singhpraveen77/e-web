@@ -53,6 +53,19 @@
   @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Vertical section spacing helper */
+.section-y {
+  @apply py-10 sm:py-12 lg:py-16;
+}
+
+/* Unified product card sizing */
+.product-card {
+  @apply card p-3 sm:p-4 hover:shadow-md transition-base;
+}
+.product-card-img {
+  @apply relative aspect-[4/3] overflow-hidden rounded-md bg-[rgb(var(--bg))];
+}
+
 /* Sticky product filter container */
 .sticky-filter {
   /* Max height to prevent overlapping footer - viewport minus navbar (64px) minus padding */

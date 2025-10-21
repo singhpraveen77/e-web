@@ -125,7 +125,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   setRating,
   resetFilters,
 }) => {
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(["electronics"]);
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   const toggleCategory = (categoryValue: string): void => {
     setExpandedCategories((prev) =>
