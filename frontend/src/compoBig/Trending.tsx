@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllProducts } from "../redux/slices/productSlice";
 import { addItem } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import ProductCardSkeleton from "../components/skeletons/ProductCardSkeleton";
 
 export default function TrendingPage() {
   const { products, loading, error } = useSelector((state: RootState) => state.products);
@@ -23,18 +24,13 @@ export default function TrendingPage() {
     return (
       <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="app-container">
-          <div className="animate-pulse text-center mb-12">
-            <div className="h-8 bg-[rgb(var(--border))] rounded w-64 mx-auto mb-4"></div>
-            <div className="h-4 bg-[rgb(var(--border))] rounded w-96 mx-auto"></div>
+          <div className="text-center mb-12">
+            <div className="skeleton skeleton--text w-33 mx-auto mb-2" />
+            <div className="skeleton skeleton--text w-50 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="card p-5">
-                <div className="aspect-square bg-[rgb(var(--border))] rounded mb-4"></div>
-                <div className="h-4 bg-[rgb(var(--border))] rounded mb-2"></div>
-                <div className="h-6 bg-[rgb(var(--border))] rounded mb-4 w-24"></div>
-                <div className="h-10 bg-[rgb(var(--border))] rounded"></div>
-              </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
             ))}
           </div>
         </div>

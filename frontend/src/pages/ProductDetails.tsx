@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/slices/cartSlice";
 import type { RootState, AppDispatch } from "../redux/store";
 import { ShoppingCart, CheckCircle } from "lucide-react";
+import ProductDetailsSkeleton from "../components/skeletons/ProductDetailsSkeleton";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -32,11 +33,7 @@ const ProductDetails = () => {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen text-lg">
-        Loading...
-      </div>
-    );
+    return <ProductDetailsSkeleton />;
   }
 
   if (error) {

@@ -1,0 +1,69 @@
+/* skeleton.css — site-wide skeleton loader (theme-aware) */
+
+:root {
+  --sk-radius: 10px;
+  --sk-shimmer-speed: 1.2s;
+  --sk-gap: 12px;
+
+  /* Fallback (light) */
+  --sk-base: #e9eef3;
+  --sk-highlight: #f6f8fb;
+  --sk-border: #e1e6ec;
+
+  /* Token-derived colors (override fallback when supported) */
+  --sk-base: color-mix(in oklab, rgb(var(--border)) 70%, white 30%);
+  --sk-highlight: color-mix(in oklab, rgb(var(--border)) 40%, white 60%);
+  --sk-border: rgb(var(--border));
+}
+
+.dark {
+  /* Fallback (dark) */
+  --sk-base: #2b313a;
+  --sk-highlight: #353c47;
+  --sk-border: #3a414d;
+
+  /* Token-derived colors (override fallback when supported) */
+  --sk-base: color-mix(in oklab, rgb(var(--border)) 75%, white 25%);
+  --sk-highlight: color-mix(in oklab, rgb(var(--border)) 55%, white 45%);
+  --sk-border: rgb(var(--border));
+}
+
+/* Core */
+.skeleton {
+  background: linear-gradient(90deg, var(--sk-base) 25%, var(--sk-highlight) 37%, var(--sk-base) 63%);
+  background-size: 400% 100%;
+  border-radius: var(--sk-radius);
+  animation: sk-shimmer var(--sk-shimmer-speed) ease-in-out infinite;
+  display: block;
+  color: transparent;
+  user-select: none;
+}
+
+@keyframes sk-shimmer { 0% { background-position: 100% 0 } 100% { background-position: 0 0 } }
+
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none } }
+
+/* Variants */
+.skeleton--static { animation: none; background: var(--sk-base) }
+.skeleton--surface { box-shadow: inset 0 0 0 1px var(--sk-border) }
+
+.skeleton--text { height: 1em; line-height: 1; margin-block: calc(var(--sk-gap) / 3) }
+.skeleton--thin { height: .75em }
+.skeleton--thick { height: 1.25em }
+.skeleton--rect { width: 100%; height: 120px }
+.skeleton--button { width: 120px; height: 36px; border-radius: 8px }
+.skeleton--avatar, .skeleton--circle { width: 48px; height: 48px; border-radius: 50% }
+.skeleton--rounded { border-radius: var(--sk-radius) }
+.skeleton--pill { border-radius: 9999px }
+
+/* Width helpers */
+.w-25 { width: 25% }
+.w-33 { width: 33.333% }
+.w-50 { width: 50% }
+.w-66 { width: 66.666% }
+.w-75 { width: 75% }
+.w-100 { width: 100% }
+
+/* Layout helpers */
+.skeleton-list { display: grid; gap: var(--sk-gap) }
+.skeleton-row { display: flex; gap: var(--sk-gap); align-items: center }

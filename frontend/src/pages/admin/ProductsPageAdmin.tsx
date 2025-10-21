@@ -97,10 +97,38 @@ const ProductsPage: React.FC = () => {
 
   if (loading) return (
     <div className="app-container py-8">
-      <div className="flex items-center justify-center min-h-64">
-        <div className="text-center">
-          <Package className="mx-auto mb-4 text-[rgb(var(--muted))]" size={48} />
-          <p className="text-lg text-[rgb(var(--muted))]">Loading products...</p>
+      <div className="max-w-6xl mx-auto space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="skeleton skeleton--circle" />
+          <div className="skeleton skeleton--text w-25" />
+        </div>
+        <div className="card p-4">
+          <div className="skeleton skeleton--text w-33 mb-4" />
+          {/* Table skeleton */}
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px]">
+              <thead>
+                <tr className="border-b border-[rgb(var(--border))]">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <th key={i} className="text-left p-2 sm:p-3">
+                      <div className="skeleton skeleton--text w-50" />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Array.from({ length: 6 }).map((_, r) => (
+                  <tr key={r} className="border-b border-[rgb(var(--border))]">
+                    {Array.from({ length: 5 }).map((_, c) => (
+                      <td key={c} className="p-2 sm:p-3">
+                        <div className={`skeleton skeleton--text ${["w-75","w-50","w-66","w-33"][ (r+c)%4]}`} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

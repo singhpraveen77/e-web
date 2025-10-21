@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { me } from "./redux/slices/authSlice";
 import type { AppDispatch, RootState } from "./redux/store";
 import router from "./compoBig/Router"; // router is defined separately
+import AppShellSkeleton from "./components/skeletons/AppShellSkeleton";
 
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,7 +14,7 @@ export default function App() {
     dispatch(me());
   }, [dispatch]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <AppShellSkeleton />;
 
   return <RouterProvider router={router} />;
 }

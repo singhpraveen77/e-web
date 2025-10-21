@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllProducts } from "../redux/slices/productSlice";
 import { addItem } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import ProductCardSkeleton from "../components/skeletons/ProductCardSkeleton";
 
 export default function ProductsSection() {
   const { products, loading, error } = useSelector(
@@ -39,8 +40,25 @@ export default function ProductsSection() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error...</p>;
+  if (loading)
+    return (
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[rgb(var(--bg))] relative">
+        <div className="app-container">
+          <div className="flex justify-between items-center mb-8">
+            <div className="skeleton skeleton--text w-33" />
+            <div className="skeleton skeleton--pill w-25" />
+          </div>
+          <div className="flex overflow-x-auto space-x-4 sm:space-x-6 scroller-hidden pb-1">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="min-w-[240px] sm:min-w-[280px]">
+                <ProductCardSkeleton variant="slider" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  if (error) return <p className="text-center text-red-500">Error loading products</p>;
 
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[rgb(var(--bg))] relative">

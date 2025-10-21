@@ -7,6 +7,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useEffect, useRef } from "react";
+import ProductCardSkeleton from "../components/skeletons/ProductCardSkeleton";
 import type { RootState, AppDispatch } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { AllProducts } from "../redux/slices/productSlice";
@@ -45,12 +46,11 @@ export default function BestSeller() {
   if (loading)
     return (
       <section className="py-16 px-6 lg:px-10">
-        <div className="animate-pulse flex gap-6 overflow-hidden">
-          {[...Array(4)].map((_, i) => (
-            <div
-              key={i}
-              className="min-w-[280px] h-[380px] bg-[rgb(var(--card))] rounded-2xl border border-[rgb(var(--border))]"
-            ></div>
+        <div className="flex gap-6 overflow-hidden">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="min-w-[240px] sm:min-w-[280px]">
+              <ProductCardSkeleton variant="slider" />
+            </div>
           ))}
         </div>
       </section>
@@ -83,7 +83,7 @@ export default function BestSeller() {
           </div>
           <button
             onClick={() => navigate("/products")}
-            className="mt-4 sm:mt-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgb(var(--border))] text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300 group"
+            className="mt-4 w-fit sm:mt-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgb(var(--border))] text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300 group"
           >
             View All Products
             <ChevronRight

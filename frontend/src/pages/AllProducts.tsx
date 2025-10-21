@@ -7,6 +7,7 @@ import { addItem } from "../redux/slices/cartSlice";
 import { ShoppingCart, CheckCircle, Menu, Filter as FilterIcon } from "lucide-react";
 import type { ProductType } from "../redux/slices/productSlice";
 import ProductFilters, { categories, type Category } from "../compoBig/ProductFilters";
+import ProductCardSkeleton from "../components/skeletons/ProductCardSkeleton";
 
 const AllProducts = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -101,7 +102,19 @@ const AllProducts = () => {
     setSearchParams({});
   };
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (loading)
+    return (
+      <div className="app-container w-full relative py-10">
+        <div className="mb-6">
+          <div className="skeleton skeleton--text w-25" />
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <ProductCardSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+    );
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (

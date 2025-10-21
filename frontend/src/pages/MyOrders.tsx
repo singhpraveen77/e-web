@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { myOrders } from "../api/orders.api";
-import { useTheme } from "../context/ThemeContext"; // ✅ import theme context
+import OrderCardSkeleton from "../components/skeletons/OrderCardSkeleton";
 
 // 🧩 Types
 interface OrderItem {
@@ -79,8 +79,13 @@ const MyOrders: React.FC = () => {
   // 🌀 Loading / Error States
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-[80vh] text-lg font-medium text-gray-600 dark:text-gray-300 transition-colors duration-300">
-        Loading your orders...
+      <div className="max-w-5xl mx-auto px-4 py-10">
+        <div className="skeleton skeleton--text w-33 mb-6" />
+        <div className="space-y-6">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <OrderCardSkeleton key={i} />
+          ))}
+        </div>
       </div>
     );
   }
