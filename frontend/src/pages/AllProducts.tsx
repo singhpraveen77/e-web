@@ -123,7 +123,7 @@ const AllProducts = () => {
 
       <div className="flex flex-col w-full md:flex-row gap-8">
         {/* Sidebar Filters (desktop/tablet) */}
-        <div className="hidden md:block relative md:w-72 md:sticky md:top-20 self-start sticky-filter">
+        <div className="hidden lg:w-fit md:block relative md:w-72 md:sticky md:top-20 self-start sticky-filter">
           <ProductFilters
             maxPrice={maxPrice}
             price={price}

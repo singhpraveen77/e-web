@@ -62,7 +62,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen w-fit bg-[rgb(var(--bg))] flex p-4">
+    <div className="min-h-screen lg:relative left-3/8 w-fit bg-[rgb(var(--bg))] flex p-4">
       <div className="w-full  rounded">
         {/* Logo/Brand */}
         <div className="text-center mb-8">

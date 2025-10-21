@@ -22,7 +22,7 @@ export default function ThemeToggle() {
       </button>
 
       {/* Optional: system selector (small discrete control) */}
-      <div className="relative flex  w-full">
+      <div className="hidden  relative lg:flex  w-full">
         <select
           aria-label="Theme preference"
           className="transition-base bg-[rgb(var(--card))]  border-[rgb(var(--border))] rounded-md py-1 pl-2 pr-6 text-sm text-[rgb(var(--fg))] hover:bg-[rgb(var(--bg))]"

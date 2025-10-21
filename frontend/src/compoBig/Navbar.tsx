@@ -60,6 +60,7 @@ export default function Navbar() {
       setSearch("");
       return;
     }
+    setMobileMenuOpen(false)
     navigate(`/products?search=${encodeURIComponent(trimmedSearch.toLowerCase())}`);
     setSearch("");
   };
@@ -74,17 +75,20 @@ export default function Navbar() {
           transition-transform duration-500 ease-in-out
           ${showNav ? "translate-y-0" : "-translate-y-[150%]"}`}
         >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center">
-              <div
-                onClick={() => navigate("/")}
-                className="text-2xl font-bold text-[rgb(var(--fg))] cursor-pointer select-none transition-all duration-200 hover:scale-105 hover:text-blue-600 dark:hover:text-blue-400"
-              >
-                ShopEase
-              </div>
+             <div className="flex items-center">
+            {/* Text logo — visible on medium and larger screens */}
+            <div
+              onClick={() => navigate("/")}
+              className="md:block text-2xl font-bold text-[rgb(var(--fg))] cursor-pointer select-none transition-all duration-200 hover:scale-105 hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              ShopEase
             </div>
+
+             
+          </div>
 
             {/* Center Search Bar */}
             <div className="hidden md:flex flex-1 max-w-lg mx-8">
@@ -95,7 +99,7 @@ export default function Navbar() {
                     placeholder="Search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="min-w-full pl-4 pr-12 py-3 bg-gray-700 border-[rgb(var(--border))] rounded-full text-sm text-[rgb(var(--fg))] placeholder:text-[rgb(var(--muted))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500/50 group-hover:border-[rgb(var(--fg))]/20"
+                    className="w-[10vw] pl-4 pr-12 py-2.5 lg:py-3 bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-full text-sm text-[rgb(var(--fg))] placeholder:text-[rgb(var(--muted))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 group-hover:border-[rgb(var(--fg))]/20"
                   />
                   <button
                     type="submit"
@@ -110,10 +114,10 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <nav className="flex space-x-6">
+              <nav className="flex space-x-2 lg:space-x-6">
                 <button
                   onClick={() => navigate("/")}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                  className={`px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium transition-all duration-200 hover:scale-105 ${
                     location.pathname === "/"
                       ? "text-blue-600 dark:text-blue-400 font-semibold"
                       : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
@@ -123,7 +127,7 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => navigate("/products")}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                  className={`px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium transition-all duration-200 hover:scale-105 ${
                     location.pathname === "/products"
                       ? "text-blue-600 dark:text-blue-400 font-semibold"
                       : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
@@ -133,7 +137,7 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => navigate("/contact")}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                  className={`px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium transition-all duration-200 hover:scale-105 ${
                     location.pathname === "/contact"
                       ? "text-blue-600 dark:text-blue-400 font-semibold"
                       : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
@@ -143,30 +147,30 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => navigate("/about")}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                  className={`w-25 px-2 lg:px-2 py-2 text-xs lg:text-sm font-medium transition-all duration-200 hover:scale-105 ${
                     location.pathname === "/about"
                       ? "text-blue-600 dark:text-blue-400 font-semibold"
                       : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
                   }`}
                 >
-                  About Us
+                  About-Us
                 </button>
               </nav>
 
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 lg:space-x-4">
                 <ThemeToggle />
 
                 {/* Cart */}
                 <div className="relative">
                   <button
                     onClick={() => navigate("/cart")}
-                    className="p-2 text-[rgb(var(--fg))] hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-110 hover:bg-[rgb(var(--card))] rounded-full"
+                    className="p-1.5 lg:p-2 text-[rgb(var(--fg))] hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-110 hover:bg-[rgb(var(--card))] rounded-full"
                     aria-label="Open cart"
                   >
-                    <ShoppingCart size={20} />
+                    <ShoppingCart size={18} className="lg:w-5 lg:h-5" />
                   </button>
                   {totalProducts > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg animate-pulse">
+                    <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs font-bold w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center rounded-full shadow-lg animate-pulse">
                       {totalProducts}
                     </span>
                   )}
@@ -180,8 +184,6 @@ export default function Navbar() {
             <div className="md:hidden flex items-center space-x-3">
               <ThemeToggle />
 
-              {/* User Dropdown always visible on navbar */}
-              <UserDropdown />
 
               {/* Mobile Cart */}
               <div className="relative">
@@ -199,6 +201,8 @@ export default function Navbar() {
                 )}
               </div>
 
+                {/* User Dropdown always visible on navbar */}
+                <UserDropdown />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 text-[rgb(var(--fg))] hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -215,7 +219,6 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div
           className="md:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
         >
           <div className="fixed top-16 left-0 right-0 bg-[rgb(var(--bg))] border-b border-[rgb(var(--border))] shadow-lg">
             <div className="px-4 py-4 space-y-4">
@@ -245,8 +248,11 @@ export default function Navbar() {
                   <button
                     key={path}
                     onClick={() => {
-                      navigate(path);
+                      console.log("checking");
+                      
                       setMobileMenuOpen(false);
+                      navigate(path);
+                      console.log("checking after");
                     }}
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
                       location.pathname === path

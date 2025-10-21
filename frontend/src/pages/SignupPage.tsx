@@ -92,7 +92,7 @@ const Signup: React.FC = () => {
     } catch (error: any) {
       console.error("Signup error:", error);
       setErrors({ 
-        submit: error.response?.data?.message || "Signup failed. Please try again." 
+        submit: error.response?.data || "Signup failed. Please try again." 
       });
     } finally {
       setLoading(false);
@@ -100,27 +100,27 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-[50vw] bg-[rgb(var(--bg))] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-[rgb(var(--bg))] flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-md lg:max-w-lg">
         {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-600 dark:bg-green-500 rounded-2xl mb-4">
-            <ShoppingBag className="text-white" size={32} />
+        <div className="text-center mb-6 lg:mb-8">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-green-600 dark:bg-green-500 rounded-2xl mb-3 sm:mb-4">
+            <ShoppingBag className="text-white" size={24} />
           </div>
-          <h1 className="text-2xl font-bold text-[rgb(var(--fg))]">Create Account</h1>
-          <p className="text-[rgb(var(--muted))] mt-2">Join ShopEase today and start shopping</p>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[rgb(var(--fg))]">Create Account</h1>
+          <p className="text-sm sm:text-base text-[rgb(var(--muted))] mt-2">Join ShopEase today and start shopping</p>
         </div>
 
-        <Card variant="elevated" padding="lg">
-          <CardHeader className="text-center pb-6">
-            <CardTitle>Sign Up</CardTitle>
-            <CardDescription>
+        <Card variant="elevated" padding="lg" className="relative">
+          <CardHeader className="text-center pb-4 sm:pb-6">
+            <CardTitle className="text-lg sm:text-xl">Sign Up</CardTitle>
+            <CardDescription className="text-sm sm:text-base">
               Create your account to get started
             </CardDescription>
           </CardHeader>
 
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <CardContent className="px-4 sm:px-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               {errors.submit && (
                 <div className="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                   <p className="text-sm text-red-600 dark:text-red-400 text-center">{errors.submit}</p>
@@ -194,9 +194,9 @@ const Signup: React.FC = () => {
                     onChange={handleChange}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                   />
-                  <div className="flex items-center gap-3 p-3 border border-[rgb(var(--border))] rounded-lg bg-[rgb(var(--card))] hover:bg-[rgb(var(--bg))] transition-base">
-                    <Upload size={16} className="text-[rgb(var(--muted))]" />
-                    <span className="text-sm text-[rgb(var(--fg))]">
+                  <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 border border-[rgb(var(--border))] rounded-lg bg-[rgb(var(--card))] hover:bg-[rgb(var(--bg))] transition-base">
+                    <Upload size={16} className="text-[rgb(var(--muted))] flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-[rgb(var(--fg))] truncate">
                       {formData.profile ? formData.profile.name : "Choose profile image"}
                     </span>
                   </div>
@@ -216,13 +216,13 @@ const Signup: React.FC = () => {
             </form>
           </CardContent>
 
-          <CardFooter className="justify-center pt-6">
-            <p className="text-sm text-[rgb(var(--muted))] text-center">
+          <CardFooter className="justify-center pt-4 sm:pt-6 px-4 sm:px-6">
+            <p className="text-xs sm:text-sm text-[rgb(var(--muted))] text-center">
               Already have an account?{" "}
               <Button
                 variant="link"
                 onClick={() => navigate("/login")}
-                className="p-0 h-auto font-medium"
+                className="p-0 h-auto font-medium text-xs sm:text-sm"
               >
                 Sign in
               </Button>
@@ -231,9 +231,9 @@ const Signup: React.FC = () => {
         </Card>
 
         {/* Terms */}
-        <Card className="mt-6" padding="sm">
-          <CardContent className="text-center">
-            <p className="text-xs text-[rgb(var(--muted))]">
+        <Card className="mt-4 sm:mt-6" padding="sm">
+          <CardContent className="text-center px-4 sm:px-6">
+            <p className="text-xs sm:text-sm text-[rgb(var(--muted))] leading-relaxed">
               By creating an account, you agree to our Terms of Service and Privacy Policy
             </p>
           </CardContent>

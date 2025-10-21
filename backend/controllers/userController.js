@@ -40,7 +40,7 @@ const registerUser = async (req, res) => {
         },
     })
 
-    let token = newUser.getJWTtoken();
+    let token = user.getJWTtoken();
         
         // Same cookie settings
         res.cookie("token", token, {
@@ -55,11 +55,15 @@ const registerUser = async (req, res) => {
         return res.status(201).json({
             success: true,
             message: "Registration successful",
-            user: { /* user data */ },
+            user:user,
             token
         });
     } catch (error) {
         console.log("error in backend !!",error);
+        return res.status(400).json({
+                success: false,
+                message: "Please valid email !!"
+            });
         
     }
     
