@@ -60,7 +60,7 @@
 
 /* Unified product card sizing */
 .product-card {
-  @apply card p-3 sm:p-4 hover:shadow-md transition-base;
+  @apply bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-xl shadow-[0_1px_2px_0_rgba(var(--shadow))] p-3 sm:p-4 hover:shadow-md transition-all duration-200 ease-out;
 }
 .product-card-img {
   @apply relative aspect-[4/3] overflow-hidden rounded-md bg-[rgb(var(--bg))];
