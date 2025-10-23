@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
-import { Logout } from "../redux/slices/authSlice";
+import { Logout, me } from "../redux/slices/authSlice";
 import { Card } from "../components/ui";
+import AppShellSkeleton from "../components/skeletons/AppShellSkeleton";
+import { ClipLoader } from "react-spinners";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +16,16 @@ export default function UserDropdown() {
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
 
+  const { loading } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    let onceRun=true;
+    if(onceRun){
+      dispatch(me());
+    }
+  }, [dispatch]);
+
+  
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,16 +33,16 @@ export default function UserDropdown() {
         setIsOpen(false);
       }
     };
-
+    
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
+  
   const handleItemClick = (action: () => void) => {
     action();
     setIsOpen(false);
   };
-
+  
   const menuItems = [
     ...(!user ? [{
       icon: <LogIn size={16} />,
@@ -60,6 +72,7 @@ export default function UserDropdown() {
       className: "text-red-600 dark:text-red-400"
     }] : [])
   ];
+  if (loading) return <ClipLoader />;
 
   return (
     <div className="relative" ref={dropdownRef}>

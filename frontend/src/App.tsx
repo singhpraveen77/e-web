@@ -7,14 +7,6 @@ import router from "./compoBig/Router"; // router is defined separately
 import AppShellSkeleton from "./components/skeletons/AppShellSkeleton";
 
 export default function App() {
-  const dispatch = useDispatch<AppDispatch>();
-  const { loading } = useSelector((state: RootState) => state.auth);
-
-  useEffect(() => {
-    dispatch(me());
-  }, [dispatch]);
-
-  if (loading) return <AppShellSkeleton />;
-
+  
   return <RouterProvider router={router} />;
 }
