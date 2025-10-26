@@ -62,6 +62,12 @@ import orderRoute from "./routes/orderRoute.js";
 import adminRoute from "./routes/adminRoute.js";
 import { verifyJWT,authrizeroles } from './middlewares/authmiddleware.js';
 
+//uptime robot 
+
+app.get("/",(req,res)=>{
+  return res.send("// server is up ")
+})
+
 //routes
 app.use("/app/v1/user",userRoute);
 app.use("/app/v1/product",productRoute );
