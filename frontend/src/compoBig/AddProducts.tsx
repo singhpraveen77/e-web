@@ -192,7 +192,7 @@ const AddProduct: React.FC = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/90 text-gray-800 dark:text-gray-100 backdrop-blur-md transition-colors duration-300">
+    <div className="max-w-lg h-fit mx-auto mt-10 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/90 text-gray-800 dark:text-gray-100 backdrop-blur-md transition-colors duration-300">
       <h2 className="text-2xl font-bold mb-5 text-gray-900 dark:text-gray-100">
         Add New Product
       </h2>

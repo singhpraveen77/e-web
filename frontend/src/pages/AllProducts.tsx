@@ -1,10 +1,11 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion";
 import type { RootState, AppDispatch } from "../redux/store";
 import { ViewProducts } from "../api/products.api";
 import { addItem } from "../redux/slices/cartSlice";
-import { ShoppingCart, CheckCircle, Menu, Filter as FilterIcon } from "lucide-react";
+import { ShoppingCart, CheckCircle, Menu, Filter as FilterIcon, X } from "lucide-react";
 import type { ProductType } from "../redux/slices/productSlice";
 import ProductFilters, { categories, type Category } from "../compoBig/ProductFilters";
 import ProductCardSkeleton from "../components/skeletons/ProductCardSkeleton";
@@ -31,6 +32,24 @@ const AllProducts = () => {
   // Mobile filter drawer state
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  useEffect(() => {
+    if (isFilterOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+
+      return () => {
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isFilterOpen]);
+
   // Sync searchQuery from URL into localSearch state
   useEffect(() => {
     setLocalSearch(searchQuery);
@@ -42,7 +61,7 @@ const AllProducts = () => {
       try {
         setLoading(true);
         const res = await ViewProducts();
-        setProducts(Array.isArray(res) ? res : []);        
+        setProducts(Array.isArray(res) ? res : []);
         const max = Math.max(...res.map((p: ProductType) => p.price || 0));
         setMaxPrice(max);
         setPrice(max);
@@ -56,27 +75,29 @@ const AllProducts = () => {
     fetchProducts();
   }, []);
 
-  // *** MEMOIZED Helper function with proper typing ***
-  const matchesCategoryFilter = useCallback((productCategory: string, selectedCategory: string): boolean => {
-    if (selectedCategory === "All") return true;
-    
-    const normalizedProductCat = productCategory?.toLowerCase() ?? "";
-    const normalizedSelectedCat = selectedCategory?.toLowerCase() ?? "";
-    
-    if (normalizedProductCat === normalizedSelectedCat) return true;
-    
-    const parentCat: Category | undefined = categories.find(
-      (cat) => cat.value.toLowerCase() === normalizedSelectedCat
-    );
-    
-    if (parentCat && parentCat.subcategories.length > 0) {
-      return parentCat.subcategories.some(
-        (sub) => sub.value.toLowerCase() === normalizedProductCat
+  const matchesCategoryFilter = useCallback(
+    (productCategory: string, selectedCategory: string): boolean => {
+      if (selectedCategory === "All") return true;
+
+      const normalizedProductCat = productCategory?.toLowerCase() ?? "";
+      const normalizedSelectedCat = selectedCategory?.toLowerCase() ?? "";
+
+      if (normalizedProductCat === normalizedSelectedCat) return true;
+
+      const parentCat: Category | undefined = categories.find(
+        (cat) => cat.value.toLowerCase() === normalizedSelectedCat
       );
-    }
-    
-    return false;
-  }, []);
+
+      if (parentCat && parentCat.subcategories.length > 0) {
+        return parentCat.subcategories.some(
+          (sub) => sub.value.toLowerCase() === normalizedProductCat
+        );
+      }
+
+      return false;
+    },
+    []
+  );
 
   // Filter + Search Logic
   const filteredProducts = useMemo(() => {
@@ -120,23 +141,35 @@ const AllProducts = () => {
   return (
     <div className="app-container w-full relative py-10">
       {/* Header + Mobile filter toggle */}
-      <div className="flex  items-center justify-between mb-6 ">
-        <div className=" lg:ml-80">
-            <h1 className="text-2xl  sm:text-3xl font-bold text-[rgb(var(--fg))]">All Products</h1>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex items-center justify-between mb-6"
+      >
+        <div className="lg:ml-80">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[rgb(var(--fg))]">All Products</h1>
         </div>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsFilterOpen(true)}
           className="md:hidden inline-flex items-center gap-2 rounded-full px-3 py-2 border border-[rgb(var(--border))] text-[rgb(var(--fg))] hover:bg-[rgb(var(--card))] transition-base"
           aria-label="Open filters"
         >
           <Menu size={18} />
           <span className="hidden xs:inline">Filters</span>
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       <div className="flex flex-col w-full md:flex-row gap-8">
         {/* Sidebar Filters (desktop/tablet) */}
-        <div className="hidden lg:w-fit md:block relative md:w-72 md:sticky md:top-20 self-start sticky-filter">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="hidden lg:w-fit md:block relative md:w-72 md:sticky md:top-20 self-start sticky-filter"
+        >
           <ProductFilters
             maxPrice={maxPrice}
             price={price}
@@ -147,121 +180,170 @@ const AllProducts = () => {
             setRating={setRating}
             resetFilters={resetFilters}
           />
-        </div>
+        </motion.div>
 
         {/* Product List */}
         <div className="flex-1 w-full">
-          <div className="mb-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="mb-6"
+          >
             <p className="text-[rgb(var(--muted))]">
               Showing <span className="font-semibold text-[rgb(var(--fg))]">{filteredProducts.length}</span> products
             </p>
-          </div>
+          </motion.div>
 
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
-              {filteredProducts.map((item) => {
-                const isInCart = cartItems.some((cart) => cart._id === item._id);
+  <motion.div
+    layout
+    className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
+  >
+    <AnimatePresence mode="wait">
+      {filteredProducts.map((item, index) => {
+        const isInCart = cartItems.some((cart) => cart._id === item._id);
 
-                return (
-                  <div
-                    key={item._id}
-                    className="card p-2 sm:p-3 lg:p-4 flex flex-col cursor-pointer hover:shadow-md transition-base"
-                    onClick={() => navigate(`/product/${item._id}`)}
-                  >
-                    <div className="relative aspect-square sm:aspect-[4/3] rounded-md overflow-hidden mb-2 sm:mb-3 bg-[rgb(var(--card))]">
-                      <img
-                        src={item.images[0]?.url}
-                        alt={item.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <h2 className="font-semibold text-[10px] sm:text-sm line-clamp-1">{item.name}</h2>
-                    <p className="text-blue-600 dark:text-blue-400 text-xs sm:text-base font-bold mt-0.5 sm:mt-1">₹{item.price}</p>
-                    <p className="hidden sm:block text-[rgb(var(--muted))] text-sm line-clamp-2 mt-1">{item.description}</p>
+        return (
+          <motion.div
+            key={item._id}
+            layout
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{
+              duration: 0.2,
+              delay: 0,
+              layout: { duration: 0.2 }
+            }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="card p-2 sm:p-3 lg:p-4 flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => navigate(`/product/${item._id}`)}
+          >
+            <div className="relative aspect-square sm:aspect-[4/3] rounded-md overflow-hidden mb-2 sm:mb-3 bg-[rgb(var(--card))]">
+              <motion.img
+                src={item.images[0]?.url}
+                alt={item.name}
+                className="h-full w-full object-cover"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+            <h2 className="font-semibold text-[10px] sm:text-sm line-clamp-1">
+              {item.name}
+            </h2>
+            <p className="text-blue-600 dark:text-blue-400 text-xs sm:text-base font-bold mt-0.5 sm:mt-1">
+              ₹{item.price}
+            </p>
+            <p className="hidden sm:block text-[rgb(var(--muted))] text-sm line-clamp-2 mt-1">
+              {item.description}
+            </p>
 
-                    {!isInCart ? (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          dispatch(
-                            addItem({
-                              _id: item._id,
-                              name: item.name,
-                              price: item.price,
-                              image: item.images[0]?.url,
-                              quantity: 1,
-                            })
-                          );
-                        }}
-                        className="mt-auto flex items-center justify-center gap-1 sm:gap-2 rounded-md px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-sm transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
-                      >
-                        <ShoppingCart size={18} />
-                        Add to Cart
-                      </button>
-                    ) : (
-                      <button
-                        disabled
-                        onClick={(e) => e.stopPropagation()}
-                        className="mt-auto flex items-center justify-center gap-1 sm:gap-2 bg-green-600 text-white py-1.5 px-2 sm:py-2 sm:px-4 text-[10px] sm:text-sm rounded-md cursor-default"
-                      >
-                        <CheckCircle size={18} />
-                        Added
-                      </button>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="w-full">
-              <p className="text-center text-[rgb(var(--muted))] text-lg">No products match your filters 🚫</p>
-            </div>
-          )}
+            {!isInCart ? (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch(
+                    addItem({
+                      _id: item._id,
+                      name: item.name,
+                      price: item.price,
+                      image: item.images[0]?.url,
+                      quantity: 1,
+                    })
+                  );
+                }}
+                className="mt-auto flex items-center justify-center gap-1 sm:gap-2 rounded-md px-2 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-sm transition-base bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+              >
+                <ShoppingCart size={18} />
+                Add to Cart
+              </motion.button>
+            ) : (
+              <motion.button
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                disabled
+                onClick={(e) => e.stopPropagation()}
+                className="mt-auto flex items-center justify-center gap-1 sm:gap-2 bg-green-600 text-white py-1.5 px-2 sm:py-2 sm:px-4 text-[10px] sm:text-sm rounded-md cursor-default"
+              >
+                <CheckCircle size={18} />
+                Added
+              </motion.button>
+            )}
+          </motion.div>
+        );
+      })}
+    </AnimatePresence>
+  </motion.div>
+) : (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.4 }}
+    className="w-full py-12 text-center"
+  >
+    <p className="text-[rgb(var(--muted))] text-lg">No products match your filters 🚫</p>
+  </motion.div>
+)}
         </div>
       </div>
 
       {/* Mobile Filter Drawer */}
-      {isFilterOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsFilterOpen(false)}
-        >
-          <div
-            className="absolute right-0 top-0 h-full w-80 max-w-[85%] bg-[rgb(var(--bg))] border-l border-[rgb(var(--border))] shadow-xl transform transition-transform duration-300 ease-in-out translate-x-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-[rgb(var(--border))]">
-              <div className="flex items-center gap-2 text-[rgb(var(--fg))]">
-                <FilterIcon size={18} />
-                <span className="font-semibold">Filters</span>
+      <AnimatePresence mode="wait">
+        {isFilterOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+              onClick={() => setIsFilterOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed right-0 top-0 h-full w-80 max-w-[85%] bg-[rgb(var(--bg))] border-l border-[rgb(var(--border))] shadow-xl z-50"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[rgb(var(--border))]">
+                <div className="flex items-center gap-2 text-[rgb(var(--fg))]">
+                  <FilterIcon size={18} />
+                  <span className="font-semibold">Filters</span>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsFilterOpen(false)}
+                  className="inline-flex items-center rounded-full p-1 hover:bg-[rgb(var(--card))] transition-base"
+                  aria-label="Close filters"
+                >
+                  <X size={20} />
+                </motion.button>
               </div>
-              <button
-                onClick={() => setIsFilterOpen(false)}
-                className="inline-flex items-center rounded-full p-1 hover:bg-[rgb(var(--card))] transition-base"
-                aria-label="Close filters"
-                title="Close"
-              >
-                {/* Arrow icon instead of text */}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-            </div>
-            <div className="p-4 overflow-y-auto h-[calc(100%-52px)]">
-              <ProductFilters
-                maxPrice={maxPrice}
-                price={price}
-                setPrice={setPrice}
-                category={category}
-                setCategory={(val) => setCategory(val)}
-                rating={rating}
-                setRating={setRating}
-                resetFilters={resetFilters}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="p-4 overflow-y-auto h-[calc(100%-52px)]">
+                <ProductFilters
+                  maxPrice={maxPrice}
+                  price={price}
+                  setPrice={setPrice}
+                  category={category}
+                  setCategory={(val) => setCategory(val)}
+                  rating={rating}
+                  setRating={setRating}
+                  resetFilters={resetFilters}
+                />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

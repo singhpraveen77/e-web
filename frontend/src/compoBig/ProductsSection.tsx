@@ -26,7 +26,7 @@ export default function ProductsSection() {
         console.log("Error fetching products:", error);
       }
     };
-    if (!products || products.length === 0) getAllProducts();
+    if (!products) getAllProducts();
   }, []);
 
   const scroll = (direction: "left" | "right") => {

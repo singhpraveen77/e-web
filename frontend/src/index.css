@@ -92,3 +92,30 @@
 img {
   @apply block max-w-full h-auto object-contain;
 }
+
+
+/* Random floating animation */
+@keyframes float-random {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(var(--float-x), calc(var(--float-y) * 0.5)) rotate(1deg);
+  }
+  50% {
+    transform: translate(calc(var(--float-x) * -0.5), var(--float-y)) rotate(-1deg);
+  }
+  75% {
+    transform: translate(var(--float-x), calc(var(--float-y) * 0.7)) rotate(0.5deg);
+  }
+}
+
+.animate-float-random {
+  animation: float-random ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.animate-float-random:hover {
+  animation-play-state: paused;
+  transform: scale(1.1) translateY(-5px) !important;
+}

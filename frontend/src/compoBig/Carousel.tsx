@@ -14,7 +14,7 @@ const heroSlides = [
     id: 2,
     title: "Fashion Collection",
     subtitle: "Trendy styles for every season",
-    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&h=600&fit=crop&crop=center",
+    image:"https://images.unsplash.com/photo-1587483674075-b4f9a5b3328b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZmFzaGlvbiUyMGxhbmRzY2FwZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=800",
     cta: "Explore"
   },
   {
@@ -23,6 +23,13 @@ const heroSlides = [
     subtitle: "Transform your space with our curated selection",
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=600&fit=crop&crop=center",
     cta: "Discover"
+  },
+  {
+    id: 4,
+    title: "Mens Shoes",
+    subtitle: "Transform your personality with our curated selection",
+    image:"https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNob2VzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
+    cta: "wanting "
   }
 ];
 

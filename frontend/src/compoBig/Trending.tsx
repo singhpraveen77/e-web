@@ -15,7 +15,7 @@ export default function TrendingPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (!products || products.length === 0) {
+    if (!products) {
       dispatch(AllProducts());
     }
   }, [dispatch, products]);

@@ -9,4 +9,5 @@ export default defineConfig({
     cssMinify: 'lightningcss',
     outDir: 'dist',
   },
+  
 });

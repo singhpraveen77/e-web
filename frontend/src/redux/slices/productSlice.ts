@@ -68,9 +68,7 @@ export const AllProducts = createAsyncThunk<ProductType[]>(
 );
 
 const initialState: ProductsState = {
-  products: localStorage.getItem("products")
-    ? JSON.parse(localStorage.getItem("products") as string)
-    : null,
+  products:null,
   loading: false,
   error: null,
 };

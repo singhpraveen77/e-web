@@ -16,6 +16,24 @@ export default function Navbar() {
   const [search, setSearch] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+  if (mobileMenuOpen) {
+    const scrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    };
+  }
+}, [mobileMenuOpen]);
+
   // 👇 state for scroll direction
   const [showNav, setShowNav] = useState(true);
   // const [lastScrollY, setLastScrollY] = useState(0);
@@ -153,7 +171,7 @@ export default function Navbar() {
                       : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
                   }`}
                 >
-                  About-Us
+                  About
                 </button>
               </nav>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { axiosInstance } from "../axios/axiosInstance";
 import type { ProductType } from "../redux/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,16 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.cart.products);
+
+
+  // const {pathname}=useLocation();
+  
+  //     useEffect(()=>{
+          
+  //         window.scrollTo(0,0)
+          
+  //     },[pathname])
+
 
   useEffect(() => {
     const getDetails = async () => {
@@ -56,22 +66,23 @@ const ProductDetails = () => {
 
   return (
     <div className="app-container py-6 mt-6 sm:mt-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 card p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 card p-6">
         {/* Product Image */}
-        <div className="group relative">
-          <div className="relative aspect-square overflow-hidden rounded-2xl">
-            <img
-              src={product.images?.[0]?.url || "https://via.placeholder.com/400"}
-              alt={product.name}
-              className="h-full w-full object-cover transition-base group-hover:scale-[1.02]"
-            />
+        <div className="group relative flex justify-center">
+            <div className="relative w-full aspect-[4/3] overflow-hidden flex items-center rounded-2xl">
+              <img
+                src={product.images?.[0]?.url || "https://via.placeholder.com/400"}
+                alt={product.name}
+                className=" object-center object-contain transition-transform duration-300 ease-in-out group-hover:scale-105"
+              />
+              {product.category && (
+                <span className="absolute top-4 right-4 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
+                  {product.category}
+                </span>
+              )}
+            </div>
           </div>
-          {product.category && (
-            <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
-              {product.category}
-            </span>
-          )}
-        </div>
+
 
         {/* Product Info */}
         <div className="flex flex-col justify-between">

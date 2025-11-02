@@ -25,7 +25,7 @@ export default function BestSeller() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!products || products.length === 0) {
+    if (!products ) {
       dispatch(AllProducts()).catch((err) =>
         console.log("Error fetching products:", err)
       );
@@ -126,7 +126,7 @@ export default function BestSeller() {
                   onClick={() => navigate(`/product/${product._id}`)}
                 >
                   {/* Image */}
-                  <div className="product-card-img">
+                  <div className="product-card-img aspect-[4/3]">
                     <img
                       src={
                         product.images[0]?.url ||

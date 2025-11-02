@@ -20,11 +20,18 @@ const uploadOnCloudinary = async (localFilepath, folder) => {
     try {
         const response = await cloudinary.uploader.upload(localFilepath, {
             folder: `ShopNest/${folder}`,
-            height: 150,
-            width: 150,
-            crop: "scale",
             resource_type: "auto",
-        });
+            fetch_format: "auto",      // serve modern formats (WebP/AVIF)
+            quality: "70",      // optimize compression while keeping good visual quality
+            transformation: [
+                {
+                width: 1000,           // target width
+                height: 750,           // target height → 4:3 landscape aspect ratio
+                crop: "fill",          // crop + resize while preserving proportions
+                gravity: "auto",       // focus on the main subject automatically
+                },
+            ],
+            });
 
         //file removed for the local folder
         return response;

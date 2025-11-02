@@ -1,16 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Users, Package, BarChart3, Settings, Shield, TrendingUp, ShoppingCart, DollarSign } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, Badge } from "../../components/ui";
+import { getAllCount } from "../../api/admin.api";
+import { Oval } from "react-loader-spinner";
 
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
+  const [users,setUsers]=useState(0);
+  const [products,setProducts]=useState(0);
+  const [orders,setOrders]=useState(0);
+const [loading, setLoading] = useState<boolean>(false);
+const [error, setError] = useState<string | null>(null);
+
+  useEffect(()=>{
+    const fetchCounts= async()=>{
+      try {
+      setLoading(true);
+      const res=await getAllCount();
+
+      setUsers(res.data.userCount)
+      setProducts(res.data.productCount)
+      setOrders(res.data.orderCount)
+        
+      console.log(res);
+      
+    } catch (error) {
+      console.log("error log in the component admin dash board ",error);
+      setError("error")
+    }
+    finally{
+      setLoading(false);
+    }
+    }
+    fetchCounts();
+  },[])
 
   // Mock stats - replace with real data from API
   const stats = [
     {
       title: "Total Users",
-      value: "2,547",
+      value: users ,
       change: "+12%",
       changeType: "positive",
       icon: <Users size={24} />,
@@ -18,7 +48,7 @@ const AdminDashboard: React.FC = () => {
     },
     {
       title: "Products",
-      value: "1,234",
+      value:products,
       change: "+5%",
       changeType: "positive",
       icon: <Package size={24} />,
@@ -26,7 +56,7 @@ const AdminDashboard: React.FC = () => {
     },
     {
       title: "Orders",
-      value: "3,891",
+      value: orders,
       change: "+23%",
       changeType: "positive",
       icon: <ShoppingCart size={24} />,
@@ -60,7 +90,7 @@ const AdminDashboard: React.FC = () => {
       stats: "1,234 products"
     },
     {
-      title: "Analytics",
+      title: "Orders",
       description: "View sales reports and business insights",
       icon: <BarChart3 size={32} />,
       // onClick: () => navigate("/admin/analytics"),
@@ -99,11 +129,36 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-[rgb(var(--muted))]">{stat.title}</p>
-                    <p className="text-2xl font-bold text-[rgb(var(--fg))] mt-2">{stat.value}</p>
-                    <div className="flex items-center gap-1 mt-2">
-                      <TrendingUp size={12} className="text-green-600" />
-                      <span className="text-xs text-green-600 font-medium">{stat.change} from last month</span>
-                    </div>
+                    {loading ? (
+                      <p className="text-lg text-[rgb(var(--muted))] mt-2 animate-pulse">
+                        <Oval
+                            height={20}
+                            width={20}
+                            color="#2632d9"
+                            visible={true}
+                            ariaLabel="oval-loading"
+                            secondaryColor="#9505f5"
+                            strokeWidth={6}
+                            strokeWidthSecondary={6}
+                          />
+                      </p>
+                    ) : error ? (
+                      <p className="text-lg text-red-500 mt-2">Error loading data</p>
+                    ) : (
+                      <p className="text-2xl font-bold text-[rgb(var(--fg))] mt-2">
+                        {stat.value}
+                      </p>
+                    )}
+
+                    {!loading && !error && (
+                      <div className="flex items-center gap-1 mt-2">
+                        <TrendingUp size={12} className="text-green-600" />
+                        <span className="text-xs text-green-600 font-medium">
+                          {stat.change} from last month
+                        </span>
+                      </div>
+                    )}
+                    
                   </div>
                   <div className={`${stat.color} opacity-80`}>
                     {stat.icon}
@@ -189,7 +244,7 @@ const AdminDashboard: React.FC = () => {
                 className="p-4 text-center border border-[rgb(var(--border))] rounded-lg hover:bg-[rgb(var(--card))] transition-base"
               >
                 <BarChart3 size={20} className="mx-auto mb-2 text-[rgb(var(--muted))]" />
-                <span className="text-sm font-medium text-[rgb(var(--fg))]">Analytics</span>
+                <span className="text-sm font-medium text-[rgb(var(--fg))]">Orders</span>
               </button>
               
               <button 

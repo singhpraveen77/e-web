@@ -3,6 +3,7 @@ import { batchUpdateUsers, deleteUser, getAllUsers, getAnyUser, updateUserRole }
 import { batchUpdateProducts, createProduct, deleteProduct, getAllAdminProducts, updateProduct } from "../controllers/productController.js";
 import { deleteOrder, getAllOrders, updateOrder } from "../controllers/orderController.js";
 import { upload } from "../middlewares/multermiddleware.js";
+import { getAllCount } from "../controllers/adminController.js";
 
 const Router =express.Router();
 
@@ -30,6 +31,9 @@ Router.route("/order/all").get(getAllOrders);
 Router.route("/order/:_id")
 .put(updateOrder)
 .delete(deleteOrder);
+
+//admin dashboard
+Router.route('/detail/all').get(getAllCount);
 
 export default Router
 
