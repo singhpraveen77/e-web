@@ -83,6 +83,39 @@ export const Logout = createAsyncThunk<
   }
 });
 
+export const sendPasswordReset = createAsyncThunk<
+  { message?: string },
+  string,
+  { rejectValue: string }
+>('auth/sendPasswordReset', async (email: string, { rejectWithValue }) => {
+  try {
+    const res = await axiosInstance.post('/user/password/forgot', { email });
+    return res.data;
+  } catch (error: any) {
+    // prefer server message
+    console.log("error in the forget pass ",error);
+    
+    return rejectWithValue(error.response?.data?.message ?? 'Failed to send password reset email');
+  }
+});
+
+export const resetPassword = createAsyncThunk<
+{ message?: string; user?: any },
+{ token: string; password: string; confirmPassword: string },
+{ rejectValue: string }
+>('auth/resetPassword', async ({ token, password, confirmPassword }, { rejectWithValue }) => {
+  try {
+    console.log("token ",token);
+    
+    const res = await axiosInstance.put(`/user/password/reset/${token}`, { password, confirmPassword });
+    return res.data;
+  } catch (error: any) {
+    console.log("error in the forget pass ",error);
+    
+    return rejectWithValue(error.response?.data?.message ?? 'Failed to reset password');
+  }
+});
+
 // --- Initial State ---
 const initialState: AuthState = {
   user: null,
@@ -149,6 +182,40 @@ const authSlice = createSlice({
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
         state.user = null;
         state.isAuthenticated = false;
+      })
+
+      // --- sendPasswordReset ---
+      .addCase(sendPasswordReset.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(sendPasswordReset.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+        // we purposely don't store the message in state; components can use unwrap()
+      })
+      .addCase(sendPasswordReset.rejected, (state, action) => {
+        state.loading = false;
+        state.error = (action.payload as string) ?? action.error.message ?? 'Failed to send password reset';
+      })
+
+      // --- resetPassword ---
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        // optionally update user if backend returns one (e.g. logged-in after reset)
+        if (action.payload?.user) {
+          state.user = action.payload.user;
+          state.isAuthenticated = true;
+        }
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = (action.payload as string) ?? action.error.message ?? 'Failed to reset password';
       });
   },
 });

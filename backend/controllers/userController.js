@@ -149,15 +149,13 @@ const forgotpassword = async (req, res) => {
 
     if(!user){
         return res.status(404).send("User not found");
-
-
     }
 
     const resetToken = user.getResetPasswordToken();
 
     await user.save({ validateBeforeSave: false });
 
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/app/v1/user/password/reset/${resetToken}`;
+    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
     const message = `Your password reset token is as follows:\n\n ${resetPasswordUrl} \n\nIf you have not requested this email, please ignore it.`;
 
@@ -193,23 +191,34 @@ const resetPassword = async (req, res) => {
     const { password, confirmPassword } = req.body
 
     // return res.send(token)
-
+    console.log("checking the reset password a");
+    
     const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex")
-
+    
+    console.log("reset password token",resetPasswordToken);
+    
+    console.log("checking the reset password a");
     const user = await User.findOne({
         resetPasswordToken,
         resetPasswordExpire: { $gt: Date.now() },
     })
-
-
+    
+    
     if(!user){
-        return res.status(404).send("the token is wrong  or expired !!");
-    }
+        console.log("checking the reset password a user not found ");
 
+        return res.status(404).send({
+            success:false,
+            message:"the token is wrong  or expired !!"
+        });
+    }
+    
+    console.log("checking the reset password a");
     if (password !== confirmPassword) {
         return  res.send("passes does not match");
     }
-
+    console.log("checking the reset password a");
+    
     user.password = password
     await user.save()
     await User.updateOne(
@@ -223,7 +232,8 @@ const resetPassword = async (req, res) => {
             }
         }
     );
-
+    
+    console.log("checking the reset password a");
 
     sendToken(user, 200, res, "Password reset successfully");
     

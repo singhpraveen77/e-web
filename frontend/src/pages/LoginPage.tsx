@@ -24,7 +24,7 @@ const Login: React.FC = () => {
   }, [user, navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setError(""); // Clear error when user types
+    setError("");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -114,6 +114,17 @@ const Login: React.FC = () => {
                 autoComplete="current-password"
               />
 
+              {/* Forgot password link */}
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => navigate('/forgot-password')}
+                  className="text-sm font-medium text-blue-600 hover:underline"
+                >
+                  Forgot password?
+                </button>
+              </div>
+
               <Button 
                 type="submit" 
                 className="w-full" 
@@ -154,3 +165,30 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
+
+// File: src/pages/ForgotPassword.tsx
+
+
+
+// File: src/redux/slices/authSlice.ts (excerpt - add sendPasswordReset thunk)
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+
+
+// in the slice reducers/extraReducers handle pending/fulfilled/rejected to set loading state and optionally messages
+
+
+// Route registration example (e.g. src/App.tsx or your routes file)
+// import Login from './pages/Login';
+// import ForgotPassword from './pages/ForgotPassword';
+// <Route path="/login" element={<Login />} />
+// <Route path="/forgot-password" element={<ForgotPassword />} />
+
+// Server-side: implement POST /api/auth/forgot-password to accept { email } and (securely) send a reset email with a one-time token. Do not leak whether email exists in responses.
+
+// Notes:
+// - The UI keeps responses generic ("If an account with that email exists...") to avoid revealing account existence.
+// - Customize API paths and error handling to match your backend (axios or fetch).
+// - Add client-side validation for email format if desired.
+

@@ -25,6 +25,8 @@ import MyOrders from "../pages/MyOrders";
 import ProtectedRoute from "./ProtectedRoute";
 import ContactPage from "../pages/ContactPage";
 import AboutPage from "../pages/AboutPage";
+import ForgotPassword from "../pages/ForgetPass";
+import ResetPassword from "../pages/ResetPass";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,8 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetails /> },
       { path: "/contact", element: <ContactPage /> },
       { path: "/about", element: <AboutPage /> },
+      { path:"/forgot-password" ,element:<ForgotPassword />},
+      { path:"/password/reset/:token" ,element:<ResetPassword />},
 
       // Protected routes (must be logged in)
       {
