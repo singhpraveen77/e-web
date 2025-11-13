@@ -184,7 +184,7 @@ const Signup: React.FC = () => {
 
               {/* Profile Image Upload */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-[rgb(var(--fg))]">Profile Image (Optional)</label>
+                <label className="text-sm font-medium text-[rgb(var(--fg))]">Profile Image</label>
                 <div className="relative">
                   <input
                     type="file"

@@ -143,22 +143,25 @@ const logOutUser = async (req, res) => {
 };
 
 const forgotpassword = async (req, res) => {
+    console.log("checked reached  forget!! ");
+    
     let  { email } = req.body;
-
+    
+    
     let user= await User.findOne({ email })
-
+    
     if(!user){
         return res.status(404).send("User not found");
     }
-
+    
     const resetToken = user.getResetPasswordToken();
-
+    
     await user.save({ validateBeforeSave: false });
-
+    
     const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
-
+    
     const message = `Your password reset token is as follows:\n\n ${resetPasswordUrl} \n\nIf you have not requested this email, please ignore it.`;
-
+    
     try{
         await sendEmail({
             email: user.email,
@@ -166,7 +169,8 @@ const forgotpassword = async (req, res) => {
             message,
         })
         
-
+        console.log("checked reached  forget!! email sent ");
+        
         res.status(200).json({ success: true, message: `Email sent to ${user.email} successfully` });
     }
     catch(error){
