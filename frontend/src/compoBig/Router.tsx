@@ -27,11 +27,14 @@ import ContactPage from "../pages/ContactPage";
 import AboutPage from "../pages/AboutPage";
 import ForgotPassword from "../pages/ForgetPass";
 import ResetPassword from "../pages/ResetPass";
+import RouteErrorBoundary from "../pages/RouteErrorBoundary";
+import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       // Public routes
       { path: "/", element: <HomePage /> },
@@ -63,6 +66,8 @@ const router = createBrowserRouter([
           { path: "/admin/products/addProducts", element: <AddProduct /> },
         ],
       },
+      // Catch-all 404
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
