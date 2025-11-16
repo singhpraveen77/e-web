@@ -1,5 +1,5 @@
 import User from "../models/usermodels.js"
-import { sendEmail } from "../utlis/sendEmail.js";
+import {  sendMail } from "../utlis/sendEmail.js";
 
 import { ApiResponse } from "../utlis/ApiResponse.js";
 import crypto from "crypto"
@@ -158,16 +158,43 @@ const forgotpassword = async (req, res) => {
     
     await user.save({ validateBeforeSave: false });
     
-    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
-    
-    const message = `Your password reset token is as follows:\n\n ${resetPasswordUrl} \n\nIf you have not requested this email, please ignore it.`;
+const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+
+const html = `
+  <div style="font-family: Arial, Helvetica, sans-serif; color:#24292e; line-height:1.6; padding:24px;">
+    <h2 style="margin:0 0 12px; font-size:20px; font-weight:600;">Reset your password</h2>
+    <p style="margin:0 0 16px;">
+      Click the button below to create a new password. This link expires in 15 minutes.
+    </p>
+    <p style="margin:0 0 20px; text-align:center;">
+      <a href="${resetPasswordUrl}" target="_blank" 
+         style="display:inline-block; background:#2563eb; color:#ffffff; text-decoration:none; 
+                padding:12px 18px; border-radius:8px; font-weight:600; font-size:14px;">
+        Reset Password
+      </a>
+    </p>
+    <p style="margin:0 0 8px; font-size:12px; color:#6b7280;">
+      Or copy and paste this link into your browser:
+    </p>
+    <p style="margin:0; word-break:break-all; font-size:12px; color:#374151;">
+      <a href="${resetPasswordUrl}" target="_blank" style="color:#2563eb; text-decoration:underline;">
+        ${resetPasswordUrl}
+      </a>
+    </p>
+    <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
+    <p style="margin:0; font-size:12px; color:#6b7280;">
+      If you didn’t request this, you can safely ignore this email.
+    </p>
+  </div>
+`;
     
     try{
-        await sendEmail({
-            email: user.email,
-            subject: `Ecommerce password recovery`,
-            message,
-        })
+
+        await sendMail(
+         email,
+        'Ecommerce password recovery',
+        html,
+    )
         
         console.log("checked reached  forget!! email sent ");
         

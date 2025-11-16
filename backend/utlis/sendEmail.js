@@ -1,73 +1,26 @@
-import nodemailer from 'nodemailer';
+// brevo.service.js
+import 'dotenv/config';
 
-const sendEmail = async (Option) => {
-  console.log(
-    'SMTP env:',
-    process.env.SMPT_HOST,
-    process.env.SMPT_PORT,
-    process.env.SMPT_SERVICE,
-    process.env.SMPT_MAIL ? '[set]' : '[missing]'
-  );
+import Brevo from '@getbrevo/brevo';
+export const sendMail = async (to, subject, html) => {
+  try {
+    const apiInstance = new Brevo.TransactionalEmailsApi();
+    apiInstance.setApiKey(
+      Brevo.TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY
+    );
 
-  const port = Number(process.env.SMPT_PORT);
-  const useService = !!process.env.SMPT_SERVICE;
+    const sendEmail = new Brevo.SendSmtpEmail();
+    sendEmail.sender = { email: process.env.BREVO_SENDER_EMAIL };
+    sendEmail.to = [{ email: to }];
+    sendEmail.subject = subject;
+    sendEmail.htmlContent = html;
 
-  if (!process.env.SMPT_MAIL || !process.env.SMPT_PASS || (!useService && (!process.env.SMPT_HOST || !port))) {
-    throw new Error('Email configuration is incomplete');
+    const result = await apiInstance.sendTransacEmail(sendEmail);
+    return result;
+  } catch (err) {
+    console.error("Email error:", err);
+    throw err;
   }
-
-  const baseTransportConfig = {
-    auth: {
-      user: process.env.SMPT_MAIL,
-      pass: process.env.SMPT_PASS
-    },
-    logger: true,         // enable nodemailer logging
-    debug: true,          // show SMTP protocol traffic
-    connectionTimeout: 15000,
-    socketTimeout: 15000,
-    greetingTimeout: 15000,
-    tls: {
-      // set to true only for debugging if you suspect TLS issues.
-      rejectUnauthorized: false
-    }
-  };
-
-  const transportConfig = useService
-    ? {
-        ...baseTransportConfig,
-        service: process.env.SMPT_SERVICE,
-        secure: port === 465
-      }
-    : {
-        ...baseTransportConfig,
-        host: process.env.SMPT_HOST,
-        port,
-        secure: port === 465
-      };
-
-  const transporter = nodemailer.createTransport(transportConfig);
-
-  // run verification even in production temporarily to see exact error
-  await transporter.verify().catch(err => {
-    console.error("SMTP VERIFY ERROR:", err);
-    throw err;
-  });
-
-  
-  const mailOptions = {
-    from: process.env.SMPT_MAIL,
-    to: Option.email,
-    subject: Option.subject,
-    text: Option.message,
-    html: Option.html
-  };
-
-  const info = await transporter.sendMail(mailOptions).catch(err => {
-    console.error("SENDMAIL ERROR:", err);
-    throw err;
-  });
-
-  console.log('Message sent:', info && info.messageId);
 };
 
-export { sendEmail };
