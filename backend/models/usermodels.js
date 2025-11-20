@@ -38,8 +38,14 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "user"],
         default: "user"
     },
+    isVerified: {
+        type: Boolean,
+        default: false,
+    },
     resetPasswordToken:String,
-    resetPasswordExpire:Date
+    resetPasswordExpire:Date,
+    emailVerificationToken: String,
+    emailVerificationExpire: Date,
 }, { timestamps: true });
 
 userSchema.pre("save", async function (next) {
@@ -75,6 +81,19 @@ userSchema.methods.getResetPasswordToken = function () {
     catch(error){
         console.log("")
     }
+};
+
+userSchema.methods.getEmailVerificationToken = function () {
+    const verifyToken = crypto.randomBytes(20).toString("hex");
+
+    this.emailVerificationToken = crypto
+        .createHash("sha256")
+        .update(verifyToken)
+        .digest("hex");
+
+    this.emailVerificationExpire = Date.now() + (24 * 60 * 60 * 1000);
+
+    return verifyToken;
 };
 
 

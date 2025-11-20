@@ -85,14 +85,15 @@ const Signup: React.FC = () => {
       const res = await registerApi(data);
       console.log("Signup response:", res);
       
-      // Show success and redirect
-      navigate("/login", { 
-        state: { message: "Account created successfully! Please sign in." } 
+      navigate(`/email-verification?email=${encodeURIComponent(formData.email.trim())}`, {
+        state: { message: "OTP sent to your email. Please enter it to complete registration." },
       });
     } catch (error: any) {
       console.error("Signup error:", error);
+      const data = error?.response?.data;
+      const serverMessage = typeof data === "string" ? data : data?.message;
       setErrors({ 
-        submit: error.response?.data || "Signup failed. Please try again." 
+        submit: serverMessage || "Signup failed. Please try again." 
       });
     } finally {
       setLoading(false);

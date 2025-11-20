@@ -4,6 +4,7 @@ import {  sendMail } from "../utlis/sendEmail.js";
 import { ApiResponse } from "../utlis/ApiResponse.js";
 import crypto from "crypto"
 import validator from "validator"
+import jwt from "jsonwebtoken";
 import { uploadOnCloudinary, deleteFromCloudinary } from "../utlis/cloudinary.js";
 import {sendToken} from "../utlis/jwtTokens.js"
 
@@ -12,62 +13,172 @@ const registerUser = async (req, res) => {
     console.log("register hit !!");
     try {
         const { name, email, password } = req.body;
-    const existingUser = await User.findOne({ email})
 
-    if (existingUser) {
-        return res.status(400).send("User already exists");
-    }
+        if (!name || !email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide all required fields",
+            });
+        }
 
-    const avatarLocalPath = req.file?.path;    
-    
-    if (!avatarLocalPath) {
-        return res.status(400).send("Please upload an avatar image");
-    }
+        let user = await User.findOne({ email });
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath, "avatars")
+        if (user && user.isVerified) {
+            return res.status(400).json({
+                success: false,
+                message: "User already exists",
+            });
+        }
 
-    if (!avatar) {
-        return res.status(500).send("Failed to upload avatar image");
-    }
-    
-    const user = await User.create({
-        name,
-        email,
-        password,
-        avatar: {
-            public_id: avatar.public_id,
-            url: avatar.url
-        },
-    })
+        if (!user) {
+            user = new User({
+                name,
+                email,
+                password,
+                isVerified: false,
+            });
+            await user.save();
+        } else {
+            user.name = name;
+            user.password = password;
+        }
 
-    let token = user.getJWTtoken();
-        
-        // Same cookie settings
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            maxAge: 5 * 24 * 60 * 60 * 1000,
-            path: '/'
-        });
-        
-        console.log("data sent from backend :",user);
-        return res.status(201).json({
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+        user.emailVerificationToken = otp;
+        user.emailVerificationExpire = Date.now() + 5 * 60 * 1000;
+
+        await user.save({ validateBeforeSave: false });
+
+        const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Verify Your Email</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa;">
+            <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+                <!-- Header -->
+                <tr>
+                    <td style="padding: 30px 30px 20px; text-align: center; background-color: #4f46e5; color: white;">
+                        <h1 style="margin: 0; font-size: 24px; font-weight: 600;">Welcome to Our Platform</h1>
+                    </td>
+                </tr>
+                
+                <!-- Content -->
+                <tr>
+                    <td style="padding: 30px; color: #1f2937; line-height: 1.6;">
+                        <h2 style="margin: 0 0 20px; font-size: 20px; font-weight: 600; color: #111827;">Verify Your Email Address</h2>
+                        <p style="margin: 0 0 16px;">Thank you for registering! To complete your registration, please enter the following verification code in your application:</p>
+                        
+                        <!-- OTP Box -->
+                        <div style="background-color: #f3f4f6; border-radius: 8px; padding: 20px; margin: 24px 0; text-align: center;">
+                            <div style="display: inline-block; letter-spacing: 8px; font-size: 28px; font-weight: 700; color: #111827; background: white; padding: 16px 24px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                ${otp}
+                            </div>
+                        </div>
+                        
+                        <p style="margin: 0 0 24px; font-size: 14px; color: #6b7280;">This code will expire in 5 minutes. If you didn't request this, please ignore this email.</p>
+                        
+                        <div style="border-top: 1px solid #e5e7eb; margin: 24px 0; padding-top: 24px; font-size: 13px; color: #6b7280;">
+                            <p style="margin: 0 0 8px;">Need help? Contact our support team at <a href="mailto:support@example.com" style="color: #4f46e5; text-decoration: none;">support@example.com</a></p>
+                            <p style="margin: 0;">© ${new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </body>
+        </html>`;
+
+        await sendMail(
+            email,
+            "Your verification code",
+            html,
+        );
+
+        console.log("Verification OTP sent to:", email, otp);
+        return res.status(200).json({
             success: true,
-            message: "Registration successful",
-            user:user,
-            token
+            message: "OTP sent to your email. Please enter it to complete registration.",
         });
     } catch (error) {
         console.log("error in backend !!",error);
         return res.status(400).json({
                 success: false,
-                message: "Please valid email !!"
+                message: "Registration failed. Please try again."
             });
         
     }
     
 }
+
+const verifyEmail = async (req, res) => {
+    const { email, otp } = req.body;
+
+    if (!email || !otp) {
+        return res.status(400).json({
+            success: false,
+            message: "Email and OTP are required",
+        });
+    }
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        if (user.isVerified) {
+            return res.status(200).json({
+                success: true,
+                message: "Email already verified. You can log in.",
+            });
+        }
+
+        if (!user.emailVerificationToken || !user.emailVerificationExpire) {
+            return res.status(400).json({
+                success: false,
+                message: "No OTP found. Please request a new one.",
+            });
+        }
+
+        if (user.emailVerificationExpire < Date.now()) {
+            return res.status(400).json({
+                success: false,
+                message: "OTP has expired. Please request a new one.",
+            });
+        }
+
+        if (user.emailVerificationToken !== otp) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid OTP",
+            });
+        }
+
+        user.isVerified = true;
+        user.emailVerificationToken = undefined;
+        user.emailVerificationExpire = undefined;
+        await user.save({ validateBeforeSave: false });
+
+        return res.status(200).json({
+            success: true,
+            message: "Email verified successfully. You can now log in.",
+        });
+    } catch (error) {
+        console.error("verifyEmail error", error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to verify email. Please try again.",
+        });
+    }
+};
 const loginUser = async (req, res) => {
     console.log("login hit !!", req.body);
     
@@ -96,6 +207,13 @@ const loginUser = async (req, res) => {
             return res.status(401).json({
                 success: false,
                 message: "Invalid email or password"
+            });
+        }
+
+        if (!user.isVerified) {
+            return res.status(403).json({
+                success: false,
+                message: "Please verify your email before logging in.",
             });
         }
         
@@ -161,31 +279,58 @@ const forgotpassword = async (req, res) => {
 const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
 const html = `
-  <div style="font-family: Arial, Helvetica, sans-serif; color:#24292e; line-height:1.6; padding:24px;">
-    <h2 style="margin:0 0 12px; font-size:20px; font-weight:600;">Reset your password</h2>
-    <p style="margin:0 0 16px;">
-      Click the button below to create a new password. This link expires in 15 minutes.
-    </p>
-    <p style="margin:0 0 20px; text-align:center;">
-      <a href="${resetPasswordUrl}" target="_blank" 
-         style="display:inline-block; background:#2563eb; color:#ffffff; text-decoration:none; 
-                padding:12px 18px; border-radius:8px; font-weight:600; font-size:14px;">
-        Reset Password
-      </a>
-    </p>
-    <p style="margin:0 0 8px; font-size:12px; color:#6b7280;">
-      Or copy and paste this link into your browser:
-    </p>
-    <p style="margin:0; word-break:break-all; font-size:12px; color:#374151;">
-      <a href="${resetPasswordUrl}" target="_blank" style="color:#2563eb; text-decoration:underline;">
-        ${resetPasswordUrl}
-      </a>
-    </p>
-    <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
-    <p style="margin:0; font-size:12px; color:#6b7280;">
-      If you didn’t request this, you can safely ignore this email.
-    </p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Your Password</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 30px 20px; text-align: center; background-color: #4f46e5; color: white;">
+                <h1 style="margin: 0; font-size: 24px; font-weight: 600;">Password Reset Request</h1>
+            </td>
+        </tr>
+        
+        <!-- Content -->
+        <tr>
+            <td style="padding: 30px; color: #1f2937; line-height: 1.6;">
+                <h2 style="margin: 0 0 20px; font-size: 20px; font-weight: 600; color: #111827;">Hello,</h2>
+                <p style="margin: 0 0 16px;">We received a request to reset your password. Click the button below to choose a new one:</p>
+                
+                <!-- Button -->
+                <table cellspacing="0" cellpadding="0" style="margin: 24px 0;">
+                    <tr>
+                        <td align="center" style="border-radius: 6px; background: #4f46e5;">
+                            <a href="${resetPasswordUrl}" target="_blank" style="display: inline-block; padding: 16px 32px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.5px;">
+                                Reset My Password
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <p style="margin: 0 0 24px; font-size: 14px; color: #6b7280;">This link will expire in 15 minutes for security reasons.</p>
+                
+                <div style="background-color: #f9fafb; border-radius: 6px; padding: 16px; margin: 24px 0;">
+                    <p style="margin: 0 0 8px; font-size: 13px; color: #6b7280;">If the button above doesn't work, copy and paste this link into your browser:</p>
+                    <a href="${resetPasswordUrl}" style="color: #4f46e5; font-size: 13px; word-break: break-all; text-decoration: none;">${resetPasswordUrl}</a>
+                </div>
+                
+                <p style="margin: 0 0 24px; font-size: 14px; color: #6b7280;">If you didn't request this, please ignore this email or contact support if you have questions.</p>
+                
+                <div style="border-top: 1px solid #e5e7eb; margin: 24px 0; padding-top: 24px; font-size: 13px; color: #6b7280;">
+                    <p style="margin: 0 0 8px;">Need help? Contact our support team at <a href="mailto:support@example.com" style="color: #4f46e5; text-decoration: none;">support@example.com</a></p>
+                    <p style="margin: 0;">© ${new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+                </div>
   </div>
+  <p style="text-align:center; margin-top:24px; font-size:11px; color:#9ca3af;">
+    © ${new Date().getFullYear()} Your Company. All rights reserved.
+  </p>
+</div>
+
 `;
     
     try{
@@ -564,5 +709,18 @@ const batchUpdateUsers = async (req, res) => {
 
 
 export {
-    batchUpdateUsers, registerUser, loginUser ,logOutUser,forgotpassword, resetPassword,getUserdetail,updatePassword,updateProfile,getAllUsers,getAnyUser,updateUserRole,deleteUser};
-
+  batchUpdateUsers,
+  registerUser,
+  loginUser,
+  logOutUser,
+  forgotpassword,
+  resetPassword,
+  getUserdetail,
+  updatePassword,
+  updateProfile,
+  getAllUsers,
+  getAnyUser,
+  updateUserRole,
+  deleteUser,
+  verifyEmail,
+};
