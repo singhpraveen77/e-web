@@ -14,7 +14,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'https://e-web-39px.onrender.com',
-  'https://minimartt.netlify.app',
+  
   process.env.CORS_ORIGIN 
 ].filter(Boolean);
 
