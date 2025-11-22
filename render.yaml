@@ -7,11 +7,37 @@ services:
       cd frontend
       npm install
       npm run build
-    staticPublishPath: "./frontend/dist"
+      cd ..
+      npm install
+    startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: 18.x
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      - key: NODE_ENV
+        value: production
+    # Health check endpoint
+    healthCheckPath: /health
+    # Static files directory (where your built React files are located)
+    staticPublishPath: "./frontend/dist"
+    # Environment variables (add your production variables here)
+    envVars:
+      - key: MONGO_ATLAS
+        fromDatabase:
+          name: e-practice
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+    # Routes configuration
     routes:
+      # API routes - direct to backend
+      - type: path
+        path: /app/v1/*
+        destination: /
+      # All other routes - serve React app
       - type: rewrite
         source: "/*"
         destination: "/index.html"
