@@ -27,6 +27,7 @@ import ContactPage from "../pages/ContactPage";
 import AboutPage from "../pages/AboutPage";
 import ForgotPassword from "../pages/ForgetPass";
 import ResetPassword from "../pages/ResetPass";
+import OTPVerification from "../pages/OTPVerification";
 import EmailVerificationPage from "../pages/EmailVerificationPage";
 import RouteErrorBoundary from "../pages/RouteErrorBoundary";
 import NotFound from "../pages/NotFound";
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage /> },
       { path: "/about", element: <AboutPage /> },
       { path:"/forgot-password" ,element:<ForgotPassword />},
+      { path:"/otp-verification" ,element:<OTPVerification />},
       { path:"/password/reset/:token" ,element:<ResetPassword />},
       { path:"/email-verification", element:<EmailVerificationPage />},
 

@@ -11,10 +11,6 @@ import 'dotenv/config';
 
 dotenv.config();
 
-// Get the directory name in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const app = express();
 
 const allowedOrigins = [
@@ -73,14 +69,6 @@ import { verifyJWT,authrizeroles } from './middlewares/authmiddleware.js';
 
 //uptime robot 
 
-// Serve static files from the React app
-const frontendBuildPath = path.join(__dirname, '../frontend/dist');
-app.use(express.static(frontendBuildPath));
-
-// Health check endpoint
-app.get("/health", (req, res) => {
-  return res.status(200).json({ status: 'ok', message: 'Server is running' });
-});
 
 //routes
 app.use("/app/v1/user",userRoute);
@@ -94,9 +82,7 @@ app.use("/app/v1/admin", adminRoute);
 
 // The catch-all handler: send back the React app for any unknown routes
 // This should be the last route
-app.get(/^(?!\/app\/v1\/).*/, (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
+
 
 const PORT = process.env.PORT || 5000;
 

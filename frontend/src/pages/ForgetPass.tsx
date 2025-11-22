@@ -30,8 +30,10 @@ const ForgotPassword: React.FC = () => {
       setLoadingLocal(true);
       const result = await dispatch(sendPasswordReset(email)).unwrap();
       // result typically contains { message: '...' } per backend
-      setInfoMsg(result?.message ?? 'If an account with that email exists, a recovery link has been sent.');
+      setInfoMsg(result?.message ?? 'OTP sent to your email. Please check your inbox.');
       setEmail('');
+      // Navigate to OTP verification page after a short delay
+      setTimeout(() => navigate('/otp-verification', { state: { email } }), 1500);
     } catch (err: any) {
       console.error('sendPasswordReset error', err);
       // err is the rejectWithValue string (per thunk) or an Error
@@ -47,7 +49,7 @@ const ForgotPassword: React.FC = () => {
         <Card variant="elevated" padding="lg">
           <CardHeader className="text-center pb-6">
             <CardTitle>Reset password</CardTitle>
-            <CardDescription>Enter your email and we will send a link to reset your password.</CardDescription>
+            <CardDescription>Enter your email and we will send an OTP to reset your password.</CardDescription>
           </CardHeader>
 
           <CardContent>
@@ -82,7 +84,7 @@ const ForgotPassword: React.FC = () => {
                     <Loader2 className="animate-spin mr-2" size={16} /> Sending...
                   </>
                 ) : (
-                  'Send recovery email'
+                  'Send OTP'
                 )}
               </Button>
             </form>

@@ -101,16 +101,16 @@ export const sendPasswordReset = createAsyncThunk<
 
 export const resetPassword = createAsyncThunk<
 { message?: string; user?: any },
-{ token: string; password: string; confirmPassword: string },
+{ email: string; otp: string; password: string; confirmPassword: string },
 { rejectValue: string }
->('auth/resetPassword', async ({ token, password, confirmPassword }, { rejectWithValue }) => {
+>('auth/resetPassword', async ({ email, otp, password, confirmPassword }, { rejectWithValue }) => {
   try {
-    console.log("token ",token);
+    console.log("OTP reset password attempt");
     
-    const res = await axiosInstance.put(`/user/password/reset/${token}`, { password, confirmPassword });
+    const res = await axiosInstance.post('/user/password/verify-otp', { email, otp, password, confirmPassword });
     return res.data;
   } catch (error: any) {
-    console.log("error in the forget pass ",error);
+    console.log("error in OTP reset password ", error);
     
     return rejectWithValue(error.response?.data?.message ?? 'Failed to reset password');
   }
