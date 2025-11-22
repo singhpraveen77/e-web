@@ -1,7 +1,7 @@
 // router.tsx
 import {
   createBrowserRouter,
-  
+  Navigate
 } from "react-router-dom";
 
 import AppLayout from "../layout/AppLayout";
@@ -68,8 +68,8 @@ const router = createBrowserRouter([
           { path: "/admin/products/addProducts", element: <AddProduct /> },
         ],
       },
-      // Catch-all 404
-      { path: "*", element: <NotFound /> },
+      // Redirect all unknown routes to home
+      { path: "*", element: <Navigate to="/" replace /> },
     ],
   },
 ]);
